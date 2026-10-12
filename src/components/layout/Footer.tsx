@@ -64,23 +64,23 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
-                <a href="#privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/privacy-first-pdf-tools" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Client-Side Architecture
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/terms" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/ChalanaDilshan/gopdf-suite" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -101,7 +101,7 @@ export function Footer() {
             </p>
             <div className="mt-4 flex items-center gap-2">
               <a
-                href="https://github.com"
+                href="https://github.com/ChalanaDilshan/gopdf-suite"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs"

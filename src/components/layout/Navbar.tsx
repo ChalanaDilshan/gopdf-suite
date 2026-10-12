@@ -90,12 +90,19 @@ export function Navbar() {
               Features
             </a>
 
-            <a
-              href="#privacy"
+            <Link
+              href="/privacy-first-pdf-tools"
               className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
-              Privacy
-            </a>
+              Security
+            </Link>
+
+            <Link
+              href="/privacy"
+              className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              Privacy Policy
+            </Link>
 
             <a
               href="#faq"
@@ -184,13 +191,20 @@ export function Navbar() {
             >
               Features
             </a>
-            <a
-              href="#privacy"
+            <Link
+              href="/privacy-first-pdf-tools"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center rounded-xl px-3 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[48px]"
             >
-              Privacy
-            </a>
+              Security Architecture
+            </Link>
+            <Link
+              href="/privacy"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center rounded-xl px-3 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[48px]"
+            >
+              Privacy Policy
+            </Link>
             <a
               href="#faq"
               onClick={() => setMobileMenuOpen(false)}
