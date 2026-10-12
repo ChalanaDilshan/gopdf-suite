@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import { PDFDocument } from "pdf-lib";
 
 export interface UsePdfSplitterReturn {
   isSplitting: boolean;
@@ -62,7 +61,10 @@ export function usePdfSplitter(): UsePdfSplitterReturn {
       setError(null);
 
       try {
-        const arrayBuffer = await file.arrayBuffer();
+        const [{ PDFDocument }, arrayBuffer] = await Promise.all([
+          import("pdf-lib"),
+          file.arrayBuffer(),
+        ]);
         setProgress(30);
 
         const srcDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: false });

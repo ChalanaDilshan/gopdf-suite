@@ -10,14 +10,26 @@ import {
   AlertCircle,
   Sparkles
 } from "lucide-react";
-import { PDFDocument } from "pdf-lib";
+import dynamic from "next/dynamic";
 import { HeroBanner } from "@/components/tools/HeroBanner";
 import { PdfToolsSidebar } from "@/components/tools/PdfToolsSidebar";
-import { MergeList } from "@/components/tools/MergeList";
-import { MergeActionPanels } from "@/components/tools/MergeActionPanels";
-import { HowItWorksAndFaq } from "@/components/tools/HowItWorksAndFaq";
 import { usePdfMerger } from "@/hooks/usePdfMerger";
 import { UploadedPdfFile } from "@/types";
+
+const MergeList = dynamic(
+  () => import("@/components/tools/MergeList").then((mod) => mod.MergeList),
+  { ssr: false }
+);
+
+const MergeActionPanels = dynamic(
+  () => import("@/components/tools/MergeActionPanels").then((mod) => mod.MergeActionPanels),
+  { ssr: false }
+);
+
+const HowItWorksAndFaq = dynamic(
+  () => import("@/components/tools/HowItWorksAndFaq").then((mod) => mod.HowItWorksAndFaq),
+  { ssr: true }
+);
 
 export default function MergePdfPage() {
   const [files, setFiles] = useState<UploadedPdfFile[]>([]);
@@ -42,7 +54,10 @@ export default function MergePdfPage() {
 
   const readPageCount = async (file: File): Promise<number | undefined> => {
     try {
-      const buffer = await file.slice(0, Math.min(file.size, 5 * 1024 * 1024)).arrayBuffer();
+      const [{ PDFDocument }, buffer] = await Promise.all([
+        import("pdf-lib"),
+        file.slice(0, Math.min(file.size, 5 * 1024 * 1024)).arrayBuffer(),
+      ]);
       const pdf = await PDFDocument.load(buffer, { ignoreEncryption: true });
       return pdf.getPageCount();
     } catch {
@@ -79,6 +94,7 @@ export default function MergePdfPage() {
 
   const handleLoadSampleFiles = async () => {
     try {
+      const { PDFDocument } = await import("pdf-lib");
       const samples = [
         { name: "Research_Paper.pdf", pages: 12, sizeEstimate: 2400000 },
         { name: "Thesis_Chapter1.pdf", pages: 28, sizeEstimate: 5100000 },

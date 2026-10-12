@@ -18,7 +18,12 @@ import { ToolLayout } from "@/components/layout/ToolLayout";
 import { Dropzone } from "@/components/ui/Dropzone";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { SplitPageSelector } from "@/components/tools/SplitPageSelector";
+import dynamic from "next/dynamic";
+
+const SplitPageSelector = dynamic(
+  () => import("@/components/tools/SplitPageSelector").then((mod) => mod.SplitPageSelector),
+  { ssr: false }
+);
 import { usePdfThumbnails } from "@/hooks/usePdfThumbnails";
 import { usePdfSplitter } from "@/hooks/usePdfSplitter";
 import { formatBytes, truncateFileName } from "@/lib/utils";

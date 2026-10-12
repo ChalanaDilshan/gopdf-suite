@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gopdf.app"),
+  metadataBase: new URL("https://gopdf.tech"),
   title: {
     template: "%s | GoPDF",
     default: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://gopdf.app",
+    url: "https://gopdf.tech",
     siteName: "GoPDF",
     title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
     description:
