@@ -73,7 +73,8 @@ export function usePdfThumbnails(initialFile?: File | null): UsePdfThumbnailsRet
 
       // Configure offline-first local worker or fallback
       if (typeof window !== "undefined") {
-        pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+        pdfjs.GlobalWorkerOptions.workerSrc = `${basePath}/pdf.worker.min.js`;
       }
 
       const arrayBuffer = await file.arrayBuffer();
