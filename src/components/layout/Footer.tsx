@@ -7,8 +7,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-[#0b0f19]/90 backdrop-blur-sm transition-colors mt-auto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-12">
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
             <Link href="/" className="flex items-center gap-2 group">

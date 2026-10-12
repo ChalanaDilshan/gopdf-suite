@@ -4,18 +4,19 @@
 
 :root {
   --foreground-rgb: 15, 23, 42;
-  --background-start-rgb: 248, 250, 252;
+  --background-start-rgb: 244, 247, 251;
   --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 248, 250, 252;
-    --background-start-rgb: 2, 6, 23;
+    --background-start-rgb: 11, 15, 25;
     --background-end-rgb: 15, 23, 42;
   }
 }
 
+/* --- Base --- */
 body {
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
@@ -23,8 +24,22 @@ body {
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
+/* --- Touch & Mobile Tap Target Fixes --- */
+button, a, [role="button"], [role="checkbox"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent text size inflate on iOS */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* --- Animations (reduced motion safe) --- */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -40,10 +55,42 @@ body {
   animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom scrollbar for modern feel */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+    transition: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Mobile-first sticky bottom action bar support --- */
+.mobile-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 0.75rem 1rem;
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,0.95);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .mobile-action-bar {
+  background: rgba(19, 27, 46, 0.95);
+  border-top-color: rgba(30, 41, 59, 0.8);
+}
+
+/* --- Scrollbar --- */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -57,4 +104,21 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.6);
+}
+
+/* --- Performance: GPU-accelerate common animated elements --- */
+.animate-spin,
+.animate-pulse {
+  will-change: transform, opacity;
+}
+
+/* --- Thumbnail grid scroll container on mobile --- */
+.thumbnail-scroll-container {
+  /* Allow horizontal scroll on very small screens */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- Safe area padding for notched phones (bottom) --- */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }

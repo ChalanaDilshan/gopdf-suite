@@ -84,6 +84,8 @@ export function usePdfThumbnails(initialFile?: File | null): UsePdfThumbnailsRet
         data: arrayBuffer,
         cMapUrl: "https://unpkg.com/pdfjs-dist@3.11.174/cmaps/",
         cMapPacked: true,
+        // Disable optional features we don't need for thumbnails
+        isEvalSupported: false,
       });
 
       activeTaskRef.current = loadingTask;
@@ -96,14 +98,31 @@ export function usePdfThumbnails(initialFile?: File | null): UsePdfThumbnailsRet
 
       const generatedThumbnails: PageThumbnail[] = [];
 
+      // Yield control back to the browser between pages to keep UI responsive
+      const yieldToMain = () =>
+        new Promise<void>((resolve) => {
+          if (typeof requestAnimationFrame !== "undefined") {
+            requestAnimationFrame(() => resolve());
+          } else {
+            setTimeout(resolve, 0);
+          }
+        });
+
+      // Adaptive thumbnail width: smaller on mobile for faster rendering
+      const targetWidth =
+        typeof window !== "undefined" && window.innerWidth < 640 ? 160 : 220;
+
       for (let pageNum = 1; pageNum <= total; pageNum++) {
+        if (isCancelledRef.current) break;
+
+        // Yield every page to keep scrolling / interactions smooth
+        await yieldToMain();
+
         if (isCancelledRef.current) break;
 
         const page = await pdfDocument.getPage(pageNum);
         const unscaledViewport = page.getViewport({ scale: 1 });
 
-        // Fixed crisp thumbnail width: 220px
-        const targetWidth = 220;
         const scale = targetWidth / unscaledViewport.width;
         const viewport = page.getViewport({ scale });
 
@@ -117,34 +136,39 @@ export function usePdfThumbnails(initialFile?: File | null): UsePdfThumbnailsRet
           throw new Error("Could not create 2D canvas rendering context");
         }
 
-        // Fill crisp white background behind transparent PDF pages
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        const renderContext = {
-          canvasContext: ctx,
-          viewport,
-        };
-
-        await page.render(renderContext).promise;
+        await page.render({ canvasContext: ctx, viewport }).promise;
 
         if (isCancelledRef.current) break;
 
-        // Export as lightweight JPEG (quality 0.7)
-        const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
+        // Export as lightweight JPEG — quality 0.65 for mobile, 0.72 for desktop
+        const jpegQuality =
+          typeof window !== "undefined" && window.innerWidth < 640
+            ? 0.65
+            : 0.72;
+        const dataUrl = canvas.toDataURL("image/jpeg", jpegQuality);
+
+        // Release canvas memory immediately after use
+        canvas.width = 0;
+        canvas.height = 0;
 
         const item: PageThumbnail = {
           pageNumber: pageNum,
           dataUrl,
-          width: canvas.width,
-          height: canvas.height,
+          width: Math.floor(viewport.width),
+          height: Math.floor(viewport.height),
         };
 
         generatedThumbnails.push(item);
 
-        // Update progress and thumbnails state incrementally for fast UI feedback
-        setThumbnails([...generatedThumbnails]);
-        setRenderingProgress(Math.round((pageNum / total) * 100));
+        // Batch UI updates: update every page for first 5, then every 3 pages
+        const batchSize = pageNum <= 5 ? 1 : 3;
+        if (pageNum % batchSize === 0 || pageNum === total) {
+          setThumbnails([...generatedThumbnails]);
+          setRenderingProgress(Math.round((pageNum / total) * 100));
+        }
       }
 
       setIsLoadingThumbnails(false);

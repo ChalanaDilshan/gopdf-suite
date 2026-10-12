@@ -149,67 +149,64 @@ export function SplitPageSelector({
   return (
     <div className="space-y-6">
       {/* Controls & Quick Select Toolbar */}
-      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-4 sm:p-5 backdrop-blur-sm space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          {/* Quick Select Buttons */}
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 mr-1 flex items-center gap-1">
-              <SlidersHorizontal className="h-3.5 w-3.5" />
-              Quick Select:
-            </span>
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 p-4 sm:p-5 backdrop-blur-sm space-y-3">
+        {/* Selection Counter Pill + Title */}
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <SlidersHorizontal className="h-3.5 w-3.5 text-slate-400" />
+            Page Selection
+          </span>
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300">
+            {selectedPages.length}/{totalPages} selected
+          </span>
+        </div>
 
-            <button
-              type="button"
-              disabled={disabled || totalPages === 0}
-              onClick={handleSelectAll}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs"
-            >
-              Select All
-            </button>
+        {/* Quick Select Buttons — scroll-x on very small screens */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            disabled={disabled || totalPages === 0}
+            onClick={handleSelectAll}
+            className="px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs min-h-[36px]"
+          >
+            All
+          </button>
 
-            <button
-              type="button"
-              disabled={disabled || selectedPages.length === 0}
-              onClick={handleDeselectAll}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs"
-            >
-              Deselect All
-            </button>
+          <button
+            type="button"
+            disabled={disabled || selectedPages.length === 0}
+            onClick={handleDeselectAll}
+            className="px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs min-h-[36px]"
+          >
+            None
+          </button>
 
-            <button
-              type="button"
-              disabled={disabled || totalPages === 0}
-              onClick={handleSelectOdd}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs"
-            >
-              Odd Pages
-            </button>
+          <button
+            type="button"
+            disabled={disabled || totalPages === 0}
+            onClick={handleSelectOdd}
+            className="px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs min-h-[36px]"
+          >
+            Odd
+          </button>
 
-            <button
-              type="button"
-              disabled={disabled || totalPages === 0}
-              onClick={handleSelectEven}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs"
-            >
-              Even Pages
-            </button>
-          </div>
-
-          {/* Selection Counter Pill */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300">
-              {selectedPages.length} of {totalPages} pages selected
-            </span>
-          </div>
+          <button
+            type="button"
+            disabled={disabled || totalPages === 0}
+            onClick={handleSelectEven}
+            className="px-3 py-2 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 transition-colors shadow-xs min-h-[36px]"
+          >
+            Even
+          </button>
         </div>
 
         {/* Custom Range Input Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 pt-2 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 pt-3 border-t border-slate-200/80 dark:border-slate-800/80">
           <label
             htmlFor="custom-range-input"
             className="text-xs font-semibold text-slate-700 dark:text-slate-300 shrink-0"
           >
-            Custom Page Range:
+            Range:
           </label>
           <div className="relative flex-1">
             <input
@@ -221,17 +218,17 @@ export function SplitPageSelector({
               onFocus={() => setIsInputFocused(true)}
               onBlur={() => setIsInputFocused(false)}
               placeholder="e.g. 1-3, 5, 8-10"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-1.5 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-mono"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-mono min-h-[40px]"
             />
           </div>
-          <span className="text-[11px] text-slate-400 dark:text-slate-500">
-            Separate pages with commas or ranges with hyphens
+          <span className="hidden sm:block text-[11px] text-slate-400 dark:text-slate-500 shrink-0">
+            e.g. 1-3, 5, 8
           </span>
         </div>
       </div>
 
-      {/* Grid of Page Thumbnails */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      {/* Responsive Grid of Page Thumbnails */}
+      <div className="grid grid-cols-2 min-[400px]:grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3">
         {thumbnails.map((thumb) => {
           const isSelected = selectedSet.has(thumb.pageNumber);
 

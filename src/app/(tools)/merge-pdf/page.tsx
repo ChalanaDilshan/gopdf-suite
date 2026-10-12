@@ -180,7 +180,7 @@ export default function MergePdfPage() {
 
   return (
     <div className="min-h-screen bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-blue-500 selection:text-white transition-colors duration-150">
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 pb-12 space-y-8">
+      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 pb-24 lg:pb-12 space-y-6">
         {/* Hero Section */}
         <HeroBanner />
 
@@ -195,22 +195,23 @@ export default function MergePdfPage() {
           </div>
         )}
 
-        {/* Main 3-Column Interface Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Left Column: PDF Tools Sidebar */}
-          <div className="lg:col-span-3">
+        {/* Main Responsive Interface Layout */}
+        {/* Mobile: single column | lg+: 3-column grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
+          {/* PDF Tools Sidebar — hidden on mobile, shown as collapsible on sm+ */}
+          <div className="hidden lg:block lg:col-span-3">
             <PdfToolsSidebar currentTool="merge" />
           </div>
 
-          {/* Middle Column: Upload & Sortable File List */}
-          <div className="lg:col-span-6 space-y-4">
+          {/* Center Column: Upload Zone + File List */}
+          <div className="col-span-1 lg:col-span-6 space-y-4">
             {/* Drag & Drop Upload Zone */}
             <div
               onDragEnter={handleDragEnter}
               onDragLeave={handleDragLeave}
               onDragOver={handleDragOver}
               onDrop={handleDrop}
-              className={`rounded-2xl border-2 border-dashed bg-white dark:bg-[#131b2e] p-7 sm:p-9 text-center transition-all duration-200 ${
+              className={`rounded-2xl border-2 border-dashed bg-white dark:bg-[#131b2e] p-6 sm:p-9 text-center transition-all duration-200 ${
                 isDragOver
                   ? "border-blue-500 bg-blue-50/40 dark:bg-blue-950/40 scale-[1.01]"
                   : "border-blue-200/90 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500"
@@ -238,7 +239,7 @@ export default function MergePdfPage() {
                 </div>
 
                 <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-                  Drag & drop PDF files here
+                  Drag &amp; drop PDF files here
                 </h3>
                 <span className="text-xs text-slate-400 dark:text-slate-500 my-1.5">or</span>
 
@@ -246,19 +247,19 @@ export default function MergePdfPage() {
                   type="button"
                   disabled={isProcessing}
                   onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 shadow-xs transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 shadow-xs transition-colors cursor-pointer min-h-[44px]"
                 >
                   <FolderPlus className="h-4 w-4" />
                   <span>Choose Files</span>
                 </button>
 
-                <p className="mt-4 text-[11px] text-slate-400 dark:text-slate-500">
-                  Supports multiple files | Max file size: 50MB each | PDF only
+                <p className="mt-3 text-[11px] text-slate-400 dark:text-slate-500">
+                  Multiple files · Max 50MB each · PDF only
                 </p>
               </div>
             </div>
 
-            {/* Uploaded File List Box */}
+            {/* Uploaded File List */}
             {files.length > 0 ? (
               <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-4 sm:p-5 shadow-xs space-y-3 transition-colors">
                 {/* Header bar */}
@@ -272,7 +273,7 @@ export default function MergePdfPage() {
                     type="button"
                     disabled={isProcessing}
                     onClick={handleClearAll}
-                    className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors cursor-pointer"
+                    className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 transition-colors cursor-pointer min-h-[36px] px-2"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                     <span>Clear all</span>
@@ -287,35 +288,51 @@ export default function MergePdfPage() {
                   disabled={isProcessing}
                 />
 
-                {/* Bottom Add More Files action button */}
+                {/* Add More Files */}
                 <button
                   type="button"
                   disabled={isProcessing}
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/20 dark:hover:bg-blue-950/20 py-2.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/20 dark:hover:bg-blue-950/20 py-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer min-h-[44px]"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Add more files</span>
                 </button>
               </div>
             ) : (
-              /* Quick demo trigger when empty */
               <div className="flex items-center justify-center p-2">
                 <button
                   id="sample-files-btn"
                   type="button"
                   onClick={handleLoadSampleFiles}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline cursor-pointer min-h-[44px]"
                 >
                   <Sparkles className="h-3.5 w-3.5" />
                   <span>Try with 3 sample reference PDF files</span>
                 </button>
               </div>
             )}
+
+            {/* Mobile: Inline Action Panel (shown below file list on mobile) */}
+            <div className="block lg:hidden">
+              <MergeActionPanels
+                fileCount={files.length}
+                isProcessing={isProcessing}
+                progress={progress}
+                downloadUrl={downloadUrl}
+                resultStats={resultStats}
+                onStartMerge={handleMergeAction}
+                onReset={() => {
+                  resetMerger();
+                  setResultStats(null);
+                }}
+                disabled={files.length < 2}
+              />
+            </div>
           </div>
 
-          {/* Right Column: Merge Action, Processing, and Success Panels */}
-          <div className="lg:col-span-3">
+          {/* Right Column: Action Panel — desktop only */}
+          <div className="hidden lg:block lg:col-span-3">
             <MergeActionPanels
               fileCount={files.length}
               isProcessing={isProcessing}
@@ -332,9 +349,35 @@ export default function MergePdfPage() {
           </div>
         </div>
 
-        {/* Bottom Sections: How It Works & FAQs */}
+        {/* Bottom: How It Works & FAQs */}
         <HowItWorksAndFaq />
       </main>
+
+      {/* Mobile sticky bottom merge CTA — visible only on mobile when files ready */}
+      {files.length >= 2 && !isProcessing && !downloadUrl && (
+        <div className="mobile-action-bar lg:hidden">
+          <button
+            type="button"
+            onClick={handleMergeAction}
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-bold py-3.5 px-4 shadow-lg transition-colors cursor-pointer"
+          >
+            <span>Merge {files.length} PDFs →</span>
+          </button>
+        </div>
+      )}
+
+      {/* Mobile sticky success bar */}
+      {downloadUrl && !isProcessing && (
+        <div className="mobile-action-bar lg:hidden">
+          <a
+            href={downloadUrl}
+            download={resultStats?.name || "Merged_Document.pdf"}
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-3.5 px-4 shadow-lg transition-colors"
+          >
+            <span>⬇ Download Merged PDF</span>
+          </a>
+        </div>
+      )}
     </div>
   );
 }

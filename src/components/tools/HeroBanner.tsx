@@ -5,15 +5,15 @@ import { ShieldCheck, Zap, Lock, Check } from "lucide-react";
 
 export function HeroBanner() {
   return (
-    <section className="relative overflow-hidden py-6 sm:py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <section className="relative overflow-hidden py-4 sm:py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-center">
         {/* Left Column: Headlines & Trust Badges */}
-        <div className="lg:col-span-7 space-y-4">
+        <div className="lg:col-span-7 space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50/80 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-900/60 text-[11px] font-bold text-blue-700 dark:text-blue-300 tracking-wider uppercase">
             <span>Free PDF Tool</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
             Merge PDF Files{" "}
             <span className="text-blue-600 dark:text-blue-400">Online</span>
           </h1>
@@ -22,8 +22,8 @@ export function HeroBanner() {
             Combine multiple PDF files into a single document — fast, secure, and entirely in your browser.
           </p>
 
-          {/* 3 Trust Badges */}
-          <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 text-xs">
+          {/* Trust Badges — hide last badge on very small screens */}
+          <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
             <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white dark:bg-[#131b2e] border border-slate-200/90 dark:border-slate-800 shadow-2xs">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck className="h-4 w-4" />
@@ -56,8 +56,8 @@ export function HeroBanner() {
           </div>
         </div>
 
-        {/* Right Column: Hero Graphic Illustration */}
-        <div className="lg:col-span-5 relative flex items-center justify-center min-h-[220px]">
+        {/* Right Column: Hero Graphic — hidden on mobile to reduce layout height */}
+        <div className="hidden sm:flex lg:col-span-5 relative items-center justify-center min-h-[220px]">
           <div className="relative flex items-center justify-center w-full max-w-md py-4">
             {/* Input Stack (Sheets 1, 2, 3) */}
             <div className="relative flex items-center -space-x-4">
