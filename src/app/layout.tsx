@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { WebApplicationJsonLd } from "@/components/seo/JsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,14 +48,40 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: "https://gopdf.tech/",
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://gopdf.tech",
+    url: "https://gopdf.tech/",
     siteName: "GoPDF",
     title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
     description:
       "Merge, split, and edit PDF files in your browser with zero server uploads and total privacy.",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF - Fast, Private, 100% Client-Side PDF Tools",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
+    description:
+      "Merge, split, and edit PDF files in your browser with zero server uploads and total privacy.",
+    images: ["https://gopdf.tech/og-image.png"],
+  },
+  verification: {
+    google: "google3d9a71f5f41ec47e",
   },
 };
 
@@ -66,6 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
+        <WebApplicationJsonLd />
         <script
           dangerouslySetInnerHTML={{
             __html: `

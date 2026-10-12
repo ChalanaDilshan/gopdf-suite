@@ -63,7 +63,7 @@ export function ToolLayout({
   faqSlot,
   features,
 }: ToolLayoutProps) {
-  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://gopdf.app/${toolSlug}`;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://gopdf.tech/${toolSlug}`;
 
   return (
     <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white">

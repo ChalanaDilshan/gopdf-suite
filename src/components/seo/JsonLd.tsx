@@ -1,34 +1,33 @@
 import React from "react";
-import { SoftwareApplicationJsonLdProps, FaqItem } from "@/types";
 
-/**
- * JSON-LD Schema for SoftwareApplication (ideal for micro-tools & utilities)
- */
-export function SoftwareApplicationJsonLd({
-  name,
-  description,
-  url,
-  applicationCategory = "UtilitiesApplication",
-  operatingSystem = "Web Browser (Chrome, Safari, Firefox, Edge)",
-  browserRequirements = "Requires JavaScript. Requires HTML5.",
-  offers = {
-    price: "0",
-    priceCurrency: "USD",
-  },
-}: SoftwareApplicationJsonLdProps) {
+export function WebApplicationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name,
-    description,
-    url,
-    applicationCategory,
-    operatingSystem,
-    browserRequirements,
-    offers: {
+    "@type": "WebApplication",
+    "name": "GoPDF",
+    "url": "https://gopdf.tech",
+    "description":
+      "Free, 100% client-side PDF utilities to merge, split, and edit PDF files in the browser without server uploads.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires modern JavaScript and HTML5 capable web browser",
+    "softwareVersion": "1.0",
+    "offers": {
       "@type": "Offer",
-      price: offers.price,
-      priceCurrency: offers.priceCurrency,
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+    "featureList": [
+      "100% Client-side processing",
+      "Zero server uploads for complete data privacy",
+      "Merge multiple PDF files in custom order",
+      "Split and extract PDF pages with visual thumbnails",
+      "Completely free with no watermark or limits",
+    ],
+    "creator": {
+      "@type": "Organization",
+      "name": "GoPDF",
+      "url": "https://gopdf.tech",
     },
   };
 
@@ -40,22 +39,93 @@ export function SoftwareApplicationJsonLd({
   );
 }
 
-/**
- * JSON-LD Schema for FAQPage (boosts Google Rich Results visibility)
- */
-export function FaqPageJsonLd({ faqs }: { faqs: FaqItem[] }) {
-  if (!faqs || faqs.length === 0) return null;
+export function SoftwareApplicationJsonLd({
+  name = "GoPDF",
+  description = "Free client-side PDF tools",
+  url = "https://gopdf.tech",
+}: {
+  name?: string;
+  description?: string;
+  url?: string;
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name,
+    description,
+    url,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires modern JavaScript and HTML5 capable web browser",
+    "softwareVersion": "1.0",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+  };
 
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function FaqJsonLd({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    "mainEntity": faqs.map((f) => ({
       "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
+      "name": f.question,
+      "acceptedAnswer": {
         "@type": "Answer",
-        text: faq.answer,
+        "text": f.answer,
       },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function FaqPageJsonLd({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
+  return <FaqJsonLd faqs={faqs} />;
+}
+
+export function HowToJsonLd({
+  name,
+  description,
+  steps,
+}: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": name,
+    "description": description,
+    "step": steps.map((s, idx) => ({
+      "@type": "HowToStep",
+      "position": idx + 1,
+      "name": s.name,
+      "text": s.text,
     })),
   };
 
