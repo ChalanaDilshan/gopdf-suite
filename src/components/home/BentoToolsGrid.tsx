@@ -149,98 +149,142 @@ export function BentoToolsGrid() {
           </div>
         </Link>
 
-        {/* Bento 3: Rotate PDF (6 Columns on LG) */}
+        {/* Bento 3: Rotate PDF (4 Columns on LG) */}
         <Link
           href="/rotate-pdf"
-          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 dark:border-amber-950/80 bg-gradient-to-br from-white via-amber-50/20 to-amber-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 dark:border-amber-950/80 bg-gradient-to-br from-white via-amber-50/20 to-amber-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30">
-                <RotateCw className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-600 text-white shadow-md shadow-amber-600/30">
+                <RotateCw className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 px-3 py-1 text-xs font-bold border border-amber-200 dark:border-amber-800">
-                60fps Transforms
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 px-2.5 py-0.5 text-xs font-bold border border-amber-200 dark:border-amber-800">
+                60fps
               </span>
             </div>
 
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
               Rotate PDF Pages
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Rotate single pages or the entire document 90°, 180°, or 270°. Hardware-accelerated CSS feedback with permanent PDF dictionary updates.
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Rotate single pages or the whole file 90°, 180°, or 270° with permanent updates.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-6 py-4 flex items-center justify-center gap-4">
-            <div className="w-16 h-20 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex flex-col items-center justify-center shadow-sm">
+          <div className="my-5 py-2 flex items-center justify-center gap-3">
+            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex flex-col items-center justify-center shadow-xs">
               <span className="text-[10px] text-slate-400">0°</span>
             </div>
-            <div className="text-amber-600 dark:text-amber-400 font-bold text-sm">
+            <div className="text-amber-600 dark:text-amber-400 font-bold text-xs">
               ➔
             </div>
-            <div className="w-20 h-16 rounded-xl bg-amber-50 dark:bg-amber-950/60 border-2 border-amber-500 p-2 flex flex-col items-center justify-center shadow-md">
+            <div className="w-18 h-14 rounded-xl bg-amber-50 dark:bg-amber-950/60 border-2 border-amber-500 p-2 flex flex-col items-center justify-center shadow-xs">
               <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300">
-                +90° Clockwise
+                +90° CW
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
-            <span>Rotate Pages Permanently</span>
-            <ArrowRight className="h-4 w-4" />
+          <div className="flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:translate-x-1 transition-transform">
+            <span>Rotate Pages</span>
+            <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>
 
-        {/* Bento 4: Delete PDF Pages (6 Columns on LG) */}
+        {/* Bento 4: Delete PDF Pages (4 Columns on LG) */}
         <Link
           href="/delete-pdf-pages"
-          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-rose-100 dark:border-rose-950/80 bg-gradient-to-br from-white via-rose-50/20 to-rose-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-rose-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-rose-100 dark:border-rose-950/80 bg-gradient-to-br from-white via-rose-50/20 to-rose-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-rose-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-600 text-white shadow-md shadow-rose-600/30">
-                <Trash2 className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-600 text-white shadow-md shadow-rose-600/30">
+                <Trash2 className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 px-3 py-1 text-xs font-bold border border-rose-200 dark:border-rose-800">
-                Instant Undo
+              <span className="inline-flex items-center gap-1 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 px-2.5 py-0.5 text-xs font-bold border border-rose-200 dark:border-rose-800">
+                Undo Ready
               </span>
             </div>
 
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
               Delete PDF Pages
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Remove unwanted sheets, blank pages, and confidential sections. Visual diagonal strike-through with one-click restore before export.
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Remove unwanted sheets or blank pages with visual diagonal strike and 1-click restore.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-6 py-4 flex items-center justify-center gap-3">
-            <div className="w-16 h-20 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
-              Page 1
+          <div className="my-5 py-2 flex items-center justify-center gap-2">
+            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
+              #1
             </div>
-            <div className="relative w-16 h-20 rounded-xl bg-red-100/60 dark:bg-red-950/40 border border-red-300 dark:border-red-800 p-2 flex items-center justify-center text-[10px] font-bold text-red-600">
+            <div className="relative w-14 h-18 rounded-xl bg-red-100/60 dark:bg-red-950/40 border border-red-300 dark:border-red-800 p-2 flex items-center justify-center text-[10px] font-bold text-red-600">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-0.5 bg-red-500 rotate-45" />
               </div>
               <span className="relative z-10 bg-white dark:bg-slate-900 px-1 rounded-xs">
-                Deleted
+                X
               </span>
             </div>
-            <div className="w-16 h-20 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
-              Page 3
+            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
+              #3
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-bold text-rose-600 dark:text-rose-400 group-hover:translate-x-1 transition-transform">
-            <span>Remove Unwanted Pages</span>
-            <ArrowRight className="h-4 w-4" />
+          <div className="flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-400 group-hover:translate-x-1 transition-transform">
+            <span>Delete Pages</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </div>
+        </Link>
+
+        {/* Bento 5: Reorder PDF Pages (4 Columns on LG) */}
+        <Link
+          href="/reorder-pdf-pages"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-sky-100 dark:border-sky-950/80 bg-gradient-to-br from-white via-sky-50/20 to-sky-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-sky-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-sky-300 dark:hover:border-sky-800 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-sky-500/10 dark:bg-sky-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-600 text-white shadow-md shadow-sky-600/30">
+                <ArrowRight className="h-5 w-5 rotate-90" />
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 px-2.5 py-0.5 text-xs font-bold border border-sky-200 dark:border-sky-800">
+                Drag &amp; Drop
+              </span>
+            </div>
+
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              Reorder Pages
+            </h3>
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Drag and drop to rearrange your document sequence into any preferred order.
+            </p>
+          </div>
+
+          {/* Visual Mini Mockup */}
+          <div className="my-5 py-2 flex items-center justify-center gap-2">
+            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border-2 border-dashed border-sky-400 p-2 flex items-center justify-center text-[10px] font-bold text-sky-600 shadow-sm scale-105">
+              Page 2
+            </div>
+            <div className="text-sky-600 dark:text-sky-400 font-bold text-xs">
+              ⇄
+            </div>
+            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
+              Page 1
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 text-xs font-bold text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition-transform">
+            <span>Rearrange Order</span>
+            <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>
 

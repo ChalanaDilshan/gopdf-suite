@@ -65,7 +65,7 @@ const TOOLS: ToolItem[] = [
     id: "reorder",
     name: "Reorder Pages",
     desc: "Drag and drop to arrange",
-    href: "#",
+    href: "/reorder-pdf-pages",
     icon: ArrowUpDown,
     active: false,
   },

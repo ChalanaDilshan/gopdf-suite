@@ -59,6 +59,11 @@ export function Footer() {
                   Delete PDF Pages
                 </Link>
               </li>
+              <li>
+                <Link href="/reorder-pdf-pages" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Reorder PDF Pages
+                </Link>
+              </li>
             </ul>
           </div>
 

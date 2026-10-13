@@ -103,6 +103,7 @@ export function OrganizeWorkspace({
     rotateAll,
     deletePage,
     restorePage,
+    reorderPages,
     resetAll,
     exportPdf,
     clear,
@@ -249,6 +250,7 @@ export function OrganizeWorkspace({
                 onRotatePage={rotatePage}
                 onDeletePage={deletePage}
                 onRestorePage={restorePage}
+                onReorderPages={reorderPages}
                 disabled={isExporting}
               />
             )}

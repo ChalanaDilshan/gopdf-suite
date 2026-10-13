@@ -30,6 +30,8 @@ export interface UsePdfOrganizerReturn {
   deletePage: (id: string) => void;
   restorePage: (id: string) => void;
   toggleDeletePage: (id: string) => void;
+  reorderPages: (oldIndex: number, newIndex: number) => void;
+  setPagesOrder: (newPages: PageState[]) => void;
   resetAll: () => void;
   exportPdf: (customName?: string) => Promise<string | null>;
   clear: () => void;
@@ -255,13 +257,28 @@ export function usePdfOrganizer(): UsePdfOrganizerReturn {
     );
   }, []);
 
+  const reorderPages = useCallback((oldIndex: number, newIndex: number) => {
+    setPages((prevPages) => {
+      const next = [...prevPages];
+      const [moved] = next.splice(oldIndex, 1);
+      next.splice(newIndex, 0, moved);
+      return next;
+    });
+  }, []);
+
+  const setPagesOrder = useCallback((newPages: PageState[]) => {
+    setPages(newPages);
+  }, []);
+
   const resetAll = useCallback(() => {
     setPages((prevPages) =>
-      prevPages.map((page) => ({
-        ...page,
-        rotation: 0,
-        isDeleted: false,
-      }))
+      [...prevPages]
+        .map((page) => ({
+          ...page,
+          rotation: 0,
+          isDeleted: false,
+        }))
+        .sort((a, b) => a.pageNumber - b.pageNumber)
     );
   }, []);
 
@@ -360,7 +377,8 @@ export function usePdfOrganizer(): UsePdfOrganizerReturn {
   }, [pages]);
 
   const hasModifications = useMemo(() => {
-    return pages.some((p) => p.rotation !== 0 || p.isDeleted);
+    const isOrderChanged = pages.some((p, idx) => p.pageNumber !== idx + 1);
+    return isOrderChanged || pages.some((p) => p.rotation !== 0 || p.isDeleted);
   }, [pages]);
 
   return {
@@ -383,6 +401,8 @@ export function usePdfOrganizer(): UsePdfOrganizerReturn {
     deletePage,
     restorePage,
     toggleDeletePage,
+    reorderPages,
+    setPagesOrder,
     resetAll,
     exportPdf,
     clear,

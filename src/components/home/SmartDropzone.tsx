@@ -191,8 +191,32 @@ export function SmartDropzone() {
           </div>
 
           {/* Action Selector Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {/* Action 1: Rotate PDF */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            {/* Action 1: Reorder PDF */}
+            <button
+              type="button"
+              disabled={isNavigating}
+              onClick={() => handleAction("/reorder-pdf-pages")}
+              className="group relative flex flex-col justify-between rounded-2xl border border-sky-200/90 dark:border-sky-900/60 bg-sky-50/40 dark:bg-sky-950/20 p-4 text-left hover:border-sky-400 dark:hover:border-sky-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+            >
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-900/60 text-sky-600 dark:text-sky-400 mb-3 group-hover:scale-105 transition-transform">
+                  <ArrowRight className="h-5 w-5 rotate-90" />
+                </div>
+                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  Reorder Pages
+                </h5>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Drag and drop to rearrange your page order.
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-sky-700 dark:text-sky-400">
+                <span>Reorder Now</span>
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+
+            {/* Action 2: Rotate PDF */}
             <button
               type="button"
               disabled={isNavigating}
