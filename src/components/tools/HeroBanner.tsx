@@ -43,7 +43,7 @@ export function HeroBanner() {
             </div>
 
             <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white dark:bg-[#131b2e] border border-slate-200/90 dark:border-slate-800 shadow-2xs">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
                 <Lock className="h-4 w-4" />
               </div>
               <div className="flex flex-col text-left">

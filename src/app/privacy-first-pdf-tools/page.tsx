@@ -277,7 +277,7 @@ export default function PrivacyFirstPage() {
           </div>
 
           <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
               <Building2 className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Accountants & Financial Advisors</h3>
@@ -287,7 +287,7 @@ export default function PrivacyFirstPage() {
           </div>
 
           <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400">
               <Briefcase className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Corporate Enterprise & IP R&D</h3>

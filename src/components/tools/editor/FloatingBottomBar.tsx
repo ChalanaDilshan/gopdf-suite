@@ -111,7 +111,7 @@ export function FloatingBottomBar({
 
           <span
             onClick={onResetZoom}
-            className="w-12 text-center font-bold text-[11px] text-slate-200 hover:text-indigo-400 cursor-pointer"
+            className="w-12 text-center font-bold text-[11px] text-slate-200 hover:text-blue-400 cursor-pointer"
             title="Click to reset zoom (100%)"
           >
             {Math.round(scale * 100)}%

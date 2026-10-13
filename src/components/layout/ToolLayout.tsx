@@ -69,7 +69,7 @@ export function ToolLayout({
   const currentUrl = typeof window !== "undefined" ? window.location.href : `https://gopdf.tech/${toolSlug}`;
 
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
       {/* Schema.org JSON-LD structured data */}
       <SoftwareApplicationJsonLd
         name={title}
@@ -82,19 +82,19 @@ export function ToolLayout({
         {/* Tool Header & Hero */}
         <section className="relative overflow-hidden pt-8 pb-10 border-b border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-b from-white via-slate-50/30 to-transparent dark:from-slate-900/40 dark:via-slate-950 dark:to-transparent">
           {/* Subtle Ambient Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/15 blur-[100px] pointer-events-none rounded-full" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/15 blur-[100px] pointer-events-none rounded-full" />
 
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-6">
-              <Link href="/" className="hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-1 transition-colors">
+              <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 transition-colors">
                 <Home className="h-3.5 w-3.5" />
                 <span>Home</span>
               </Link>
               <ChevronRight className="h-3.5 w-3.5 opacity-50" />
               <span className="text-slate-600 dark:text-slate-300 font-medium">{category}</span>
               <ChevronRight className="h-3.5 w-3.5 opacity-50" />
-              <span className="text-indigo-600 dark:text-indigo-400 font-semibold">{title}</span>
+              <span className="text-blue-600 dark:text-blue-400 font-semibold">{title}</span>
             </nav>
 
             {/* Security Badge */}
@@ -124,10 +124,10 @@ export function ToolLayout({
 
         {/* Why Client-Side Guarantee Banner */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="rounded-2xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-r from-indigo-50/70 via-slate-50 to-violet-50/70 dark:from-indigo-950/20 dark:via-slate-900/40 dark:to-violet-950/20 p-6 md:p-8">
+          <div className="rounded-2xl border border-blue-100 dark:border-blue-950/80 bg-gradient-to-r from-blue-50/70 via-slate-50 to-cyan-50/70 dark:from-blue-950/20 dark:via-slate-900/40 dark:to-cyan-950/20 p-6 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
                   <Lock className="h-5 w-5" />
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export function ToolLayout({
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
                   <Zap className="h-5 w-5" />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export function ToolLayout({
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
                   <WifiOff className="h-5 w-5" />
                 </div>
                 <div>
@@ -173,7 +173,7 @@ export function ToolLayout({
         ) : (
           <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
             <div className="text-center mb-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
                 Simple Workflow
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
@@ -188,13 +188,13 @@ export function ToolLayout({
                 {steps.map((step) => (
                   <div
                     key={step.stepNumber}
-                    className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all group"
+                    className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-blue-300 dark:hover:border-blue-700/60 transition-all group"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
                         {step.stepNumber}
                       </span>
-                      <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
                         Step {step.stepNumber}
                       </span>
                     </div>
@@ -214,7 +214,7 @@ export function ToolLayout({
         {/* FAQ Section Slot */}
         <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-20">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
               <HelpCircle className="h-4 w-4" />
               <span>Questions & Answers</span>
             </div>

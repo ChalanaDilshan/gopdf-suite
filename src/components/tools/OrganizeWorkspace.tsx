@@ -159,7 +159,7 @@ export function OrganizeWorkspace({
             {/* Header Toolbar: Active Document Info & File Actions */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -318,7 +318,7 @@ export function OrganizeWorkspace({
           <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
             <div className="max-w-3xl mx-auto space-y-8">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
                   100% Client-Side Architecture
                 </span>
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
@@ -335,7 +335,7 @@ export function OrganizeWorkspace({
                     key={i}
                     className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 mb-3">
                       {card.icon}
                     </div>
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white">

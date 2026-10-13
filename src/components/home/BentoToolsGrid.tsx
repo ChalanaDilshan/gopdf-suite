@@ -23,13 +23,13 @@ export function BentoToolsGrid() {
   return (
     <section className="py-12 sm:py-16">
       <div className="text-center mb-10 sm:mb-14 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-widest mb-3">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-widest mb-3">
           <Sparkles className="h-3.5 w-3.5" />
           <span>Full Client-Side Suite</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
           Everything You Need to Edit PDFs{" "}
-          <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
             Without Cloud Uploads
           </span>
         </h2>
@@ -43,17 +43,17 @@ export function BentoToolsGrid() {
         {/* Bento 1: Merge PDF (4 Columns on LG) */}
         <Link
           href="/merge-pdf"
-          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-br from-white via-indigo-50/20 to-indigo-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-blue-100 dark:border-blue-950/80 bg-gradient-to-br from-white via-blue-50/20 to-blue-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-800 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Ambient Glow */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/30">
                 <FileStack className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-2.5 py-0.5 text-xs font-bold border border-indigo-200 dark:border-indigo-800">
+              <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2.5 py-0.5 text-xs font-bold border border-blue-200 dark:border-blue-800">
                 Popular
               </span>
             </div>
@@ -69,22 +69,22 @@ export function BentoToolsGrid() {
           {/* Visual Mini Mockup */}
           <div className="my-5 py-2 flex items-center justify-center gap-2">
             <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
-              <span className="text-[9px] font-bold text-indigo-600">Doc 1</span>
+              <span className="text-[9px] font-bold text-blue-600">Doc 1</span>
               <div className="w-full h-0.5 bg-slate-200 dark:bg-slate-700 rounded-full" />
             </div>
-            <span className="text-indigo-600 dark:text-indigo-400 font-black text-xs">+</span>
+            <span className="text-blue-600 dark:text-blue-400 font-black text-xs">+</span>
             <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
-              <span className="text-[9px] font-bold text-indigo-600">Doc 2</span>
+              <span className="text-[9px] font-bold text-blue-600">Doc 2</span>
               <div className="w-full h-0.5 bg-slate-200 dark:bg-slate-700 rounded-full" />
             </div>
-            <span className="text-indigo-600 dark:text-indigo-400 font-black text-xs">➔</span>
-            <div className="w-12 h-16 rounded-lg bg-indigo-600 text-white p-1 flex flex-col justify-between shadow-xs">
+            <span className="text-blue-600 dark:text-blue-400 font-black text-xs">➔</span>
+            <div className="w-12 h-16 rounded-lg bg-blue-600 text-white p-1 flex flex-col justify-between shadow-xs">
               <span className="text-[9px] font-bold">Merge ✓</span>
               <div className="w-full h-0.5 bg-white/40 rounded-full" />
             </div>
           </div>
 
-          <div className="flex items-center gap-1 text-xs font-bold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
+          <div className="flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
             <span>Combine Files</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </div>
@@ -134,17 +134,17 @@ export function BentoToolsGrid() {
         {/* Bento 3: Compress PDF (4 Columns on LG) */}
         <Link
           href="/compress-pdf"
-          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-violet-100 dark:border-violet-950/80 bg-gradient-to-br from-white via-violet-50/20 to-violet-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-violet-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-cyan-100 dark:border-cyan-950/80 bg-gradient-to-br from-white via-cyan-50/20 to-cyan-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-cyan-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-cyan-300 dark:hover:border-cyan-800 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Ambient Glow */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md shadow-violet-600/30">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-600 text-white shadow-md shadow-cyan-600/30">
                 <Zap className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 px-2.5 py-0.5 text-xs font-bold border border-violet-200 dark:border-violet-800">
+              <span className="inline-flex items-center gap-1 rounded-full bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 px-2.5 py-0.5 text-xs font-bold border border-cyan-200 dark:border-cyan-800">
                 Save 70%
               </span>
             </div>
@@ -160,11 +160,11 @@ export function BentoToolsGrid() {
           {/* Visual Mini Mockup */}
           <div className="my-5 py-2 flex items-center justify-center gap-3">
             <span className="text-[10px] font-semibold text-slate-400">12.4 MB</span>
-            <span className="text-violet-600 font-bold text-xs">➔</span>
-            <span className="text-[10px] font-bold text-white bg-violet-600 px-1.5 py-0.5 rounded-md">3.8 MB (-69%)</span>
+            <span className="text-cyan-600 font-bold text-xs">➔</span>
+            <span className="text-[10px] font-bold text-white bg-cyan-600 px-1.5 py-0.5 rounded-md">3.8 MB (-69%)</span>
           </div>
 
-          <div className="flex items-center gap-1 text-xs font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform">
+          <div className="flex items-center gap-1 text-xs font-bold text-cyan-600 dark:text-cyan-400 group-hover:translate-x-1 transition-transform">
             <span>Compress Document</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </div>
@@ -360,7 +360,7 @@ export function BentoToolsGrid() {
         <div className="lg:col-span-12 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/70 dark:bg-[#131b2e]/70 backdrop-blur-xl p-8 sm:p-10 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <div className="space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-sm">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-sm">
                 <Lock className="h-5 w-5" />
               </div>
               <h4 className="text-xl font-black text-slate-900 dark:text-white">
@@ -372,7 +372,7 @@ export function BentoToolsGrid() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-sm">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-sm">
                 <Zap className="h-5 w-5" />
               </div>
               <h4 className="text-xl font-black text-slate-900 dark:text-white">
@@ -384,7 +384,7 @@ export function BentoToolsGrid() {
             </div>
 
             <div className="space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-sm">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-sm">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <h4 className="text-xl font-black text-slate-900 dark:text-white">

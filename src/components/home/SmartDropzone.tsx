@@ -133,11 +133,11 @@ export function SmartDropzone() {
 
       {/* State A: File(s) Selected -> Dynamic Smart Action Selector */}
       {selectedFiles.length > 0 ? (
-        <div className="rounded-3xl border border-indigo-200 dark:border-indigo-900/70 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-6 sm:p-8 shadow-glass dark:shadow-glass-dark animate-fadeIn">
+        <div className="rounded-3xl border border-blue-200 dark:border-blue-900/70 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-6 sm:p-8 shadow-glass dark:shadow-glass-dark animate-fadeIn">
           {/* Header with Selected Document Badge & Reset */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-200/80 dark:border-slate-800">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 shadow-sm">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-100 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 shadow-sm">
                 <FileText className="h-6 w-6" />
               </div>
               <div className="min-w-0">
@@ -184,7 +184,7 @@ export function SmartDropzone() {
 
           {/* Action Prompt */}
           <div className="mt-6 mb-4 text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               Step 2: Choose an Action
             </span>
             <h4 className="text-lg font-bold text-slate-900 dark:text-white mt-0.5">
@@ -223,10 +223,10 @@ export function SmartDropzone() {
               type="button"
               disabled={isNavigating}
               onClick={() => handleAction("/compress-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-violet-200/90 dark:border-violet-900/60 bg-violet-50/40 dark:bg-violet-950/20 p-4 text-left hover:border-violet-400 dark:hover:border-violet-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+              className="group relative flex flex-col justify-between rounded-2xl border border-cyan-200/90 dark:border-cyan-900/60 bg-cyan-50/40 dark:bg-cyan-950/20 p-4 text-left hover:border-cyan-400 dark:hover:border-cyan-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
             >
               <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-900/60 text-violet-600 dark:text-violet-400 mb-3 group-hover:scale-105 transition-transform">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-100 dark:bg-cyan-900/60 text-cyan-600 dark:text-cyan-400 mb-3 group-hover:scale-105 transition-transform">
                   <Zap className="h-5 w-5" />
                 </div>
                 <h5 className="font-bold text-sm text-slate-900 dark:text-white">
@@ -236,7 +236,7 @@ export function SmartDropzone() {
                   Shrink size up to 70% with client-side canvas downscaling.
                 </p>
               </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-violet-700 dark:text-violet-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-cyan-700 dark:text-cyan-400">
                 <span>Compress Now</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -343,10 +343,10 @@ export function SmartDropzone() {
               type="button"
               disabled={isNavigating}
               onClick={() => handleAction("/merge-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-indigo-200/90 dark:border-indigo-900/60 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 text-left hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+              className="group relative flex flex-col justify-between rounded-2xl border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-4 text-left hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
             >
               <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 mb-3 group-hover:scale-105 transition-transform">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
                   <FileStack className="h-5 w-5" />
                 </div>
                 <h5 className="font-bold text-sm text-slate-900 dark:text-white">
@@ -356,7 +356,7 @@ export function SmartDropzone() {
                   Combine this file with additional PDFs in any order.
                 </p>
               </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-indigo-700 dark:text-indigo-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-blue-400">
                 <span>Merge PDFs</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -374,14 +374,14 @@ export function SmartDropzone() {
           className={cn(
             "relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-8 sm:p-12 md:p-14 text-center transition-all duration-300 cursor-pointer select-none group",
             isDragOver
-              ? "border-indigo-500 bg-indigo-50/60 dark:bg-indigo-950/50 scale-[1.01] shadow-glow"
-              : "border-slate-300/90 hover:border-indigo-400 bg-white/90 hover:bg-slate-50/60 dark:border-slate-700 dark:bg-slate-900/80 dark:hover:border-indigo-500/80 dark:hover:bg-slate-900/95 shadow-glass dark:shadow-glass-dark"
+              ? "border-blue-500 bg-blue-50/60 dark:bg-blue-950/50 scale-[1.01] shadow-glow"
+              : "border-slate-300/90 hover:border-blue-400 bg-white/90 hover:bg-slate-50/60 dark:border-slate-700 dark:bg-slate-900/80 dark:hover:border-blue-500/80 dark:hover:bg-slate-900/95 shadow-glass dark:shadow-glass-dark"
           )}
         >
           {/* Subtle Ambient Pulse Background */}
           <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
-            <div className="absolute -top-24 -left-24 w-72 h-72 bg-indigo-500/10 dark:bg-indigo-500/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500" />
-            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500" />
+            <div className="absolute -top-24 -left-24 w-72 h-72 bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500" />
+            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-500" />
           </div>
 
           <div className="relative mb-5">
@@ -389,8 +389,8 @@ export function SmartDropzone() {
               className={cn(
                 "flex h-20 w-20 items-center justify-center rounded-3xl transition-all duration-300 shadow-md",
                 isDragOver
-                  ? "bg-indigo-600 text-white scale-110 shadow-indigo-600/30"
-                  : "bg-gradient-to-tr from-indigo-600 to-blue-500 text-white group-hover:scale-105 group-hover:shadow-indigo-500/25"
+                  ? "bg-blue-600 text-white scale-110 shadow-blue-600/30"
+                  : "bg-gradient-to-tr from-blue-600 to-cyan-500 text-white group-hover:scale-105 group-hover:shadow-blue-500/25"
               )}
             >
               {isDragOver ? (
@@ -412,7 +412,7 @@ export function SmartDropzone() {
           <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
             <button
               type="button"
-              className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm font-bold px-6 py-3 shadow-md shadow-indigo-600/20 transition-all group-hover:shadow-lg cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white text-sm font-bold px-6 py-3 shadow-md shadow-blue-600/20 transition-all group-hover:shadow-lg cursor-pointer"
             >
               <UploadCloud className="h-4 w-4" />
               <span>Select PDF from Device</span>
@@ -424,7 +424,7 @@ export function SmartDropzone() {
                 e.stopPropagation();
                 handleLoadSample();
               }}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
             >
               <Sparkles className="h-3.5 w-3.5 text-amber-500" />
               <span>Try with Sample PDF</span>

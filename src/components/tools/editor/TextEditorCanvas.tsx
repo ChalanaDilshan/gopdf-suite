@@ -100,7 +100,7 @@ export function TextEditorCanvas({
         }}
         className={cn(
           "relative rounded-xl shadow-2xl bg-white border border-slate-200 dark:border-slate-800 transition-all duration-150 overflow-hidden",
-          isAddTextMode && "cursor-crosshair ring-2 ring-indigo-500/50"
+          isAddTextMode && "cursor-crosshair ring-2 ring-blue-500/50"
         )}
       >
         {/* Layer 1: Base PDF Canvas Rendered by pdfjs-dist */}
@@ -112,7 +112,7 @@ export function TextEditorCanvas({
         {/* Loading Overlay */}
         {isLoading && (
           <div className="absolute inset-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xs flex flex-col items-center justify-center gap-3 z-30">
-            <div className="h-8 w-8 rounded-full border-3 border-indigo-600 border-t-transparent animate-spin" />
+            <div className="h-8 w-8 rounded-full border-3 border-blue-600 border-t-transparent animate-spin" />
             <span className="text-xs font-bold text-slate-700 dark:text-slate-200">
               Rendering Page &amp; Extracting Text...
             </span>
@@ -152,10 +152,10 @@ export function TextEditorCanvas({
                   className={cn(
                     "absolute transition-all duration-75 flex items-center z-10",
                     // Interaction borders & backgrounds
-                    !isActive && !block.isDeleted && isHovered && "ring-1 ring-dashed ring-indigo-500 bg-indigo-500/15 cursor-text",
+                    !isActive && !block.isDeleted && isHovered && "ring-1 ring-dashed ring-blue-500 bg-blue-500/15 cursor-text",
                     !isActive && isModified && "ring-1 ring-emerald-500/80",
                     !isActive && block.isDeleted && "ring-1 ring-rose-400 opacity-90 cursor-pointer",
-                    isActive && "ring-2 ring-indigo-500 shadow-md z-20 rounded-xs"
+                    isActive && "ring-2 ring-blue-500 shadow-md z-20 rounded-xs"
                   )}
                 >
                   {/* State A: Active Inline Editing Input */}
@@ -236,7 +236,7 @@ export function TextEditorCanvas({
                     fontSize: Math.max(8, activeBlock.fontSize - 1),
                   })
                 }
-                className="hover:text-indigo-400 p-0.5"
+                className="hover:text-blue-400 p-0.5"
                 title="Decrease font size"
               >
                 <Minus className="h-3 w-3" />
@@ -251,7 +251,7 @@ export function TextEditorCanvas({
                     fontSize: activeBlock.fontSize + 1,
                   })
                 }
-                className="hover:text-indigo-400 p-0.5"
+                className="hover:text-blue-400 p-0.5"
                 title="Increase font size"
               >
                 <Plus className="h-3 w-3" />
@@ -268,7 +268,7 @@ export function TextEditorCanvas({
                   style={{ backgroundColor: c.hex }}
                   className={cn(
                     "h-4 w-4 rounded-full border border-white/20 transition-transform hover:scale-125",
-                    activeBlock.color === c.hex && "ring-2 ring-indigo-400 scale-110"
+                    activeBlock.color === c.hex && "ring-2 ring-blue-400 scale-110"
                   )}
                   title={c.name}
                 />

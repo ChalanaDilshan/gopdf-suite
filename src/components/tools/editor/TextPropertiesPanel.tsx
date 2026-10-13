@@ -137,7 +137,7 @@ export function TextPropertiesPanel({
             </p>
           </div>
         ) : (
-          <div className="p-2.5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/40 text-xs text-indigo-700 dark:text-indigo-300">
+          <div className="p-2.5 rounded-xl bg-blue-50/50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-xs text-blue-700 dark:text-blue-300">
             Click any text block on the document canvas to modify its typography.
           </div>
         )}

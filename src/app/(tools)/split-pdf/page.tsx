@@ -305,7 +305,7 @@ export default function SplitPdfPage() {
                   disabled={selectedPages.length === 0 || isSplitting}
                   leftIcon={<Split className="h-4 w-4" />}
                   onClick={handleExtract}
-                  className="w-full sm:w-auto shadow-md shadow-indigo-600/20"
+                  className="w-full sm:w-auto shadow-md shadow-blue-600/20"
                 >
                   Extract {selectedPages.length} {selectedPages.length === 1 ? "Page" : "Pages"} Now
                 </Button>

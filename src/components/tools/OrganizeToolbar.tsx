@@ -56,7 +56,7 @@ export function OrganizeToolbar({
         {/* Left Side: Page Status Counter & Badges */}
         <div className="flex items-center flex-wrap gap-2.5">
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-xs font-semibold text-slate-800 dark:text-slate-200">
-            <FileCheck className="h-4 w-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+            <FileCheck className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
             <span>
               {activePagesCount} of {totalPages} {totalPages === 1 ? "page" : "pages"} remaining
             </span>
@@ -124,7 +124,7 @@ export function OrganizeToolbar({
             disabled={isExportDisabled}
             onClick={onExport}
             leftIcon={<Download className="h-4 w-4" />}
-            className="shadow-md shadow-indigo-600/20 w-full sm:w-auto"
+            className="shadow-md shadow-blue-600/20 w-full sm:w-auto"
           >
             {customExportLabel}
           </Button>

@@ -153,10 +153,10 @@ export function Dropzone({
         aria-disabled={disabled}
         className={cn(
           "relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 md:p-12 text-center transition-all duration-200 cursor-pointer select-none outline-none group",
-          "focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900",
+          "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900",
           isDragOver
-            ? "border-indigo-500 bg-indigo-500/10 scale-[1.01] shadow-glow"
-            : "border-slate-300 hover:border-indigo-400 bg-white/70 hover:bg-indigo-50/30 dark:border-slate-700 dark:bg-slate-900/60 dark:hover:border-indigo-500/80 dark:hover:bg-slate-800/40",
+            ? "border-blue-500 bg-blue-500/10 scale-[1.01] shadow-glow"
+            : "border-slate-300 hover:border-blue-400 bg-white/70 hover:bg-blue-50/30 dark:border-slate-700 dark:bg-slate-900/60 dark:hover:border-blue-500/80 dark:hover:bg-slate-800/40",
           disabled && "opacity-50 pointer-events-none cursor-not-allowed",
           className
         )}
@@ -178,8 +178,8 @@ export function Dropzone({
             className={cn(
               "flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-sm",
               isDragOver
-                ? "bg-indigo-600 text-white scale-110 shadow-indigo-500/30"
-                : "bg-indigo-100 text-indigo-600 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white dark:bg-indigo-950/80 dark:text-indigo-400 dark:group-hover:bg-indigo-600 dark:group-hover:text-white"
+                ? "bg-blue-600 text-white scale-110 shadow-blue-500/30"
+                : "bg-blue-100 text-blue-600 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-950/80 dark:text-blue-400 dark:group-hover:bg-blue-600 dark:group-hover:text-white"
             )}
           >
             {isDragOver ? (

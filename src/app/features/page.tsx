@@ -30,9 +30,9 @@ const CORE_TOOLS = [
     id: "merge",
     name: "Merge PDF Studio",
     badge: "Unlimited Files",
-    badgeColor: "bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
+    badgeColor: "bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800",
     icon: FileStack,
-    accent: "from-indigo-600 to-blue-600",
+    accent: "from-blue-600 to-cyan-600",
     href: "/merge-pdf",
     description:
       "Combine dozens of PDF files into a single, cohesive document. Drag to reorder documents with instant thumbnail feedback, inspect page counts, and export in seconds.",
@@ -115,25 +115,25 @@ const CORE_TOOLS = [
 
 const ARCHITECTURE_PILLARS = [
   {
-    icon: <Lock className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    icon: <Lock className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
     title: "100% In-Memory RAM Sandbox",
     description:
       "Your documents are never transmitted across the network. All operations run inside your browser's private memory space, guaranteeing complete compliance with HIPAA, GDPR, and non-disclosure agreements.",
   },
   {
-    icon: <Cpu className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    icon: <Cpu className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
     title: "WebAssembly & Native Execution",
     description:
       "By leveraging WebAssembly and low-level byte buffers, GoPDF processes heavy documents with tens of pages at local hardware speeds — completely bypassing cloud latency.",
   },
   {
-    icon: <WifiOff className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    icon: <WifiOff className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
     title: "Offline-First Readiness",
     description:
       "Once loaded, GoPDF continues functioning even if your internet disconnects, in airplane mode, or on high-security air-gapped computers.",
   },
   {
-    icon: <Zap className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    icon: <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
     title: "Decoupled 60fps UI Architecture",
     description:
       "Visual interactions (such as rotating thumbnails and dragging page cards) use hardware CSS transforms and deferred canvas operations to keep the UI fluid and responsive.",
@@ -179,24 +179,24 @@ const FEATURES_FAQS = [
 
 export default function FeaturesPage() {
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white transition-colors duration-150">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
       <main className="flex-1 pb-24">
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-white via-slate-50/40 to-transparent dark:from-slate-900/60 dark:via-slate-950 dark:to-transparent">
           {/* Ambient Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-indigo-500/15 dark:bg-indigo-500/20 blur-[130px] pointer-events-none rounded-full" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-blue-500/15 dark:bg-blue-500/20 blur-[130px] pointer-events-none rounded-full" />
 
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/80 dark:border-indigo-800/80 px-4 py-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300 shadow-xs mb-6">
-              <Sparkles className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-950/70 border border-blue-200/80 dark:border-blue-800/80 px-4 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 shadow-xs mb-6">
+              <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               <span>The Next-Generation Client-Side PDF Architecture</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               Engineered for Speed, Precision &amp;{" "}
-              <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
                 Total Privacy
               </span>
             </h1>
@@ -209,7 +209,7 @@ export default function FeaturesPage() {
             {/* Action Buttons */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link href="/">
-                <Button size="lg" className="shadow-lg shadow-indigo-600/25">
+                <Button size="lg" className="shadow-lg shadow-blue-600/25">
                   Launch All-in-One Studio
                 </Button>
               </Link>
@@ -223,7 +223,7 @@ export default function FeaturesPage() {
             {/* Stat Counters */}
             <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               <div className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs">
-                <div className="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400">0 KB</div>
+                <div className="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400">0 KB</div>
                 <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Uploaded to Cloud</div>
               </div>
               <div className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs">
@@ -245,7 +245,7 @@ export default function FeaturesPage() {
         {/* Feature Deep-Dives */}
         <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="text-center mb-12 sm:mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
               Interactive Tools
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mt-1">
@@ -269,7 +269,7 @@ export default function FeaturesPage() {
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div className="lg:col-span-7 space-y-4">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 shadow-xs">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 shadow-xs">
                           <Icon className="h-6 w-6" />
                         </div>
                         <div>
@@ -306,8 +306,8 @@ export default function FeaturesPage() {
 
                     <div className="lg:col-span-5 flex items-center justify-center">
                       <div className="w-full aspect-[4/3] rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-transparent dark:from-indigo-500/10 pointer-events-none" />
-                        <Icon className="h-16 w-16 text-indigo-600 dark:text-indigo-400 mb-3 group-hover:scale-110 transition-transform duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent dark:from-blue-500/10 pointer-events-none" />
+                        <Icon className="h-16 w-16 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300" />
                         <span className="font-bold text-sm text-slate-900 dark:text-white">
                           100% In-Browser Execution
                         </span>
@@ -327,7 +327,7 @@ export default function FeaturesPage() {
         <section className="border-t border-slate-200/80 dark:border-slate-800 py-16 sm:py-24 bg-white/60 dark:bg-slate-900/40">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 sm:mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
                 Engineering
               </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mt-1">
@@ -344,7 +344,7 @@ export default function FeaturesPage() {
                   key={i}
                   className="rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 shadow-xs space-y-3"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/70">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/70">
                     {pillar.icon}
                   </div>
                   <h3 className="font-bold text-base text-slate-900 dark:text-white">
@@ -378,7 +378,7 @@ export default function FeaturesPage() {
                     <th className="py-4 px-5 sm:px-6 font-bold text-slate-700 dark:text-slate-300">
                       Capability
                     </th>
-                    <th className="py-4 px-5 sm:px-6 font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/40">
+                    <th className="py-4 px-5 sm:px-6 font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/40">
                       GoPDF
                     </th>
                     <th className="py-4 px-5 sm:px-6 font-semibold text-slate-500 dark:text-slate-400">
@@ -395,7 +395,7 @@ export default function FeaturesPage() {
                       <td className="py-3.5 px-5 sm:px-6 font-semibold text-slate-900 dark:text-slate-200">
                         {row.feature}
                       </td>
-                      <td className="py-3.5 px-5 sm:px-6 font-bold text-emerald-700 dark:text-emerald-300 bg-indigo-50/20 dark:bg-indigo-950/20">
+                      <td className="py-3.5 px-5 sm:px-6 font-bold text-emerald-700 dark:text-emerald-300 bg-blue-50/20 dark:bg-blue-950/20">
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0" />
                           <span>{row.gopdf}</span>
@@ -415,7 +415,7 @@ export default function FeaturesPage() {
         {/* FAQ Section */}
         <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12" id="faq">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
               <HelpCircle className="h-4 w-4" />
               <span>Questions &amp; Answers</span>
             </div>
@@ -436,16 +436,16 @@ export default function FeaturesPage() {
 
         {/* Bottom CTA Banner */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="rounded-3xl border border-indigo-200 dark:border-indigo-900/60 bg-gradient-to-r from-indigo-600 to-blue-600 p-8 sm:p-12 text-center text-white shadow-xl shadow-indigo-600/20">
+          <div className="rounded-3xl border border-blue-200 dark:border-blue-900/60 bg-gradient-to-r from-blue-600 to-cyan-600 p-8 sm:p-12 text-center text-white shadow-xl shadow-blue-600/20">
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
               Ready to process PDFs with total privacy?
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-indigo-100 max-w-xl mx-auto">
+            <p className="mt-3 text-sm sm:text-base text-blue-100 max-w-xl mx-auto">
               No signups, no installations, and zero cloud uploads. Open our free in-browser PDF studio now.
             </p>
             <div className="mt-8 flex justify-center">
               <Link href="/">
-                <Button size="lg" className="bg-white text-indigo-700 hover:bg-slate-100 shadow-md">
+                <Button size="lg" className="bg-white text-blue-700 hover:bg-slate-100 shadow-md">
                   Launch GoPDF Now
                 </Button>
               </Link>

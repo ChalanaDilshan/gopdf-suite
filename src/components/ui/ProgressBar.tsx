@@ -51,7 +51,7 @@ export function ProgressBar({
           ) : isFailed ? (
             <AlertTriangle className="h-4 w-4 text-red-500 shrink-0" />
           ) : (
-            <div className="h-2 w-2 rounded-full bg-indigo-500 animate-ping" />
+            <div className="h-2 w-2 rounded-full bg-blue-500 animate-ping" />
           )}
           <span className="text-slate-900 dark:text-slate-100 font-semibold truncate max-w-xs md:max-w-md">
             {isFailed ? errorText || "Processing failed" : label}
@@ -67,7 +67,7 @@ export function ProgressBar({
                   ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400"
                   : isFailed
                   ? "bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-400"
-                  : "bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300"
+                  : "bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
               )}
             >
               {clampedProgress}%
@@ -90,7 +90,7 @@ export function ProgressBar({
               type="button"
               onClick={onReset}
               title="Reset"
-              className="flex items-center gap-1 text-xs text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400 p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="flex items-center gap-1 text-xs text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               <span>Reset</span>
@@ -108,7 +108,7 @@ export function ProgressBar({
               ? "bg-emerald-500"
               : isFailed
               ? "bg-red-500"
-              : barColor || "bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600"
+              : barColor || "bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500"
           )}
           style={{ width: `${clampedProgress}%` }}
         />

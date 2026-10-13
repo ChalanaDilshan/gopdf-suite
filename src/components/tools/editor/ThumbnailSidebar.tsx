@@ -183,7 +183,7 @@ export function ThumbnailSidebar({
             max={140}
             value={thumbScale}
             onChange={(e) => setThumbScale(Number(e.target.value))}
-            className="w-16 h-1 accent-indigo-600 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
+            className="w-16 h-1 accent-blue-600 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
           />
 
           <button

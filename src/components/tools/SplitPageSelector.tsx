@@ -156,7 +156,7 @@ export function SplitPageSelector({
             <SlidersHorizontal className="h-3.5 w-3.5 text-slate-400" />
             Page Selection
           </span>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 text-indigo-700 dark:text-indigo-300">
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-blue-700 dark:text-blue-300">
             {selectedPages.length}/{totalPages} selected
           </span>
         </div>
@@ -218,7 +218,7 @@ export function SplitPageSelector({
               onFocus={() => setIsInputFocused(true)}
               onBlur={() => setIsInputFocused(false)}
               placeholder="e.g. 1-3, 5, 8-10"
-              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-mono min-h-[40px]"
+              className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all font-mono min-h-[40px]"
             />
           </div>
           <span className="hidden sm:block text-[11px] text-slate-400 dark:text-slate-500 shrink-0">
@@ -247,9 +247,9 @@ export function SplitPageSelector({
               }}
               className={cn(
                 "group relative flex flex-col rounded-2xl border p-2.5 transition-all duration-200 cursor-pointer select-none bg-white dark:bg-slate-900 shadow-xs",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
                 isSelected
-                  ? "border-indigo-600 dark:border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/20 dark:bg-indigo-950/20 shadow-md"
+                  ? "border-blue-600 dark:border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/20 dark:bg-blue-950/20 shadow-md"
                   : "border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm",
                 disabled && "opacity-50 pointer-events-none cursor-not-allowed"
               )}
@@ -265,7 +265,7 @@ export function SplitPageSelector({
                   className={cn(
                     "flex h-5 w-5 items-center justify-center rounded-md border transition-all",
                     isSelected
-                      ? "border-indigo-600 bg-indigo-600 text-white dark:border-indigo-500 dark:bg-indigo-500"
+                      ? "border-blue-600 bg-blue-600 text-white dark:border-blue-500 dark:bg-blue-500"
                       : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-transparent group-hover:border-slate-400"
                   )}
                 >
@@ -287,7 +287,7 @@ export function SplitPageSelector({
                 <div
                   className={cn(
                     "absolute inset-0 transition-opacity",
-                    isSelected ? "bg-indigo-600/5 dark:bg-indigo-400/5" : "opacity-0"
+                    isSelected ? "bg-blue-600/5 dark:bg-blue-400/5" : "opacity-0"
                   )}
                 />
               </div>

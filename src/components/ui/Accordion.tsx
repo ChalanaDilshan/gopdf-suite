@@ -52,7 +52,7 @@ export function Accordion({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggleItem(item.id)}
-                className="flex w-full items-center justify-between p-5 text-left font-medium text-slate-900 dark:text-slate-100 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                className="flex w-full items-center justify-between p-5 text-left font-medium text-slate-900 dark:text-slate-100 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 <span className="text-base font-semibold leading-relaxed pr-4">
                   {item.question}
@@ -60,7 +60,7 @@ export function Accordion({
                 <span
                   className={cn(
                     "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition-transform duration-200",
-                    isOpen && "rotate-180 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400"
+                    isOpen && "rotate-180 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400"
                   )}
                 >
                   <ChevronDown className="h-4 w-4" />

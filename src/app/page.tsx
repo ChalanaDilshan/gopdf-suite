@@ -81,7 +81,7 @@ const HOME_STEPS = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white transition-colors duration-150">
+    <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
       {/* Schema.org Structured Data */}
       <WebApplicationJsonLd />
       <BreadcrumbJsonLd items={[{ name: "Home", item: "https://gopdf.tech/" }]} />
@@ -96,7 +96,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-10 sm:pt-16 pb-12 sm:pb-20">
           {/* Ambient Background Glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-indigo-500/15 via-blue-500/10 to-transparent blur-[120px] pointer-events-none rounded-full" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-500/15 via-sky-500/10 to-transparent blur-[120px] pointer-events-none rounded-full" />
 
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Top Security & Privacy Pill */}
@@ -108,7 +108,7 @@ export default function HomePage() {
             {/* Main Title */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
               Free, Private &amp; Lightning-Fast{" "}
-              <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
                 PDF Tools
               </span>
             </h1>
@@ -138,7 +138,7 @@ export default function HomePage() {
         {/* Structured FAQ Section */}
         <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16" id="faq">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
               <HelpCircle className="h-4 w-4" />
               <span>Got Questions?</span>
             </div>
