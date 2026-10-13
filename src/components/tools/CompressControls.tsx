@@ -42,7 +42,7 @@ const LEVELS: LevelOption[] = [
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:border-rose-800",
     estimatedReduction: "~65% – 75% reduction",
     factor: 0.3,
-    description: "Lowest file size. Ideal for strict email attachment caps and low-bandwidth sharing.",
+    description: "Preserves 100% crisp vector letters. Aggressively compresses embedded photos & graphics for strict email limits.",
     icon: <Zap className="h-4 w-4 text-rose-600 dark:text-rose-400" />,
   },
   {
@@ -52,17 +52,17 @@ const LEVELS: LevelOption[] = [
     badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-300 dark:border-indigo-800",
     estimatedReduction: "~40% – 50% reduction",
     factor: 0.55,
-    description: "Optimal balance between crisp readability, sharp graphics, and strong file savings.",
+    description: "Preserves 100% crisp vector letters. High-fidelity image optimization for sharp photos and strong byte savings.",
     icon: <Sparkles className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />,
   },
   {
     id: "basic",
     name: "Basic / Lossless Stream",
-    badge: "High Quality",
+    badge: "100% Lossless",
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800",
     estimatedReduction: "~15% – 25% reduction",
     factor: 0.8,
-    description: "Packs FlateDecode object streams & strips metadata while keeping 100% vector clarity.",
+    description: "Untouched images and fonts. Packs modern FlateDecode object streams & strips metadata.",
     icon: <Layers className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />,
   },
 ];
@@ -83,13 +83,19 @@ export function CompressControls({
   return (
     <div className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 p-5 sm:p-7 shadow-sm space-y-6">
       {/* Header Prompt */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200/80 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200/80 dark:border-slate-800">
         <div>
-          <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">
-            Select Compression Level
-          </h3>
+          <div className="flex items-center gap-2">
+            <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">
+              Select Compression Level
+            </h3>
+            <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+              <Check className="h-3 w-3" />
+              100% Crisp Vector Text
+            </span>
+          </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Choose the target balance between document file size and visual fidelity.
+            Letters and fonts remain native vector typography with zero blurring or quality loss.
           </p>
         </div>
 

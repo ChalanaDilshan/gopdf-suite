@@ -41,9 +41,9 @@ const COMPRESS_FAQS = [
       "Upload your PDF to GoPDF, choose your desired compression level (Recommended, Extreme, or Basic), and click 'Compress PDF Now'. The entire compression runs inside your browser memory using WebAssembly and HTML5 Canvas, generating a smaller file without uploading a single byte to external servers.",
   },
   {
-    question: "Does compressing a PDF reduce text or image quality?",
+    question: "Does compressing a PDF reduce text or letter quality?",
     answer:
-      "Our 'Recommended' level preserves crisp, readable text and clear figures while reducing file size by ~40-50%. If you need 100% vector fidelity, the 'Basic' option strips unnecessary metadata and FlateDecode object streams without altering raster pixels. For strict email limits, 'Extreme' achieves maximum byte reduction.",
+      "No! GoPDF uses vector-preserving compression: your document's text, fonts, character glyphs, and typography remain 100% native vector streams. Letters are never rasterized into blurry pixels, remaining pin-sharp and selectable at any zoom level. Only heavy embedded raster images and redundant metadata streams are optimized.",
   },
   {
     question: "How much can GoPDF reduce my PDF file size?",
