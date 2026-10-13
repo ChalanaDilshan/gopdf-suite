@@ -39,10 +39,10 @@ export function BentoToolsGrid() {
 
       {/* Bento Grid Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 sm:gap-6">
-        {/* Bento 1: Merge PDF (Featured - 7 Columns on LG) */}
+        {/* Bento 1: Merge PDF (6 Columns on LG) */}
         <Link
           href="/merge-pdf"
-          className="group lg:col-span-7 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-br from-white via-indigo-50/20 to-indigo-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-br from-white via-indigo-50/20 to-indigo-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Ambient Glow */}
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
@@ -102,57 +102,115 @@ export function BentoToolsGrid() {
           </div>
         </Link>
 
-        {/* Bento 2: Split PDF (5 Columns on LG) */}
+        {/* Bento 2: Compress PDF (6 Columns on LG) */}
+        <Link
+          href="/compress-pdf"
+          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-violet-100 dark:border-violet-950/80 bg-gradient-to-br from-white via-violet-50/20 to-violet-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-violet-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-800 transition-all duration-300 hover:-translate-y-1"
+        >
+          {/* Ambient Glow */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md shadow-violet-600/30">
+                <Zap className="h-6 w-6" />
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 px-3 py-1 text-xs font-bold border border-violet-200 dark:border-violet-800">
+                Save up to 70%
+              </span>
+            </div>
+
+            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+              Compress PDF Online
+            </h3>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
+              Shrink bloated files client-side with smart canvas raster downscaling, metadata pruning, and FlateDecode object streams.
+            </p>
+          </div>
+
+          {/* Visual Mini Mockup */}
+          <div className="my-6 py-4 flex items-center justify-center gap-4">
+            <div className="w-24 h-20 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-2 flex flex-col justify-between">
+              <span className="text-[10px] font-semibold text-slate-400">Original</span>
+              <div className="text-center font-black text-slate-700 dark:text-slate-300 text-xs">
+                12.4 MB
+              </div>
+              <span className="text-[9px] text-red-500 font-bold self-center">Heavy</span>
+            </div>
+            <div className="text-violet-600 dark:text-violet-400 font-black text-lg">
+              ➔
+            </div>
+            <div className="w-24 h-20 rounded-xl bg-violet-600 text-white shadow-md p-2 flex flex-col justify-between">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-semibold text-violet-200">Optimized</span>
+                <Check className="h-3 w-3 stroke-[3]" />
+              </div>
+              <div className="text-center font-black text-white text-xs">
+                3.8 MB
+              </div>
+              <span className="text-[9px] bg-white/20 rounded px-1 text-white font-bold self-center">
+                -69% Saved
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-sm font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform">
+            <span>Compress Document</span>
+            <ArrowRight className="h-4 w-4" />
+          </div>
+        </Link>
+
+        {/* Bento 3: Split PDF (3 Columns on LG) */}
         <Link
           href="/split-pdf"
-          className="group lg:col-span-5 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-emerald-100 dark:border-emerald-950/80 bg-gradient-to-br from-white via-emerald-50/20 to-emerald-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-emerald-300 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-3 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-emerald-100 dark:border-emerald-950/80 bg-gradient-to-br from-white via-emerald-50/20 to-emerald-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-emerald-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-emerald-300 dark:hover:border-emerald-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/30">
-                <Scissors className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/30">
+                <Scissors className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-3 py-1 text-xs font-bold border border-emerald-200 dark:border-emerald-800">
-                Visual Extractor
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-2.5 py-0.5 text-xs font-bold border border-emerald-200 dark:border-emerald-800">
+                Visual
               </span>
             </div>
 
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-              Split PDF &amp; Extract
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              Split PDF
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Extract specific pages, odd/even sequences, or custom ranges (e.g. 1-3, 5, 8-10) with live browser thumbnails.
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Extract specific pages, odd/even sequences, or custom ranges with thumbnails.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-6 py-4 flex items-center justify-center gap-2">
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-xs">
-              Page 1 ✓
+          <div className="my-5 py-2 flex items-center justify-center gap-1.5">
+            <span className="px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-bold">
+              1 ✓
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-xs">
-              Page 2 ✓
+            <span className="px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-bold">
+              2 ✓
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 text-xs font-semibold">
-              Page 3
+            <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 text-[11px] font-semibold">
+              3
             </span>
-            <span className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-xs">
-              Page 4 ✓
+            <span className="px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-bold">
+              4 ✓
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-bold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
+          <div className="flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">
             <span>Extract Pages</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>
 
-        {/* Bento 3: Rotate PDF (4 Columns on LG) */}
+        {/* Bento 4: Rotate PDF (3 Columns on LG) */}
         <Link
           href="/rotate-pdf"
-          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 dark:border-amber-950/80 bg-gradient-to-br from-white via-amber-50/20 to-amber-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-3 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-amber-100 dark:border-amber-950/80 bg-gradient-to-br from-white via-amber-50/20 to-amber-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-amber-300 dark:hover:border-amber-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
@@ -167,24 +225,24 @@ export function BentoToolsGrid() {
             </div>
 
             <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
-              Rotate PDF Pages
+              Rotate PDF
             </h3>
             <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Rotate single pages or the whole file 90°, 180°, or 270° with permanent updates.
+              Rotate single pages or the entire file 90°, 180°, or 270° instantly.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-5 py-2 flex items-center justify-center gap-3">
-            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex flex-col items-center justify-center shadow-xs">
-              <span className="text-[10px] text-slate-400">0°</span>
+          <div className="my-5 py-2 flex items-center justify-center gap-2">
+            <div className="w-11 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex flex-col items-center justify-center shadow-xs">
+              <span className="text-[9px] text-slate-400">0°</span>
             </div>
             <div className="text-amber-600 dark:text-amber-400 font-bold text-xs">
               ➔
             </div>
-            <div className="w-18 h-14 rounded-xl bg-amber-50 dark:bg-amber-950/60 border-2 border-amber-500 p-2 flex flex-col items-center justify-center shadow-xs">
-              <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300">
-                +90° CW
+            <div className="w-14 h-11 rounded-lg bg-amber-50 dark:bg-amber-950/60 border-2 border-amber-500 p-1 flex flex-col items-center justify-center shadow-xs">
+              <span className="text-[9px] font-bold text-amber-700 dark:text-amber-300">
+                +90°
               </span>
             </div>
           </div>
@@ -195,10 +253,10 @@ export function BentoToolsGrid() {
           </div>
         </Link>
 
-        {/* Bento 4: Delete PDF Pages (4 Columns on LG) */}
+        {/* Bento 5: Delete PDF Pages (3 Columns on LG) */}
         <Link
           href="/delete-pdf-pages"
-          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-rose-100 dark:border-rose-950/80 bg-gradient-to-br from-white via-rose-50/20 to-rose-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-rose-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-3 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-rose-100 dark:border-rose-950/80 bg-gradient-to-br from-white via-rose-50/20 to-rose-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-rose-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-rose-300 dark:hover:border-rose-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
@@ -213,19 +271,19 @@ export function BentoToolsGrid() {
             </div>
 
             <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
-              Delete PDF Pages
+              Delete Pages
             </h3>
             <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Remove unwanted sheets or blank pages with visual diagonal strike and 1-click restore.
+              Remove unwanted sheets or blanks with visual strike and 1-click restore.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
           <div className="my-5 py-2 flex items-center justify-center gap-2">
-            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[9px] font-bold text-slate-600">
               #1
             </div>
-            <div className="relative w-14 h-18 rounded-xl bg-red-100/60 dark:bg-red-950/40 border border-red-300 dark:border-red-800 p-2 flex items-center justify-center text-[10px] font-bold text-red-600">
+            <div className="relative w-10 h-14 rounded-lg bg-red-100/60 dark:bg-red-950/40 border border-red-300 dark:border-red-800 p-1 flex items-center justify-center text-[9px] font-bold text-red-600">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-full h-0.5 bg-red-500 rotate-45" />
               </div>
@@ -233,7 +291,7 @@ export function BentoToolsGrid() {
                 X
               </span>
             </div>
-            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[9px] font-bold text-slate-600">
               #3
             </div>
           </div>
@@ -244,10 +302,10 @@ export function BentoToolsGrid() {
           </div>
         </Link>
 
-        {/* Bento 5: Reorder PDF Pages (4 Columns on LG) */}
+        {/* Bento 6: Reorder PDF Pages (3 Columns on LG) */}
         <Link
           href="/reorder-pdf-pages"
-          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-sky-100 dark:border-sky-950/80 bg-gradient-to-br from-white via-sky-50/20 to-sky-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-sky-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-sky-300 dark:hover:border-sky-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-3 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-sky-100 dark:border-sky-950/80 bg-gradient-to-br from-white via-sky-50/20 to-sky-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-sky-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-sky-300 dark:hover:border-sky-800 transition-all duration-300 hover:-translate-y-1"
         >
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-sky-500/10 dark:bg-sky-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
@@ -265,20 +323,20 @@ export function BentoToolsGrid() {
               Reorder Pages
             </h3>
             <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-              Drag and drop to rearrange your document sequence into any preferred order.
+              Drag and drop to rearrange your document sequence into any order.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
           <div className="my-5 py-2 flex items-center justify-center gap-2">
-            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border-2 border-dashed border-sky-400 p-2 flex items-center justify-center text-[10px] font-bold text-sky-600 shadow-sm scale-105">
-              Page 2
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border-2 border-dashed border-sky-400 p-1 flex items-center justify-center text-[9px] font-bold text-sky-600 shadow-sm scale-105">
+              #2
             </div>
             <div className="text-sky-600 dark:text-sky-400 font-bold text-xs">
               ⇄
             </div>
-            <div className="w-14 h-18 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-2 flex items-center justify-center text-[10px] font-bold text-slate-600">
-              Page 1
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[9px] font-bold text-slate-600">
+              #1
             </div>
           </div>
 

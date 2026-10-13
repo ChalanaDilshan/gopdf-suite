@@ -41,7 +41,7 @@ const TOOLS: ToolItem[] = [
     id: "compress",
     name: "Compress PDF",
     desc: "Reduce file size",
-    href: "#",
+    href: "/compress-pdf",
     icon: Minimize2,
     active: false,
   },

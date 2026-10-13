@@ -45,7 +45,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/compress-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Compress PDF
                 </Link>
               </li>

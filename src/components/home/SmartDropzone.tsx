@@ -13,7 +13,8 @@ import {
   ShieldCheck, 
   ArrowRight, 
   X, 
-  Layers 
+  Layers,
+  Zap
 } from "lucide-react";
 import { setTransferredFiles } from "@/lib/fileTransfer";
 import { formatBytes, truncateFileName, cn } from "@/lib/utils";
@@ -191,8 +192,32 @@ export function SmartDropzone() {
           </div>
 
           {/* Action Selector Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {/* Action 1: Reorder PDF */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
+            {/* Action 1: Compress PDF */}
+            <button
+              type="button"
+              disabled={isNavigating}
+              onClick={() => handleAction("/compress-pdf")}
+              className="group relative flex flex-col justify-between rounded-2xl border border-violet-200/90 dark:border-violet-900/60 bg-violet-50/40 dark:bg-violet-950/20 p-4 text-left hover:border-violet-400 dark:hover:border-violet-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+            >
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-900/60 text-violet-600 dark:text-violet-400 mb-3 group-hover:scale-105 transition-transform">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  Compress PDF
+                </h5>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Shrink size up to 70% with client-side canvas downscaling.
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-violet-700 dark:text-violet-400">
+                <span>Compress Now</span>
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+
+            {/* Action 2: Reorder PDF */}
             <button
               type="button"
               disabled={isNavigating}
@@ -355,7 +380,7 @@ export function SmartDropzone() {
             Drop any PDF here to start
           </h3>
           <p className="mt-2 text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-md">
-            Merge, Rotate, Split, or Delete pages with instant 100% in-browser processing.
+            Compress, Merge, Rotate, Split, or Reorder pages with instant 100% in-browser processing.
           </p>
 
           {/* Action Trigger Button */}
