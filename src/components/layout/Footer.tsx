@@ -74,6 +74,11 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
+                <Link href="/features" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Features &amp; Capabilities
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy-first-pdf-tools" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Client-Side Architecture
                 </Link>
