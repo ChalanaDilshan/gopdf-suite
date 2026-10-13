@@ -109,6 +109,15 @@ export default function SplitPdfPage() {
     await loadThumbnails(file);
   };
 
+  React.useEffect(() => {
+    import("@/lib/fileTransfer").then(({ getTransferredFiles }) => {
+      const transferred = getTransferredFiles();
+      if (transferred.length > 0) {
+        handleFilesSelected(transferred);
+      }
+    });
+  }, []);
+
   const handleClear = () => {
     setSelectedFile(null);
     setSelectedPages([]);

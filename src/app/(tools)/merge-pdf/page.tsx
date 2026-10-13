@@ -92,6 +92,15 @@ export default function MergePdfPage() {
     });
   };
 
+  React.useEffect(() => {
+    import("@/lib/fileTransfer").then(({ getTransferredFiles }) => {
+      const transferred = getTransferredFiles();
+      if (transferred.length > 0) {
+        handleAddFiles(transferred);
+      }
+    });
+  }, []);
+
   const handleLoadSampleFiles = async () => {
     try {
       const { PDFDocument } = await import("pdf-lib");

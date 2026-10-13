@@ -113,6 +113,15 @@ export function OrganizeWorkspace({
     await loadFile(files[0]);
   };
 
+  React.useEffect(() => {
+    import("@/lib/fileTransfer").then(({ getTransferredFiles }) => {
+      const transferred = getTransferredFiles();
+      if (transferred.length > 0) {
+        loadFile(transferred[0]);
+      }
+    });
+  }, [loadFile]);
+
   const handleExport = async () => {
     if (!file || isExporting) return;
     const baseName = file.name.replace(/\.pdf$/i, "");
