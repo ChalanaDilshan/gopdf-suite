@@ -118,6 +118,9 @@ export function DocumentCanvas({
               const isHovered = hoveredBlockId === block.id;
               const isModified =
                 !block.isDeleted && block.currentText !== block.originalText;
+              const activeBg = block.backgroundColor || "#ffffff";
+              const activeColor = block.color || "#000000";
+              const shouldMask = isSelected || isModified || block.isDeleted;
 
               return (
                 <div
@@ -126,11 +129,12 @@ export function DocumentCanvas({
                     left: `${block.x}px`,
                     top: `${block.y}px`,
                     width: isSelected
-                      ? `${Math.max(block.width, 140)}px`
+                      ? `${Math.max(block.width, Math.ceil((block.currentText.length + 1) * (block.fontSize * 0.6)))}px`
                       : `${block.width}px`,
                     minHeight: `${block.height}px`,
                     fontFamily: block.cssFontFamily,
                     fontSize: `${block.fontSize}px`,
+                    backgroundColor: shouldMask ? activeBg : "transparent",
                   }}
                   onMouseEnter={() => setHoveredBlockId(block.id)}
                   onMouseLeave={() => setHoveredBlockId(null)}
@@ -144,15 +148,15 @@ export function DocumentCanvas({
                     !isSelected &&
                       !block.isDeleted &&
                       isHovered &&
-                      "ring-1 ring-dashed ring-red-500 bg-red-50/20 dark:bg-red-950/20 cursor-text",
+                      "ring-1 ring-dashed ring-red-500 bg-red-500/15 cursor-text",
                     !isSelected &&
                       isModified &&
-                      "ring-1 ring-emerald-500/80 bg-emerald-50/20 dark:bg-emerald-950/20",
+                      "ring-1 ring-emerald-500/80",
                     !isSelected &&
                       block.isDeleted &&
-                      "ring-1 ring-rose-400 bg-rose-50/50 dark:bg-rose-950/50 opacity-80 cursor-pointer",
+                      "ring-1 ring-rose-400 opacity-90 cursor-pointer",
                     isSelected &&
-                      "ring-2 ring-red-600 bg-white dark:bg-slate-900 shadow-xl z-20 rounded-md"
+                      "ring-2 ring-red-500 shadow-md z-20 rounded-xs"
                   )}
                 >
                   {/* Inline Active Input */}
@@ -173,37 +177,39 @@ export function DocumentCanvas({
                           }
                         }}
                         style={{
-                          color: block.color,
+                          color: activeColor,
                           fontSize: `${block.fontSize}px`,
                           fontFamily: block.cssFontFamily,
+                          backgroundColor: "transparent",
                         }}
-                        className="w-full bg-transparent px-1.5 py-0.5 outline-none font-normal leading-none"
+                        className="w-full bg-transparent px-1 py-0 outline-none font-normal leading-none"
                       />
                     </div>
                   ) : (
                     /* Display Non-Active Text */
-                    <div
-                      className={cn(
-                        "w-full h-full px-0.5 overflow-hidden whitespace-nowrap text-transparent hover:text-slate-900/40 select-none",
-                        block.isDeleted && "text-red-600/70 line-through font-bold"
-                      )}
-                    >
+                    <div className="w-full h-full px-0.5 overflow-hidden whitespace-nowrap select-none flex items-center">
                       {block.isDeleted ? (
-                        <span className="text-[10px] text-red-600 font-bold bg-white/90 dark:bg-slate-900/90 px-1 rounded-xs">
+                        <span
+                          style={{ backgroundColor: activeBg }}
+                          className="text-[10px] text-red-500 font-bold px-1 rounded-xs border border-red-500/30"
+                        >
                           [Deleted]
                         </span>
                       ) : isModified ? (
                         <span
                           style={{
-                            color: block.color,
+                            color: activeColor,
                             fontSize: `${block.fontSize}px`,
                             fontFamily: block.cssFontFamily,
+                            backgroundColor: activeBg,
                           }}
-                          className="bg-white/95 dark:bg-slate-900/95 px-0.5 rounded-xs"
+                          className="px-0.5 rounded-xs"
                         >
                           {block.currentText}
                         </span>
-                      ) : null}
+                      ) : (
+                        <span className="w-full h-full text-transparent hover:text-slate-900/40" />
+                      )}
                     </div>
                   )}
                 </div>

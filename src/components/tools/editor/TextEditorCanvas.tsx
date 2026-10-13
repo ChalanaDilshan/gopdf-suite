@@ -127,6 +127,9 @@ export function TextEditorCanvas({
               const isHovered = hoveredBlockId === block.id;
               const isModified =
                 !block.isDeleted && block.currentText !== block.originalText;
+              const activeBg = block.backgroundColor || "#ffffff";
+              const activeColor = block.color || "#000000";
+              const shouldMask = isActive || isModified || block.isDeleted;
 
               return (
                 <div
@@ -134,10 +137,11 @@ export function TextEditorCanvas({
                   style={{
                     left: `${block.x}px`,
                     top: `${block.y}px`,
-                    width: isActive ? `${Math.max(block.width, 120)}px` : `${block.width}px`,
+                    width: isActive ? `${Math.max(block.width, Math.ceil((block.currentText.length + 1) * (block.fontSize * 0.6)))}px` : `${block.width}px`,
                     minHeight: `${block.height}px`,
                     fontFamily: block.cssFontFamily,
                     fontSize: `${block.fontSize}px`,
+                    backgroundColor: shouldMask ? activeBg : "transparent",
                   }}
                   onMouseEnter={() => setHoveredBlockId(block.id)}
                   onMouseLeave={() => setHoveredBlockId(null)}
@@ -148,10 +152,10 @@ export function TextEditorCanvas({
                   className={cn(
                     "absolute transition-all duration-75 flex items-center z-10",
                     // Interaction borders & backgrounds
-                    !isActive && !block.isDeleted && isHovered && "ring-1 ring-dashed ring-indigo-500 bg-indigo-50/30 dark:bg-indigo-950/30 cursor-text",
-                    !isActive && isModified && "ring-1 ring-emerald-500/80 bg-emerald-50/20 dark:bg-emerald-950/20",
-                    !isActive && block.isDeleted && "ring-1 ring-rose-400 bg-rose-50/50 dark:bg-rose-950/50 opacity-80 cursor-pointer",
-                    isActive && "ring-2 ring-indigo-600 bg-white dark:bg-slate-900 shadow-lg z-20 rounded-md"
+                    !isActive && !block.isDeleted && isHovered && "ring-1 ring-dashed ring-indigo-500 bg-indigo-500/15 cursor-text",
+                    !isActive && isModified && "ring-1 ring-emerald-500/80",
+                    !isActive && block.isDeleted && "ring-1 ring-rose-400 opacity-90 cursor-pointer",
+                    isActive && "ring-2 ring-indigo-500 shadow-md z-20 rounded-xs"
                   )}
                 >
                   {/* State A: Active Inline Editing Input */}
@@ -172,38 +176,39 @@ export function TextEditorCanvas({
                           }
                         }}
                         style={{
-                          color: block.color,
+                          color: activeColor,
                           fontSize: `${block.fontSize}px`,
                           fontFamily: block.cssFontFamily,
+                          backgroundColor: "transparent",
                         }}
-                        className="w-full bg-transparent px-1.5 py-0.5 outline-none font-normal leading-none"
+                        className="w-full bg-transparent px-1 py-0 outline-none font-normal leading-none"
                       />
                     </div>
                   ) : (
                     /* State B: Display / Non-Active Bounding Box */
-                    <div
-                      className={cn(
-                        "w-full h-full px-0.5 overflow-hidden whitespace-nowrap text-transparent hover:text-slate-900/40 select-none",
-                        block.isDeleted && "text-red-600/70 line-through font-bold"
-                      )}
-                    >
-                      {/* Show strike-through marker when deleted */}
+                    <div className="w-full h-full px-0.5 overflow-hidden whitespace-nowrap select-none flex items-center">
                       {block.isDeleted ? (
-                        <span className="text-xs text-red-600 font-bold bg-white/90 dark:bg-slate-900/90 px-1 rounded-xs">
+                        <span
+                          style={{ backgroundColor: activeBg }}
+                          className="text-xs text-red-600 font-bold px-1 rounded-xs border border-red-500/30"
+                        >
                           [Deleted]
                         </span>
                       ) : isModified ? (
                         <span
                           style={{
-                            color: block.color,
+                            color: activeColor,
                             fontSize: `${block.fontSize}px`,
                             fontFamily: block.cssFontFamily,
+                            backgroundColor: activeBg,
                           }}
-                          className="bg-white/95 dark:bg-slate-900/95 px-0.5 rounded-xs"
+                          className="px-0.5 rounded-xs"
                         >
                           {block.currentText}
                         </span>
-                      ) : null}
+                      ) : (
+                        <span className="w-full h-full text-transparent hover:text-slate-900/40" />
+                      )}
                     </div>
                   )}
                 </div>

@@ -46,9 +46,9 @@ const PRESET_FONT_SIZES = [9, 10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 48];
 const DEFAULT_PALETTE = [
   "#000000",
   "#ffffff",
+  "#eab308",
   "#dc2626",
   "#ea580c",
-  "#ca8a04",
   "#16a34a",
   "#2563eb",
   "#7c3aed",
@@ -68,6 +68,7 @@ export function TextPropertiesPanel({
   onClose,
 }: TextPropertiesPanelProps) {
   const [customColors, setCustomColors] = useState<string[]>(DEFAULT_PALETTE);
+  const [customBgColors, setCustomBgColors] = useState<string[]>(DEFAULT_PALETTE);
   const [isBold, setIsBold] = useState<boolean>(false);
   const [isItalic, setIsItalic] = useState<boolean>(false);
   const [isUnderline, setIsUnderline] = useState<boolean>(false);
@@ -77,6 +78,7 @@ export function TextPropertiesPanel({
   if (!isOpen) return null;
 
   const activeColor = selectedBlock?.color || "#000000";
+  const activeBgColor = selectedBlock?.backgroundColor || "#ffffff";
   const activeFontSize = selectedBlock ? Math.round(selectedBlock.fontSize) : 14;
   const activeFontFamily = selectedBlock?.cssFontFamily || PRESET_FONTS[0].value;
 
@@ -87,6 +89,16 @@ export function TextPropertiesPanel({
     }
     if (selectedBlock) {
       onUpdateBlock(selectedBlock.id, { color: newColor });
+    }
+  };
+
+  const handleAddCustomBgColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newBg = e.target.value;
+    if (!customBgColors.includes(newBg)) {
+      setCustomBgColors((prev) => [...prev, newBg]);
+    }
+    if (selectedBlock) {
+      onUpdateBlock(selectedBlock.id, { backgroundColor: newBg });
     }
   };
 
@@ -310,7 +322,7 @@ export function TextPropertiesPanel({
           </div>
         </div>
 
-        {/* Color Palette Selectors */}
+        {/* Text Color Selectors */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
@@ -319,7 +331,7 @@ export function TextPropertiesPanel({
             <div className="flex items-center gap-1.5">
               <span
                 style={{ backgroundColor: activeColor }}
-                className="h-4 w-4 rounded-full border border-slate-300 shadow-2xs"
+                className="h-4 w-4 rounded-full border border-slate-300 dark:border-slate-600 shadow-2xs"
               />
               <span className="text-[11px] font-mono text-slate-500 uppercase">
                 {activeColor}
@@ -340,8 +352,8 @@ export function TextPropertiesPanel({
                 }}
                 style={{ backgroundColor: hex }}
                 className={cn(
-                  "h-7 rounded-lg border border-slate-200/80 dark:border-slate-700 shadow-2xs transition-transform hover:scale-110",
-                  activeColor === hex && "ring-2 ring-red-500 ring-offset-1 scale-105"
+                  "h-7 rounded-lg border border-slate-200/80 dark:border-slate-700 shadow-2xs transition-transform hover:scale-110 cursor-pointer",
+                  activeColor.toLowerCase() === hex.toLowerCase() && "ring-2 ring-red-500 ring-offset-1 scale-105"
                 )}
                 title={hex}
               />
@@ -356,6 +368,57 @@ export function TextPropertiesPanel({
                 onChange={handleAddCustomColor}
                 className="absolute inset-0 opacity-0 cursor-pointer"
                 title="Add custom color"
+              />
+            </label>
+          </div>
+        </div>
+
+        {/* Background Mask Color Selectors */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+              Background Mask
+            </label>
+            <div className="flex items-center gap-1.5">
+              <span
+                style={{ backgroundColor: activeBgColor }}
+                className="h-4 w-4 rounded-full border border-slate-300 dark:border-slate-600 shadow-2xs"
+              />
+              <span className="text-[11px] font-mono text-slate-500 uppercase">
+                {activeBgColor}
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-5 gap-2 pt-1">
+            {customBgColors.map((hex) => (
+              <button
+                key={hex}
+                type="button"
+                disabled={!selectedBlock}
+                onClick={() => {
+                  if (selectedBlock) {
+                    onUpdateBlock(selectedBlock.id, { backgroundColor: hex });
+                  }
+                }}
+                style={{ backgroundColor: hex }}
+                className={cn(
+                  "h-7 rounded-lg border border-slate-200/80 dark:border-slate-700 shadow-2xs transition-transform hover:scale-110 cursor-pointer",
+                  activeBgColor.toLowerCase() === hex.toLowerCase() && "ring-2 ring-red-500 ring-offset-1 scale-105"
+                )}
+                title={hex}
+              />
+            ))}
+
+            {/* Custom BG Color Input Button */}
+            <label className="relative h-7 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:border-slate-400 cursor-pointer transition-colors">
+              <Plus className="h-3.5 w-3.5" />
+              <input
+                type="color"
+                value={activeBgColor}
+                onChange={handleAddCustomBgColor}
+                className="absolute inset-0 opacity-0 cursor-pointer"
+                title="Add custom background mask color"
               />
             </label>
           </div>

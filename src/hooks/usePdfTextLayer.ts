@@ -18,7 +18,8 @@ export interface EditableTextBlock {
   cssFontFamily: string; // Matched CSS font family
   pdfX: number; // PDF point coordinates for pdf-lib export (bottom-left origin)
   pdfY: number; // PDF point coordinates (bottom-left origin, baseline)
-  color: string; // Hex color (e.g. #000000)
+  color: string; // Hex color (e.g. #000000 or #ffffff)
+  backgroundColor: string; // Hex background color (e.g. #ffffff or #000000)
   isCustom?: boolean; // True if newly added by user
 }
 
@@ -96,8 +97,10 @@ export function usePdfTextLayer({
 
         // 1. Render Base PDF onto Canvas with DevicePixelRatio
         const canvas = canvasRef.current;
+        let pageImageData: ImageData | null = null;
+        const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+
         if (canvas) {
-          const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
           canvas.width = Math.floor(viewport.width * dpr);
           canvas.height = Math.floor(viewport.height * dpr);
           canvas.style.width = `${viewport.width}px`;
@@ -116,6 +119,13 @@ export function usePdfTextLayer({
             activeRenderTaskRef.current = renderTask;
 
             await renderTask.promise;
+
+            // Extract backing buffer pixel data for high-accuracy color extraction
+            try {
+              pageImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            } catch (imgErr) {
+              console.warn("Could not read ImageData for color extraction:", imgErr);
+            }
           }
         }
 
@@ -180,6 +190,23 @@ export function usePdfTextLayer({
             textContent.styles[item.fontName]?.fontFamily
           );
 
+          // Auto-detect font color and background color from rendered canvas bitmap
+          let detectedColor = "#000000";
+          let detectedBgColor = "#ffffff";
+
+          if (pageImageData) {
+            const sampled = sampleColorsFromCanvas(
+              pageImageData,
+              domX,
+              domY,
+              boxWidth,
+              boxHeight,
+              dpr
+            );
+            detectedColor = sampled.color;
+            detectedBgColor = sampled.backgroundColor;
+          }
+
           blocks.push({
             id: `p${pageNumber}-b${idx}-${Math.round(pdfX)}-${Math.round(pdfY)}`,
             originalText: item.str,
@@ -194,7 +221,8 @@ export function usePdfTextLayer({
             cssFontFamily: matched.cssFontFamily,
             pdfX,
             pdfY,
-            color: "#000000",
+            color: detectedColor,
+            backgroundColor: detectedBgColor,
           });
         }
 
@@ -289,6 +317,28 @@ export function usePdfTextLayer({
       const baselineDomY = domY + boxHeight;
       const [pdfX, pdfY] = viewport.convertToPdfPoint(domX, baselineDomY);
 
+      let initialColor = "#000000";
+      let initialBgColor = "#ffffff";
+
+      // Sample clicked canvas pixel to determine best font and background color
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          try {
+            const dpr = typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1;
+            const px = Math.max(0, Math.min(canvas.width - 1, Math.floor(domX * dpr)));
+            const py = Math.max(0, Math.min(canvas.height - 1, Math.floor(domY * dpr)));
+            const pixel = ctx.getImageData(px, py, 1, 1).data;
+            const [r, g, b] = [pixel[0], pixel[1], pixel[2]];
+            const toHex = (n: number) => n.toString(16).padStart(2, "0");
+            initialBgColor = `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+            const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            initialColor = lum < 128 ? "#ffffff" : "#000000";
+          } catch {}
+        }
+      }
+
       const newBlock: EditableTextBlock = {
         id: `p${pageNumber}-custom-${Date.now()}`,
         originalText: "",
@@ -303,7 +353,8 @@ export function usePdfTextLayer({
         cssFontFamily: 'Arial, Helvetica, "Segoe UI", sans-serif',
         pdfX,
         pdfY,
-        color: "#000000",
+        color: initialColor,
+        backgroundColor: initialBgColor,
         isCustom: true,
       };
 
@@ -329,5 +380,161 @@ export function usePdfTextLayer({
     viewportDimensions,
     isLoading,
     error,
+  };
+}
+
+interface SampledColors {
+  color: string;
+  backgroundColor: string;
+}
+
+/**
+ * Accurately samples the background color and foreground font color of a text block
+ * directly from the rendered HTML5 canvas pixels.
+ */
+function sampleColorsFromCanvas(
+  imageData: ImageData,
+  domX: number,
+  domY: number,
+  boxWidth: number,
+  boxHeight: number,
+  dpr: number
+): SampledColors {
+  const { width: imgW, height: imgH, data } = imageData;
+
+  // Convert DOM coordinates to backing buffer coordinates
+  const bufX = Math.max(0, Math.min(imgW - 1, Math.floor(domX * dpr)));
+  const bufY = Math.max(0, Math.min(imgH - 1, Math.floor(domY * dpr)));
+  const bufW = Math.max(1, Math.min(imgW - bufX, Math.floor(boxWidth * dpr)));
+  const bufH = Math.max(1, Math.min(imgH - bufY, Math.floor(boxHeight * dpr)));
+
+  const getPixel = (px: number, py: number): [number, number, number] | null => {
+    if (px < 0 || px >= imgW || py < 0 || py >= imgH) return null;
+    const idx = (py * imgW + px) * 4;
+    return [data[idx], data[idx + 1], data[idx + 2]];
+  };
+
+  // 1. Background Sampling: Sample points along the outer perimeter (top, bottom, left, right, corners)
+  const bgSamples: Array<[number, number, number]> = [];
+  const perimeterPoints: Array<[number, number]> = [];
+
+  const stepsX = Math.max(4, Math.min(24, Math.floor(bufW / 4)));
+  for (let i = 0; i <= stepsX; i++) {
+    const px = Math.floor(bufX + (i / stepsX) * bufW);
+    perimeterPoints.push([px, Math.max(0, bufY - 2)]);
+    perimeterPoints.push([px, Math.min(imgH - 1, bufY + bufH + 2)]);
+    perimeterPoints.push([px, bufY]);
+    perimeterPoints.push([px, bufY + bufH - 1]);
+  }
+
+  const stepsY = Math.max(4, Math.min(16, Math.floor(bufH / 4)));
+  for (let j = 0; j <= stepsY; j++) {
+    const py = Math.floor(bufY + (j / stepsY) * bufH);
+    perimeterPoints.push([Math.max(0, bufX - 2), py]);
+    perimeterPoints.push([Math.min(imgW - 1, bufX + bufW + 2), py]);
+    perimeterPoints.push([bufX, py]);
+    perimeterPoints.push([bufX + bufW - 1, py]);
+  }
+
+  for (const [px, py] of perimeterPoints) {
+    const p = getPixel(px, py);
+    if (p) bgSamples.push(p);
+  }
+
+  // Quantize perimeter samples to find dominant background color
+  const bgBuckets = new Map<string, { count: number; sumR: number; sumG: number; sumB: number }>();
+  for (const [r, g, b] of bgSamples) {
+    const qr = Math.round(r / 16) * 16;
+    const qg = Math.round(g / 16) * 16;
+    const qb = Math.round(b / 16) * 16;
+    const key = `${qr},${qg},${qb}`;
+    const entry = bgBuckets.get(key) || { count: 0, sumR: 0, sumG: 0, sumB: 0 };
+    entry.count += 1;
+    entry.sumR += r;
+    entry.sumG += g;
+    entry.sumB += b;
+    bgBuckets.set(key, entry);
+  }
+
+  let dominantBg = { count: 0, r: 255, g: 255, b: 255 };
+  for (const entry of bgBuckets.values()) {
+    if (entry.count > dominantBg.count) {
+      dominantBg = {
+        count: entry.count,
+        r: Math.round(entry.sumR / entry.count),
+        g: Math.round(entry.sumG / entry.count),
+        b: Math.round(entry.sumB / entry.count),
+      };
+    }
+  }
+
+  const bgR = dominantBg.r;
+  const bgG = dominantBg.g;
+  const bgB = dominantBg.b;
+
+  // 2. Foreground / Text Sampling: Sample interior pixels to locate glyph strokes
+  interface GlyphPixel {
+    r: number;
+    g: number;
+    b: number;
+    dist: number;
+  }
+  const glyphPixels: GlyphPixel[] = [];
+
+  const sampleStepX = Math.max(1, Math.floor(bufW / 30));
+  const sampleStepY = Math.max(1, Math.floor(bufH / 20));
+
+  for (let py = bufY + 1; py < bufY + bufH - 1; py += sampleStepY) {
+    for (let px = bufX + 1; px < bufX + bufW - 1; px += sampleStepX) {
+      const p = getPixel(px, py);
+      if (!p) continue;
+      const [r, g, b] = p;
+      // Euclidean distance in RGB color space
+      const dist = Math.sqrt((r - bgR) ** 2 + (g - bgG) ** 2 + (b - bgB) ** 2);
+      if (dist >= 35) {
+        glyphPixels.push({ r, g, b, dist });
+      }
+    }
+  }
+
+  let textR = 0;
+  let textG = 0;
+  let textB = 0;
+
+  if (glyphPixels.length > 0) {
+    // Sort descending by contrast distance to target the core stroke pixels (avoiding edge blur)
+    glyphPixels.sort((a, b) => b.dist - a.dist);
+    const topCount = Math.max(1, Math.min(glyphPixels.length, Math.ceil(glyphPixels.length * 0.35)));
+    let sumR = 0;
+    let sumG = 0;
+    let sumB = 0;
+    for (let i = 0; i < topCount; i++) {
+      sumR += glyphPixels[i].r;
+      sumG += glyphPixels[i].g;
+      sumB += glyphPixels[i].b;
+    }
+    textR = Math.round(sumR / topCount);
+    textG = Math.round(sumG / topCount);
+    textB = Math.round(sumB / topCount);
+  } else {
+    // Fallback based on background perceived luminance
+    const lum = 0.299 * bgR + 0.587 * bgG + 0.114 * bgB;
+    if (lum < 128) {
+      textR = 255;
+      textG = 255;
+      textB = 255;
+    } else {
+      textR = 0;
+      textG = 0;
+      textB = 0;
+    }
+  }
+
+  const toHex = (r: number, g: number, b: number) =>
+    "#" + [r, g, b].map((c) => Math.max(0, Math.min(255, c)).toString(16).padStart(2, "0")).join("");
+
+  return {
+    backgroundColor: toHex(bgR, bgG, bgB),
+    color: toHex(textR, textG, textB),
   };
 }

@@ -73,12 +73,14 @@ export async function exportEditedPdf({
         const rectWidth = Math.min(pageWidth - rectX, unscaledWidth + 3);
         const rectHeight = Math.min(pageHeight - rectY, unscaledHeight + 3);
 
+        const bgRgb = hexToPdfRgb(block.backgroundColor || "#ffffff");
+
         page.drawRectangle({
           x: rectX,
           y: rectY,
           width: rectWidth,
           height: rectHeight,
-          color: rgb(1, 1, 1), // Opaque whiteout mask
+          color: bgRgb, // Exact background matching mask
         });
       }
 
