@@ -309,7 +309,7 @@ export function usePdfOrganizer(): UsePdfOrganizerReturn {
         setExportProgress(35);
 
         const srcDoc = await PDFDocument.load(arrayBuffer, {
-          ignoreEncryption: false,
+          ignoreEncryption: true,
         });
 
         setExportProgress(50);

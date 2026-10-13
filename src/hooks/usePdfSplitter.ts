@@ -67,7 +67,7 @@ export function usePdfSplitter(): UsePdfSplitterReturn {
         ]);
         setProgress(30);
 
-        const srcDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: false });
+        const srcDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
         setProgress(50);
 
         const totalPages = srcDoc.getPageCount();

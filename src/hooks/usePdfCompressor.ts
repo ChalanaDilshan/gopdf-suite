@@ -160,7 +160,7 @@ export function usePdfCompressor(): UsePdfCompressorReturn {
         setStatusMessage("Analyzing PDF structure & embedded streams...");
 
         const srcDoc = await PDFDocument.load(arrayBuffer, {
-          ignoreEncryption: false,
+          ignoreEncryption: true,
         });
 
         if (isCancelledRef.current) return null;

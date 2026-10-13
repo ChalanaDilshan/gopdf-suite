@@ -32,7 +32,7 @@ export async function exportEditedPdf({
   }
 
   const pdfDoc = await PDFDocument.load(bufferToLoad, {
-    ignoreEncryption: false,
+    ignoreEncryption: true,
   });
 
   const fontCache = new Map<StandardFonts, PDFFont>();

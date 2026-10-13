@@ -64,7 +64,7 @@ addEventListener("message", async (event: MessageEvent<ArrayBuffer[] | MergeInpu
 
       let srcDoc: PDFDocument;
       try {
-        srcDoc = await PDFDocument.load(buffer, { ignoreEncryption: false });
+        srcDoc = await PDFDocument.load(buffer, { ignoreEncryption: true });
       } catch (loadError: any) {
         const errorMsg = loadError?.message?.toLowerCase() || "";
         if (errorMsg.includes("encrypt") || errorMsg.includes("password")) {
