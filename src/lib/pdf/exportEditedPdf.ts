@@ -3,13 +3,13 @@ import { EditableTextBlock } from "@/hooks/usePdfTextLayer";
 import { matchFont, hexToPdfRgb } from "@/lib/pdf/fontMatcher";
 
 export interface ExportEditedPdfOptions {
-  originalArrayBuffer: ArrayBuffer;
+  originalArrayBuffer: ArrayBuffer | Uint8Array;
   editedPages: Record<number, EditableTextBlock[]>;
   currentScale: number;
 }
 
 /**
- * Loads the original PDF into pdf-lib, applies whiteout masks over
+ * Loads the original PDF into pdf-lib, applies background masks over
  * modified or deleted text blocks, stamps the updated text in matching fonts,
  * and serializes the new PDF document.
  */
@@ -18,7 +18,20 @@ export async function exportEditedPdf({
   editedPages,
   currentScale,
 }: ExportEditedPdfOptions): Promise<Uint8Array> {
-  const pdfDoc = await PDFDocument.load(originalArrayBuffer, {
+  let bufferToLoad: ArrayBuffer | Uint8Array = originalArrayBuffer;
+  if (originalArrayBuffer instanceof ArrayBuffer) {
+    if (originalArrayBuffer.byteLength === 0) {
+      throw new Error("Cannot process PDF: Buffer is detached or empty.");
+    }
+    bufferToLoad = originalArrayBuffer.slice(0);
+  } else if (originalArrayBuffer instanceof Uint8Array) {
+    if (originalArrayBuffer.byteLength === 0) {
+      throw new Error("Cannot process PDF: Buffer is detached or empty.");
+    }
+    bufferToLoad = new Uint8Array(originalArrayBuffer);
+  }
+
+  const pdfDoc = await PDFDocument.load(bufferToLoad, {
     ignoreEncryption: false,
   });
 

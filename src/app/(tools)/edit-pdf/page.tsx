@@ -81,7 +81,7 @@ export default function EditPdfPage() {
 
     try {
       const buffer = await file.arrayBuffer();
-      setArrayBuffer(buffer);
+      setArrayBuffer(buffer.slice(0));
 
       const pdfjs = await import("pdfjs-dist");
       if (typeof window !== "undefined") {
@@ -89,8 +89,9 @@ export default function EditPdfPage() {
         pdfjs.GlobalWorkerOptions.workerSrc = `${basePath}/pdf.worker.min.js`;
       }
 
+      // Pass a Uint8Array copy so worker message transfer does not detach the main buffer
       const loadingTask = pdfjs.getDocument({
-        data: buffer,
+        data: new Uint8Array(buffer),
         cMapUrl: "https://unpkg.com/pdfjs-dist@3.11.174/cmaps/",
         cMapPacked: true,
         isEvalSupported: false,
@@ -187,15 +188,19 @@ export default function EditPdfPage() {
 
   // Export & Download PDF (Save changes action)
   const handleExport = async () => {
-    if (!arrayBuffer || !selectedFile) return;
+    if (!selectedFile) return;
 
     setIsExporting(true);
     setExportError(null);
     setSaveSuccessMessage(null);
 
     try {
+      // Read a fresh, independent ArrayBuffer directly from selectedFile
+      // This completely avoids "Cannot perform Construct on a detached ArrayBuffer"
+      const exportBuffer = await selectedFile.arrayBuffer();
+
       const editedBytes = await exportEditedPdf({
-        originalArrayBuffer: arrayBuffer,
+        originalArrayBuffer: exportBuffer,
         editedPages,
         currentScale: scale,
       });
