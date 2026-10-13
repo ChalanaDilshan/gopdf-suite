@@ -50,8 +50,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/rotate-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Rotate PDF
+                </Link>
+              </li>
+              <li>
+                <Link href="/delete-pdf-pages" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Delete PDF Pages
                 </Link>
               </li>
             </ul>

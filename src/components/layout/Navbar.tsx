@@ -22,8 +22,8 @@ export function Navbar() {
     { name: "Merge PDF", href: "/merge-pdf", desc: "Combine multiple PDFs in order" },
     { name: "Split PDF", href: "/split-pdf", desc: "Extract or separate PDF pages" },
     { name: "Compress PDF", href: "#", desc: "Reduce file size without quality loss" },
-    { name: "Rotate PDF", href: "#", desc: "Rotate pages 90, 180, or 270 degrees" },
-    { name: "Delete Pages", href: "#", desc: "Remove unwanted pages from documents" },
+    { name: "Rotate PDF", href: "/rotate-pdf", desc: "Rotate pages 90, 180, or 270 degrees" },
+    { name: "Delete Pages", href: "/delete-pdf-pages", desc: "Remove unwanted pages from documents" },
     { name: "Reorder Pages", href: "#", desc: "Drag and drop to arrange pages" },
   ];
 
