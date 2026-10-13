@@ -4,14 +4,14 @@ import Link from "next/link";
 import { FileText, ShieldAlert } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service - Free Client-Side Utilities | GoPDF",
+  title: "Terms of Service – Free Client-Side Utilities",
   description:
     "Terms of Service for GoPDF: Free client-side document utilities, user responsibilities, and guidelines.",
   alternates: {
     canonical: "https://gopdf.tech/terms/",
   },
   openGraph: {
-    title: "Terms of Service - Free Client-Side Utilities | GoPDF",
+    title: "Terms of Service – Free Client-Side Utilities | GoPDF",
     description: "Terms of Service and usage guidelines for GoPDF client-side utilities.",
     url: "https://gopdf.tech/terms/",
     siteName: "GoPDF",

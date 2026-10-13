@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Reorder PDF Pages Online - Rearrange Pages for Free & 100% Private",
+  title: "Reorder PDF Pages – Organize & Sort PDF Free",
   description:
-    "Drag and drop to rearrange PDF pages in custom order. Visually rotate or delete unwanted pages in the same workspace. 100% free with zero server uploads.",
-  keywords: [
-    "reorder PDF pages",
-    "rearrange PDF pages",
-    "reorder PDF online",
-    "change PDF page order",
-    "organize PDF pages",
-    "client-side PDF reorder",
-    "drag and drop PDF pages",
-    "GoPDF reorder",
-  ],
+    "Rearrange PDF pages visually with drag-and-drop. Change page sequence, rotate or delete sheets directly in your browser. 100% free & private.",
   alternates: {
     canonical: "https://gopdf.tech/reorder-pdf-pages/",
   },
   openGraph: {
-    title: "Reorder PDF Pages Online - Rearrange Pages for Free & 100% Private | GoPDF",
+    title: "Reorder PDF Pages – Organize & Sort PDF Free | GoPDF",
     description:
       "Drag and drop to rearrange PDF pages in custom sequence with live visual thumbnails. 100% client-side with zero server uploads.",
     url: "https://gopdf.tech/reorder-pdf-pages/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Reorder PDF Pages Tool - Rearrange PDF pages visually with drag and drop",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reorder PDF Pages Online - Rearrange Pages for Free | GoPDF",
+    title: "Reorder PDF Pages – Organize & Sort PDF Free | GoPDF",
     description:
       "Rearrange PDF page sequence with smooth drag-and-drop. 100% in-browser processing.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -79,6 +78,17 @@ export default function ReorderPdfPagesLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Reorder PDF Pages"
+        description="Rearrange and organize PDF pages visually with drag-and-drop in your browser with zero server uploads."
+        url="https://gopdf.tech/reorder-pdf-pages/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Reorder PDF Pages", item: "https://gopdf.tech/reorder-pdf-pages/" },
+        ]}
+      />
       <FaqJsonLd faqs={REORDER_FAQS} />
       <HowToJsonLd
         name="How to Reorder PDF Pages Online"

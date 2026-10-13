@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Edit PDF Online Free - Click, Type & Delete Text Client-Side",
+  title: "Edit PDF Online – Edit Existing Text Free",
   description:
-    "Edit existing text directly in your PDF documents. Click, type, delete, and add new text with matching fonts, sizes, and coordinates. 100% private in-browser editing.",
-  keywords: [
-    "edit PDF",
-    "edit PDF text online",
-    "free PDF text editor",
-    "change text in PDF",
-    "delete text in PDF",
-    "type in PDF online",
-    "client-side PDF editor",
-    "GoPDF text editor",
-  ],
+    "Edit existing PDF text directly in your browser. Modify words, type new text, and delete sentences with matching fonts and zero cloud uploads.",
   alternates: {
     canonical: "https://gopdf.tech/edit-pdf/",
   },
   openGraph: {
-    title: "Edit PDF Online Free - Click, Type & Delete Text Client-Side | GoPDF",
+    title: "Edit PDF Online – Edit Existing Text Free | GoPDF",
     description:
       "Edit existing text in your PDF directly in your browser. Matching fonts, sizes, and colors with zero server uploads.",
     url: "https://gopdf.tech/edit-pdf/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Edit PDF Tool - Edit existing text in PDF files privately",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Edit PDF Text Online Free - 100% Client-Side | GoPDF",
+    title: "Edit PDF Online – Edit Existing Text Free | GoPDF",
     description:
       "Click to edit, replace, or delete existing PDF text with matching fonts directly in your browser.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -79,6 +78,17 @@ export default function EditPdfLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Edit PDF"
+        description="Edit existing text in PDF documents online in your browser with zero server uploads."
+        url="https://gopdf.tech/edit-pdf/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Edit PDF", item: "https://gopdf.tech/edit-pdf/" },
+        ]}
+      />
       <FaqJsonLd faqs={EDIT_FAQS} />
       <HowToJsonLd
         name="How to Edit PDF Text Online with GoPDF"

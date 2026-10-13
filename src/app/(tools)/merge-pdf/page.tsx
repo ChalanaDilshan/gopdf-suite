@@ -31,6 +31,9 @@ const HowItWorksAndFaq = dynamic(
   { ssr: true }
 );
 
+import { ToolContentGuide } from "@/components/seo/ToolContentGuide";
+import { MERGE_TOOL_GUIDE } from "@/lib/toolGuides";
+
 export default function MergePdfPage() {
   const [files, setFiles] = useState<UploadedPdfFile[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
@@ -376,6 +379,9 @@ export default function MergePdfPage() {
 
         {/* Bottom: How It Works & FAQs */}
         <HowItWorksAndFaq />
+
+        {/* 300-700 Words Helpful Content Guide & Pro Tips */}
+        <ToolContentGuide {...MERGE_TOOL_GUIDE} />
       </main>
 
       {/* Mobile sticky bottom merge CTA — visible only on mobile when files ready */}

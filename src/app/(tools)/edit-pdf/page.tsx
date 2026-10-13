@@ -29,6 +29,8 @@ import { usePdfTextLayer, EditableTextBlock } from "@/hooks/usePdfTextLayer";
 import { exportEditedPdf } from "@/lib/pdf/exportEditedPdf";
 import { getTransferredFiles } from "@/lib/fileTransfer";
 import { formatBytes, truncateFileName } from "@/lib/utils";
+import { ToolContentGuide } from "@/components/seo/ToolContentGuide";
+import { EDIT_TOOL_GUIDE } from "@/lib/toolGuides";
 
 export default function EditPdfPage() {
   // Document state
@@ -309,8 +311,8 @@ export default function EditPdfPage() {
     <div className="flex flex-col h-screen w-full overflow-hidden bg-slate-100 dark:bg-[#0b0f19]">
       {/* State A: File Dropzone (No File Loaded Yet) */}
       {!selectedFile ? (
-        <div className="flex-1 overflow-y-auto p-4 sm:p-8 flex flex-col items-center justify-center">
-          <div className="w-full max-w-2xl space-y-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8 flex flex-col items-center">
+          <div className="w-full max-w-4xl space-y-6">
             <div className="text-center space-y-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800/80 text-xs font-bold text-red-600 dark:text-red-400 uppercase tracking-widest">
                 <Type className="h-3.5 w-3.5" />
@@ -339,6 +341,11 @@ export default function EditPdfPage() {
                 <Sparkles className="h-4 w-4 text-amber-500" />
                 <span>Try with Sample Invoice Document</span>
               </button>
+            </div>
+
+            {/* 300-700 Words Helpful Content Guide & Pro Tips */}
+            <div className="w-full max-w-4xl pt-6">
+              <ToolContentGuide {...EDIT_TOOL_GUIDE} />
             </div>
           </div>
         </div>

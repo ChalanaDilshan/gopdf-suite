@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { WebApplicationJsonLd, FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
+import { WebApplicationJsonLd, FaqJsonLd, HowToJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SmartDropzone } from "@/components/home/SmartDropzone";
 import { BentoToolsGrid } from "@/components/home/BentoToolsGrid";
 import { PrivacyComparison } from "@/components/home/PrivacyComparison";
@@ -7,35 +7,25 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ShieldCheck, HelpCircle, Sparkles, FileText, Lock, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "GoPDF - 100% Client-Side PDF Utilities | Merge, Split, Rotate & Delete",
+  title: {
+    absolute: "GoPDF – Free & Private Client-Side PDF Tools",
+  },
   description:
-    "Free, private, zero-upload PDF tools. Merge multiple files, split pages, rotate 90/180/270 degrees, and delete unwanted pages locally in your web browser.",
-  keywords: [
-    "PDF tools",
-    "merge PDF",
-    "split PDF",
-    "rotate PDF",
-    "delete PDF pages",
-    "client-side PDF editor",
-    "free PDF utilities",
-    "private PDF converter",
-    "no upload PDF tools",
-    "GoPDF",
-  ],
+    "100% private in-browser PDF utilities. Merge, split, compress, rotate, edit and organize PDF files locally with zero server uploads.",
   alternates: {
     canonical: "https://gopdf.tech/",
   },
   openGraph: {
-    title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
+    title: "GoPDF – Free & Private Client-Side PDF Tools",
     description:
-      "Combine, split, rotate, and edit PDF documents directly in your browser. 100% free with zero server uploads.",
+      "Process, merge, split, compress, and edit PDF documents locally in your browser. 100% free with zero cloud uploads.",
     url: "https://gopdf.tech/",
     siteName: "GoPDF",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GoPDF - 100% Client-Side PDF Utilities",
+    title: "GoPDF – Free & Private Client-Side PDF Tools",
     description:
       "Process PDF files right in your browser with zero server uploads and zero wait time.",
   },
@@ -94,6 +84,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-indigo-500 selection:text-white transition-colors duration-150">
       {/* Schema.org Structured Data */}
       <WebApplicationJsonLd />
+      <BreadcrumbJsonLd items={[{ name: "Home", item: "https://gopdf.tech/" }]} />
       <FaqJsonLd faqs={HOME_FAQS} />
       <HowToJsonLd
         name="How to Process PDF Documents Securely"

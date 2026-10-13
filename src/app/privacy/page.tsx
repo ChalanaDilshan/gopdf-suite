@@ -4,14 +4,14 @@ import Link from "next/link";
 import { ShieldCheck, Lock, EyeOff, ServerOff, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - 100% Client-Side Guarantee | GoPDF",
+  title: "Privacy Policy – 100% Client-Side Guarantee",
   description:
     "GoPDF Privacy Policy: We do not collect, store, transmit, or process your files on any remote server. Read our complete zero-data privacy commitment.",
   alternates: {
     canonical: "https://gopdf.tech/privacy/",
   },
   openGraph: {
-    title: "Privacy Policy - 100% Client-Side Guarantee | GoPDF",
+    title: "Privacy Policy – 100% Client-Side Guarantee | GoPDF",
     description:
       "GoPDF Privacy Policy: 100% client-side document processing with zero server uploads and zero tracking.",
     url: "https://gopdf.tech/privacy/",

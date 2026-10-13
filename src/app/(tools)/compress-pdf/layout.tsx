@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Compress PDF Online - Reduce File Size for Free & 100% Private",
+  title: "Compress PDF Online – Reduce File Size Free",
   description:
-    "Compress PDF documents directly in your browser. Reduce file size up to 70% with zero server uploads, zero quality loss, and instant client-side processing.",
-  keywords: [
-    "compress PDF",
-    "compress PDF online free",
-    "reduce PDF file size",
-    "shrink PDF online",
-    "client-side PDF compressor",
-    "compress PDF without upload",
-    "compress PDF for email",
-    "GoPDF compress",
-  ],
+    "Compress PDF files directly in your browser. Reduce file size up to 70% with zero server uploads and sharp vector text. 100% free and private.",
   alternates: {
     canonical: "https://gopdf.tech/compress-pdf/",
   },
   openGraph: {
-    title: "Compress PDF Online - Reduce File Size for Free & 100% Private | GoPDF",
+    title: "Compress PDF Online – Reduce File Size Free | GoPDF",
     description:
       "Compress PDF files directly in your web browser. Reduce file size up to 70% with zero server uploads.",
     url: "https://gopdf.tech/compress-pdf/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Compress PDF Tool - Reduce PDF file size online privately",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Compress PDF Online - Reduce File Size for Free | GoPDF",
+    title: "Compress PDF Online – Reduce File Size Free | GoPDF",
     description:
       "Compress PDF files with zero cloud uploads. 100% client-side memory execution.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -79,6 +78,17 @@ export default function CompressPdfLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Compress PDF"
+        description="Compress PDF documents online in your browser. Reduce file size up to 70% with zero server uploads."
+        url="https://gopdf.tech/compress-pdf/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Compress PDF", item: "https://gopdf.tech/compress-pdf/" },
+        ]}
+      />
       <FaqJsonLd faqs={COMPRESS_FAQS} />
       <HowToJsonLd
         name="How to Compress PDF Files Online for Free"

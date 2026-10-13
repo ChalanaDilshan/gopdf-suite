@@ -74,6 +74,8 @@ const SEO_CARDS = [
   },
 ];
 
+import { DELETE_TOOL_GUIDE } from "@/lib/toolGuides";
+
 export default function DeletePdfPagesPage() {
   return (
     <OrganizeWorkspace
@@ -86,9 +88,7 @@ export default function DeletePdfPagesPage() {
       dropzoneSubtitle="Select a PDF document to preview and remove unwanted pages"
       steps={HOW_TO_STEPS}
       faqItems={FAQ_ITEMS}
-      seoHeading="How to Remove Pages from a PDF Safely for Free"
-      seoDescription="Need to eliminate blank pages, duplicate sheets, or sensitive annexes from a PDF? GoPDF provides an interactive, visual interface where you can inspect every page thumbnail and delete unwanted sheets with confidence. Unlike server-based PDF tools, your files never leave your computer."
-      seoCards={SEO_CARDS}
+      contentGuide={DELETE_TOOL_GUIDE}
       customExportLabel="Save & Download Clean PDF"
       defaultFileNameSuffix="-deleted-pages.pdf"
     />

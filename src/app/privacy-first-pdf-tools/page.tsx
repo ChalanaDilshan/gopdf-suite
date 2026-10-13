@@ -16,37 +16,36 @@ import {
   Briefcase,
   AlertTriangle
 } from "lucide-react";
-import { FaqJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Why Client-Side PDF Processing is the Safest Choice for Confidential Documents | GoPDF",
+  title: "Why Client-Side PDF Processing is the Safest Choice",
   description:
-    "Discover why zero-upload, client-side PDF processing is the only safe solution for sensitive legal, financial, and healthcare documents. HIPAA, GDPR, and enterprise privacy compliance guaranteed.",
-  keywords: [
-    "HIPAA compliant PDF merger",
-    "how to merge sensitive PDF files securely",
-    "offline browser PDF tools",
-    "zero upload PDF editor",
-    "private PDF merger",
-    "client-side PDF security",
-    "confidential document processing",
-    "GDPR compliant PDF tool",
-  ],
+    "Discover why zero-upload client-side PDF processing is the safest solution for sensitive legal & financial documents. 100% private in-browser execution.",
   alternates: {
     canonical: "https://gopdf.tech/privacy-first-pdf-tools/",
   },
   openGraph: {
-    title: "Why Client-Side PDF Processing is the Safest Choice for Confidential Documents | GoPDF",
+    title: "Why Client-Side PDF Processing is the Safest Choice | GoPDF",
     description:
       "Explore why zero-upload in-browser PDF utilities guarantee 100% data security for sensitive and confidential documents.",
     url: "https://gopdf.tech/privacy-first-pdf-tools/",
     siteName: "GoPDF",
     type: "article",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Security Architecture - Zero-Cloud Client-Side PDF Processing",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Why Client-Side PDF Processing is the Safest Choice for Confidential Documents",
-    description: "Zero server uploads. 100% browser sandbox security for legal, financial, and healthcare documents.",
+    title: "Why Client-Side PDF Processing is the Safest Choice | GoPDF",
+    description: "Zero server uploads. 100% browser sandbox security for sensitive documents.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -76,6 +75,12 @@ const SECURITY_FAQS = [
 export default function PrivacyFirstPage() {
   return (
     <div className="bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 min-h-screen">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Privacy First PDF Tools", item: "https://gopdf.tech/privacy-first-pdf-tools/" },
+        ]}
+      />
       <FaqJsonLd faqs={SECURITY_FAQS} />
 
       {/* Hero Section */}

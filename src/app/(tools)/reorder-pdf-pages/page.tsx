@@ -74,6 +74,8 @@ const SEO_CARDS = [
   },
 ];
 
+import { REORDER_TOOL_GUIDE } from "@/lib/toolGuides";
+
 export default function ReorderPdfPagesPage() {
   return (
     <OrganizeWorkspace
@@ -86,9 +88,7 @@ export default function ReorderPdfPagesPage() {
       dropzoneSubtitle="Select a PDF document to preview and drag pages into your desired sequence"
       steps={HOW_TO_STEPS}
       faqItems={FAQ_ITEMS}
-      seoHeading="How to Rearrange PDF Pages Online for Free"
-      seoDescription="Need to fix the order of scanned contracts, move appendices to the back, or re-sequence report chapters? GoPDF gives you an interactive, visual page studio where you can drag and drop pages into any custom sequence without uploading files to remote servers."
-      seoCards={SEO_CARDS}
+      contentGuide={REORDER_TOOL_GUIDE}
       customExportLabel="Save & Download Reordered PDF"
       defaultFileNameSuffix="-reordered.pdf"
     />

@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Rotate PDF Online - Free, Permanent & 100% Private",
+  title: "Rotate PDF – Permanently Rotate Pages Free",
   description:
-    "Rotate PDF pages 90, 180, or 270 degrees clockwise or counter-clockwise. Instant visual preview, zero file uploads, 100% free client-side processing.",
-  keywords: [
-    "rotate PDF",
-    "rotate PDF pages online",
-    "rotate PDF permanently",
-    "free PDF rotator",
-    "turn PDF pages",
-    "client-side rotate PDF",
-    "rotate PDF 90 degrees",
-    "GoPDF rotate",
-  ],
+    "Rotate individual pages or entire PDF files 90, 180, or 270 degrees permanently in your browser. 100% private with no upload.",
   alternates: {
     canonical: "https://gopdf.tech/rotate-pdf/",
   },
   openGraph: {
-    title: "Rotate PDF Online - Free, Permanent & 100% Private | GoPDF",
+    title: "Rotate PDF – Permanently Rotate Pages Free | GoPDF",
     description:
       "Rotate PDF pages clockwise or counter-clockwise with instant visual feedback. 100% client-side with zero server uploads.",
     url: "https://gopdf.tech/rotate-pdf/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Rotate PDF Tool - Rotate PDF pages permanently in browser",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rotate PDF Online - Free, Permanent & 100% Private | GoPDF",
+    title: "Rotate PDF – Permanently Rotate Pages Free | GoPDF",
     description:
       "Rotate PDF pages with instant 60fps visual previews. Zero server uploads.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -79,6 +78,17 @@ export default function RotatePdfLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Rotate PDF"
+        description="Rotate PDF pages online permanently in your browser with zero server uploads."
+        url="https://gopdf.tech/rotate-pdf/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Rotate PDF", item: "https://gopdf.tech/rotate-pdf/" },
+        ]}
+      />
       <FaqJsonLd faqs={ROTATE_FAQS} />
       <HowToJsonLd
         name="How to Rotate PDF Pages Online"

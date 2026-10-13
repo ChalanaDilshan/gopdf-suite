@@ -28,6 +28,7 @@ import { usePdfThumbnails } from "@/hooks/usePdfThumbnails";
 import { usePdfSplitter } from "@/hooks/usePdfSplitter";
 import { formatBytes, truncateFileName } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
+import { SPLIT_TOOL_GUIDE } from "@/lib/toolGuides";
 
 const HOW_TO_STEPS: HowToStep[] = [
   {
@@ -141,6 +142,7 @@ export default function SplitPdfPage() {
       toolSlug="split-pdf"
       steps={HOW_TO_STEPS}
       faqItems={FAQ_ITEMS}
+      contentGuide={SPLIT_TOOL_GUIDE}
     >
       <div className="space-y-6">
         {/* State 1: Dropzone if no file selected */}
@@ -312,60 +314,7 @@ export default function SplitPdfPage() {
           </div>
         )}
 
-        {/* Technical Guide & SEO Text Block */}
-        <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                Instant Visual Splitting
-              </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                How to Extract Pages from a PDF for Free
-              </h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                GoPDF offers an interactive, visually verified way to extract pages from any PDF document. Instead of guessing page numbers in a blind form, our client-side engine renders high-fidelity previews directly on your device, allowing you to select and reorder pages with total certainty.
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Cpu className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  HTML5 Canvas Previews
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Offscreen canvas rendering generates crisp JPEG previews in real time without sending bytes to cloud servers.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Lock className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Strict Data Protection
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Confidential agreements, bank statements, and tax receipts remain 100% private in local device RAM.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Layers className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Arbitrary Page Ranges
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Extract complex patterns such as odd/even pages or syntax like 1-3, 5, 8-10 with automated synchronization.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </ToolLayout>
   );

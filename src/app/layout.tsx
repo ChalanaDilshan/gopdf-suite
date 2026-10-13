@@ -26,21 +26,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gopdf.tech"),
   title: {
     template: "%s | GoPDF",
-    default: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
+    default: "GoPDF – Free & Private Client-Side PDF Tools",
   },
   description:
     "Lightning-fast, private client-side PDF utilities. Merge, split, compress, and edit PDF documents directly in your browser without uploading files to remote servers.",
-  keywords: [
-    "gopdf",
-    "GoPDF",
-    "PDF tools",
-    "merge PDF",
-    "split PDF",
-    "compress PDF",
-    "client-side PDF",
-    "secure PDF editor",
-    "zero upload PDF",
-  ],
   authors: [{ name: "GoPDF Team" }],
   creator: "GoPDF",
   publisher: "GoPDF",
@@ -61,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://gopdf.tech/",
     siteName: "GoPDF",
-    title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
+    title: "GoPDF – Free & Private Client-Side PDF Tools",
     description:
       "Merge, split, and edit PDF files in your browser with zero server uploads and total privacy.",
     images: [
@@ -75,7 +64,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GoPDF - 100% Client-Side PDF Utilities & Micro-Tools",
+    title: "GoPDF – Free & Private Client-Side PDF Tools",
     description:
       "Merge, split, and edit PDF files in your browser with zero server uploads and total privacy.",
     images: ["https://gopdf.tech/og-image.png"],

@@ -74,6 +74,8 @@ const SEO_CARDS = [
   },
 ];
 
+import { ROTATE_TOOL_GUIDE } from "@/lib/toolGuides";
+
 export default function RotatePdfPage() {
   return (
     <OrganizeWorkspace
@@ -86,9 +88,7 @@ export default function RotatePdfPage() {
       dropzoneSubtitle="Select a PDF document to preview and adjust page orientation"
       steps={HOW_TO_STEPS}
       faqItems={FAQ_ITEMS}
-      seoHeading="How to Rotate PDF Pages Permanently for Free"
-      seoDescription="Unlike basic PDF viewers that only rotate page views temporarily on your screen, GoPDF modifies the underlying PDF geometry using pdf-lib in your browser. When you save and share the file, pages remain in your desired orientation across Adobe Acrobat, Google Chrome, Apple Preview, and print drivers."
-      seoCards={SEO_CARDS}
+      contentGuide={ROTATE_TOOL_GUIDE}
       customExportLabel="Save & Download Rotated PDF"
       defaultFileNameSuffix="-rotated.pdf"
     />

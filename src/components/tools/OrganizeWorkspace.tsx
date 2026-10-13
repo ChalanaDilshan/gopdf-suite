@@ -28,6 +28,8 @@ const OrganizeGrid = dynamic(
   { ssr: false }
 );
 
+import { ToolContentGuideProps } from "@/components/seo/ToolContentGuide";
+
 export interface OrganizeWorkspaceProps {
   toolSlug: string;
   title: string;
@@ -38,13 +40,14 @@ export interface OrganizeWorkspaceProps {
   dropzoneSubtitle?: string;
   steps: HowToStep[];
   faqItems: FaqItem[];
-  seoHeading: string;
-  seoDescription: string;
+  seoHeading?: string;
+  seoDescription?: string;
   seoCards?: Array<{
     title: string;
     description: string;
     icon: React.ReactNode;
   }>;
+  contentGuide?: ToolContentGuideProps;
   customExportLabel?: string;
   defaultFileNameSuffix?: string;
 }
@@ -81,6 +84,7 @@ export function OrganizeWorkspace({
       icon: <Lock className="h-4 w-4" />,
     },
   ],
+  contentGuide,
   customExportLabel = "Save & Download PDF",
   defaultFileNameSuffix = "-organized.pdf",
 }: OrganizeWorkspaceProps) {
@@ -139,6 +143,7 @@ export function OrganizeWorkspace({
       toolSlug={toolSlug}
       steps={steps}
       faqItems={faqItems}
+      contentGuide={contentGuide}
     >
       <div className="space-y-6">
         {/* State 1: Dropzone when no file is active */}
@@ -308,41 +313,43 @@ export function OrganizeWorkspace({
           </div>
         )}
 
-        {/* Technical SEO & Value Explanation Block */}
-        <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                100% Client-Side Architecture
-              </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                {seoHeading}
-              </h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                {seoDescription}
-              </p>
-            </div>
+        {/* Technical SEO & Value Explanation Block (fallback if no contentGuide) */}
+        {!contentGuide && seoHeading && (
+          <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
+            <div className="max-w-3xl mx-auto space-y-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                  100% Client-Side Architecture
+                </span>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
+                  {seoHeading}
+                </h2>
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  {seoDescription}
+                </p>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {seoCards.map((card, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs"
-                >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                    {card.icon}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {seoCards.map((card, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs"
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
+                      {card.icon}
+                    </div>
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                      {card.description}
+                    </p>
                   </div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                    {card.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </ToolLayout>
   );

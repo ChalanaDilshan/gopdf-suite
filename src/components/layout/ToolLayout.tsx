@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Accordion, AccordionItemData } from "@/components/ui/Accordion";
 import { SoftwareApplicationJsonLd, FaqPageJsonLd } from "@/components/seo/JsonLd";
+import { ToolContentGuide, ToolContentGuideProps } from "@/components/seo/ToolContentGuide";
 import { HowToStep, FaqItem } from "@/types";
 
 export interface ToolLayoutProps {
@@ -27,6 +28,7 @@ export interface ToolLayoutProps {
   howToSlot?: React.ReactNode; // Custom slot override for how-to guide
   faqItems?: FaqItem[];
   faqSlot?: React.ReactNode; // Custom slot override for FAQ
+  contentGuide?: ToolContentGuideProps;
   features?: Array<{
     title: string;
     description: string;
@@ -61,6 +63,7 @@ export function ToolLayout({
   howToSlot,
   faqItems = [],
   faqSlot,
+  contentGuide,
   features,
 }: ToolLayoutProps) {
   const currentUrl = typeof window !== "undefined" ? window.location.href : `https://gopdf.tech/${toolSlug}`;
@@ -162,45 +165,51 @@ export function ToolLayout({
           </div>
         </section>
 
-        {/* 3-Step "How-to Guide" Slot */}
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="text-center mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-              Simple Workflow
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
-              How to use this tool in 3 easy steps
-            </h2>
+        {/* Rich SEO Content Guide Slot or 3-Step Guide */}
+        {contentGuide ? (
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <ToolContentGuide {...contentGuide} />
           </div>
-
-          {howToSlot ? (
-            howToSlot
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {steps.map((step) => (
-                <div
-                  key={step.stepNumber}
-                  className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all group"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
-                      {step.stepNumber}
-                    </span>
-                    <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
-                      Step {step.stepNumber}
-                    </span>
-                  </div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
+        ) : (
+          <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+                Simple Workflow
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
+                How to use this tool in 3 easy steps
+              </h2>
             </div>
-          )}
-        </section>
+
+            {howToSlot ? (
+              howToSlot
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {steps.map((step) => (
+                  <div
+                    key={step.stepNumber}
+                    className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all group"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                        {step.stepNumber}
+                      </span>
+                      <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                        Step {step.stepNumber}
+                      </span>
+                    </div>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
 
         {/* FAQ Section Slot */}
         <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-20">

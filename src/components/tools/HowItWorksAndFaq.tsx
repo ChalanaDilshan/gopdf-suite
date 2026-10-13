@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { 
   Upload, 
   ListOrdered, 
@@ -133,12 +134,12 @@ export function HowItWorksAndFaq() {
           <h3 className="text-base font-bold text-slate-900 dark:text-white">
             Frequently Asked Questions
           </h3>
-          <a
-            href="#faq"
+          <Link
+            href="/#faq"
             className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
           >
             View all FAQs <ArrowRight className="h-3 w-3" />
-          </a>
+          </Link>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
           Everything you need to know about our PDF merger.
@@ -165,11 +166,14 @@ export function HowItWorksAndFaq() {
                   />
                 </button>
 
-                {isOpen && (
-                  <div className="pt-1.5 pb-1 text-xs text-slate-500 dark:text-slate-400 leading-relaxed animate-fadeIn">
-                    {faq.answer}
-                  </div>
-                )}
+                <div
+                  className={cn(
+                    "pt-1.5 pb-1 text-xs text-slate-500 dark:text-slate-400 leading-relaxed",
+                    !isOpen && "hidden"
+                  )}
+                >
+                  {faq.answer}
+                </div>
               </div>
             );
           })}

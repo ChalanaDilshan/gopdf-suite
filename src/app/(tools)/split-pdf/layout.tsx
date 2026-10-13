@@ -1,39 +1,37 @@
 import type { Metadata } from "next";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Split PDF Online - Extract Pages for Free & 100% Private",
+  title: "Split PDF – Extract & Separate Pages Free",
   description:
-    "Extract selected pages or separate PDF files into new documents with live visual page thumbnails. 100% client-side, zero server uploads, and instant processing.",
-  keywords: [
-    "split PDF",
-    "extract PDF pages",
-    "separate PDF online",
-    "free PDF splitter",
-    "client-side PDF splitter",
-    "split PDF without upload",
-    "visual PDF page selector",
-    "GoPDF split",
-  ],
+    "Extract pages or split PDF documents into separate files instantly in your browser. 100% private with zero file uploads.",
   alternates: {
     canonical: "https://gopdf.tech/split-pdf/",
   },
   openGraph: {
-    title: "Split PDF Online - Extract Pages for Free & 100% Private | GoPDF",
+    title: "Split PDF – Extract & Separate Pages Free | GoPDF",
     description:
       "Extract selected pages or separate PDF files with live visual page thumbnails directly in your browser.",
     url: "https://gopdf.tech/split-pdf/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Split PDF Tool - Extract pages from PDF documents privately",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Split PDF Online - Extract Pages for Free & 100% Private | GoPDF",
+    title: "Split PDF – Extract & Separate Pages Free | GoPDF",
     description:
       "Extract selected pages from PDF files with visual previews. 100% client-side.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
-
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
 
 const SPLIT_FAQS = [
   {
@@ -76,6 +74,17 @@ export default function SplitPdfLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Split PDF"
+        description="Split and extract PDF pages online privately in your browser with zero server uploads."
+        url="https://gopdf.tech/split-pdf/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Split PDF", item: "https://gopdf.tech/split-pdf/" },
+        ]}
+      />
       <FaqJsonLd faqs={SPLIT_FAQS} />
       <HowToJsonLd
         name="How to Split PDF Pages Online"

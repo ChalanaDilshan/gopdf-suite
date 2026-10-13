@@ -1,39 +1,37 @@
 import type { Metadata } from "next";
+import { FaqJsonLd, HowToJsonLd, SoftwareApplicationJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Merge PDF Files Online - Free, Fast & 100% Private",
+  title: "Merge PDF Online – Free, Private, No Upload",
   description:
-    "Combine multiple PDF documents into a single document in seconds. 100% free, zero server uploads, no file limits, and completely private directly in your web browser.",
-  keywords: [
-    "merge PDF",
-    "combine PDF online",
-    "join PDF files",
-    "free PDF merger",
-    "client-side PDF merger",
-    "secure PDF joiner",
-    "merge PDF without upload",
-    "GoPDF merge",
-  ],
+    "Combine multiple PDF files into one in seconds. 100% private, free with no watermark, and zero server uploads directly in your browser.",
   alternates: {
     canonical: "https://gopdf.tech/merge-pdf/",
   },
   openGraph: {
-    title: "Merge PDF Files Online - Free, Fast & 100% Private | GoPDF",
+    title: "Merge PDF Online – Free, Private, No Upload | GoPDF",
     description:
       "Combine multiple PDF documents into one cleanly formatted file with zero server uploads and total privacy.",
     url: "https://gopdf.tech/merge-pdf/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Merge PDF Tool - Combine PDF files online privately with zero uploads",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Merge PDF Files Online - Free, Fast & 100% Private | GoPDF",
+    title: "Merge PDF Online – Free, Private, No Upload | GoPDF",
     description:
       "Combine multiple PDF files into one in seconds. 100% client-side with zero server uploads.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
-
-import { FaqJsonLd, HowToJsonLd } from "@/components/seo/JsonLd";
 
 const MERGE_FAQS = [
   {
@@ -80,6 +78,17 @@ export default function MergePdfLayout({
 }) {
   return (
     <>
+      <SoftwareApplicationJsonLd
+        name="GoPDF Merge PDF"
+        description="Merge PDF files online privately in your browser with zero server uploads."
+        url="https://gopdf.tech/merge-pdf/"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Merge PDF", item: "https://gopdf.tech/merge-pdf/" },
+        ]}
+      />
       <FaqJsonLd faqs={MERGE_FAQS} />
       <HowToJsonLd
         name="How to Merge PDF Files Online"

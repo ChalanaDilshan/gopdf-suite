@@ -22,6 +22,7 @@ import { CompressControls } from "@/components/tools/CompressControls";
 import { usePdfCompressor, CompressionLevel } from "@/hooks/usePdfCompressor";
 import { formatBytes, truncateFileName } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
+import { COMPRESS_TOOL_GUIDE } from "@/lib/toolGuides";
 
 const HOW_TO_STEPS: HowToStep[] = [
   {
@@ -123,6 +124,7 @@ export default function CompressPdfPage() {
       toolSlug="compress-pdf"
       steps={HOW_TO_STEPS}
       faqItems={FAQ_ITEMS}
+      contentGuide={COMPRESS_TOOL_GUIDE}
     >
       <div className="space-y-6">
         {/* State 1: Dropzone when no file is active */}
@@ -291,60 +293,6 @@ export default function CompressPdfPage() {
           </div>
         )}
 
-        {/* Technical SEO & Value Explanation Section */}
-        <section className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                Client-Side FlateDecode Engine
-              </span>
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
-                How to Reduce PDF File Size Online Without Cloud Uploads
-              </h2>
-              <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Most online PDF compressors upload your sensitive documents to remote servers in foreign data centers. GoPDF uses WebAssembly, HTML5 Offscreen Canvas, and pdf-lib directly inside your web browser. Embedded high-DPI images are downscaled into optimized FlateDecode object streams entirely within local device RAM, giving you fast compression with 100% privacy.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Cpu className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  FlateDecode Stream Optimization
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Packs cross-reference tables and object streams into compressed containers for compact storage.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Lock className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Zero Network Footprint
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Confidential legal records, contracts, and medical statements never leave your device memory.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 p-5 shadow-xs">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 mb-3">
-                  <Zap className="h-4 w-4" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Email Attachment Ready
-                </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Shrink documents down to fit beneath 5MB or 10MB email attachment caps effortlessly.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </ToolLayout>
   );

@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { FaqJsonLd } from "@/components/seo/JsonLd";
+import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "GoPDF Features - Merge, Split, Rotate, Delete & Reorder Client-Side",
+  title: "GoPDF Features – Complete Client-Side PDF Tools",
   description:
-    "Explore all GoPDF features: merge multiple files, extract page ranges, rotate 90/180/270 degrees, delete unwanted sheets, and drag-and-drop reorder with 100% in-browser privacy.",
-  keywords: [
-    "PDF tools features",
-    "client-side PDF merger",
-    "split PDF ranges",
-    "rotate PDF 60fps",
-    "delete PDF pages undo",
-    "drag and drop reorder PDF",
-    "free private PDF editor",
-    "GoPDF features",
-  ],
+    "Explore all GoPDF features: merge multiple files, extract page ranges, rotate, delete sheets, and reorder pages with 100% in-browser privacy.",
   alternates: {
     canonical: "https://gopdf.tech/features/",
   },
   openGraph: {
-    title: "GoPDF Features - Complete In-Browser PDF Suite",
+    title: "GoPDF Features – Complete Client-Side PDF Tools | GoPDF",
     description:
       "Explore GoPDF's 100% client-side PDF capabilities: merge, split, rotate, delete, and reorder pages with zero cloud uploads.",
     url: "https://gopdf.tech/features/",
     siteName: "GoPDF",
     type: "website",
+    images: [
+      {
+        url: "https://gopdf.tech/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GoPDF Features - Client-Side PDF manipulation capabilities",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GoPDF Features - Complete Client-Side PDF Tools",
+    title: "GoPDF Features – Complete Client-Side PDF Tools | GoPDF",
     description:
       "Merge, split, rotate, delete, and reorder PDF pages directly in your browser. 100% private, 0s latency.",
+    images: ["https://gopdf.tech/og-image.png"],
   },
 };
 
@@ -64,6 +63,12 @@ export default function FeaturesLayout({
 }) {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "https://gopdf.tech/" },
+          { name: "Features", item: "https://gopdf.tech/features/" },
+        ]}
+      />
       <FaqJsonLd faqs={FEATURES_FAQS} />
       {children}
     </>
