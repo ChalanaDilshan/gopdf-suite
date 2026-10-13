@@ -14,7 +14,8 @@ import {
   Sparkles,
   Lock,
   Layers,
-  Cpu
+  Cpu,
+  Type
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -39,124 +40,133 @@ export function BentoToolsGrid() {
 
       {/* Bento Grid Container */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 sm:gap-6">
-        {/* Bento 1: Merge PDF (6 Columns on LG) */}
+        {/* Bento 1: Merge PDF (4 Columns on LG) */}
         <Link
           href="/merge-pdf"
-          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-br from-white via-indigo-50/20 to-indigo-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-indigo-100 dark:border-indigo-950/80 bg-gradient-to-br from-white via-indigo-50/20 to-indigo-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-800 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Ambient Glow */}
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
-                <FileStack className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+                <FileStack className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-3 py-1 text-xs font-bold border border-indigo-200 dark:border-indigo-800">
-                Most Popular
+              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-2.5 py-0.5 text-xs font-bold border border-indigo-200 dark:border-indigo-800">
+                Popular
               </span>
             </div>
 
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-              Merge PDF Files
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              Merge PDF
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
-              Combine multiple PDF documents into a clean, unified file with interactive drag-and-drop reordering. Zero page limits, infinite merges.
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Combine multiple PDF documents into a clean, unified file with drag-and-drop.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-6 py-4 flex items-center justify-center">
-            <div className="flex items-center -space-x-3 group-hover:space-x-1 transition-all duration-300">
-              <div className="w-16 h-20 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-1.5 flex flex-col justify-between -rotate-6 group-hover:rotate-0 transition-transform">
-                <span className="text-[10px] font-bold text-indigo-600">Doc 1</span>
-                <div className="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full" />
-              </div>
-              <div className="w-16 h-20 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-1.5 flex flex-col justify-between z-10 group-hover:scale-105 transition-transform">
-                <span className="text-[10px] font-bold text-indigo-600">Doc 2</span>
-                <div className="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full" />
-              </div>
-              <div className="w-16 h-20 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-1.5 flex flex-col justify-between rotate-6 group-hover:rotate-0 transition-transform">
-                <span className="text-[10px] font-bold text-indigo-600">Doc 3</span>
-                <div className="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full" />
-              </div>
-              <div className="pl-5 text-indigo-600 dark:text-indigo-400 font-black text-lg">
-                ➔
-              </div>
-              <div className="w-20 h-24 rounded-lg bg-indigo-600 text-white shadow-md p-2 flex flex-col justify-between">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold">Combined</span>
-                  <Check className="h-3 w-3 stroke-[3]" />
-                </div>
-                <div className="space-y-1">
-                  <div className="w-full h-1 bg-white/40 rounded-full" />
-                  <div className="w-3/4 h-1 bg-white/40 rounded-full" />
-                </div>
-              </div>
+          <div className="my-5 py-2 flex items-center justify-center gap-2">
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+              <span className="text-[9px] font-bold text-indigo-600">Doc 1</span>
+              <div className="w-full h-0.5 bg-slate-200 dark:bg-slate-700 rounded-full" />
+            </div>
+            <span className="text-indigo-600 dark:text-indigo-400 font-black text-xs">+</span>
+            <div className="w-10 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex flex-col justify-between">
+              <span className="text-[9px] font-bold text-indigo-600">Doc 2</span>
+              <div className="w-full h-0.5 bg-slate-200 dark:bg-slate-700 rounded-full" />
+            </div>
+            <span className="text-indigo-600 dark:text-indigo-400 font-black text-xs">➔</span>
+            <div className="w-12 h-16 rounded-lg bg-indigo-600 text-white p-1 flex flex-col justify-between shadow-xs">
+              <span className="text-[9px] font-bold">Merge ✓</span>
+              <div className="w-full h-0.5 bg-white/40 rounded-full" />
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-bold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
-            <span>Combine Documents</span>
-            <ArrowRight className="h-4 w-4" />
+          <div className="flex items-center gap-1 text-xs font-bold text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform">
+            <span>Combine Files</span>
+            <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>
 
-        {/* Bento 2: Compress PDF (6 Columns on LG) */}
+        {/* Bento 2: Edit PDF Text (4 Columns on LG) */}
+        <Link
+          href="/edit-pdf"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-blue-100 dark:border-blue-950/80 bg-gradient-to-br from-white via-blue-50/20 to-blue-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-800 transition-all duration-300 hover:-translate-y-1"
+        >
+          {/* Ambient Glow */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/30">
+                <Type className="h-5 w-5" />
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2.5 py-0.5 text-xs font-bold border border-blue-200 dark:border-blue-800">
+                Interactive
+              </span>
+            </div>
+
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              Edit PDF Text
+            </h3>
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Click, type, and replace existing text with matching fonts, sizes, and colors.
+            </p>
+          </div>
+
+          {/* Visual Mini Mockup */}
+          <div className="my-5 py-2 flex items-center justify-center gap-2">
+            <div className="w-24 h-14 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1.5 flex flex-col justify-center">
+              <span className="text-[10px] text-slate-400 line-through">Old Price $50</span>
+              <span className="text-[10px] font-bold text-blue-600">New Price $35</span>
+            </div>
+            <span className="text-blue-600 font-bold text-xs">✓</span>
+          </div>
+
+          <div className="flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+            <span>Edit Document</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </div>
+        </Link>
+
+        {/* Bento 3: Compress PDF (4 Columns on LG) */}
         <Link
           href="/compress-pdf"
-          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-violet-100 dark:border-violet-950/80 bg-gradient-to-br from-white via-violet-50/20 to-violet-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-violet-950/40 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-800 transition-all duration-300 hover:-translate-y-1"
+          className="group lg:col-span-4 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-violet-100 dark:border-violet-950/80 bg-gradient-to-br from-white via-violet-50/20 to-violet-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-violet-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-800 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Ambient Glow */}
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
 
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md shadow-violet-600/30">
-                <Zap className="h-6 w-6" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md shadow-violet-600/30">
+                <Zap className="h-5 w-5" />
               </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 px-3 py-1 text-xs font-bold border border-violet-200 dark:border-violet-800">
-                Save up to 70%
+              <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 px-2.5 py-0.5 text-xs font-bold border border-violet-200 dark:border-violet-800">
+                Save 70%
               </span>
             </div>
 
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-              Compress PDF Online
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              Compress PDF
             </h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
-              Shrink bloated files client-side with smart canvas raster downscaling, metadata pruning, and FlateDecode object streams.
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Shrink bloated files client-side with smart canvas raster downscaling and FlateDecode.
             </p>
           </div>
 
           {/* Visual Mini Mockup */}
-          <div className="my-6 py-4 flex items-center justify-center gap-4">
-            <div className="w-24 h-20 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-2 flex flex-col justify-between">
-              <span className="text-[10px] font-semibold text-slate-400">Original</span>
-              <div className="text-center font-black text-slate-700 dark:text-slate-300 text-xs">
-                12.4 MB
-              </div>
-              <span className="text-[9px] text-red-500 font-bold self-center">Heavy</span>
-            </div>
-            <div className="text-violet-600 dark:text-violet-400 font-black text-lg">
-              ➔
-            </div>
-            <div className="w-24 h-20 rounded-xl bg-violet-600 text-white shadow-md p-2 flex flex-col justify-between">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-semibold text-violet-200">Optimized</span>
-                <Check className="h-3 w-3 stroke-[3]" />
-              </div>
-              <div className="text-center font-black text-white text-xs">
-                3.8 MB
-              </div>
-              <span className="text-[9px] bg-white/20 rounded px-1 text-white font-bold self-center">
-                -69% Saved
-              </span>
-            </div>
+          <div className="my-5 py-2 flex items-center justify-center gap-3">
+            <span className="text-[10px] font-semibold text-slate-400">12.4 MB</span>
+            <span className="text-violet-600 font-bold text-xs">➔</span>
+            <span className="text-[10px] font-bold text-white bg-violet-600 px-1.5 py-0.5 rounded-md">3.8 MB (-69%)</span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform">
+          <div className="flex items-center gap-1 text-xs font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform">
             <span>Compress Document</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>
 

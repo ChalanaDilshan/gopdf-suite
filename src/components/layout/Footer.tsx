@@ -40,6 +40,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/edit-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  Edit PDF Text
+                </Link>
+              </li>
+              <li>
                 <Link href="/split-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   Split PDF
                 </Link>

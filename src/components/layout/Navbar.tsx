@@ -20,6 +20,7 @@ export function Navbar() {
 
   const tools = [
     { name: "Merge PDF", href: "/merge-pdf", desc: "Combine multiple PDFs in order" },
+    { name: "Edit PDF", href: "/edit-pdf", desc: "Click, type & replace PDF text" },
     { name: "Split PDF", href: "/split-pdf", desc: "Extract or separate PDF pages" },
     { name: "Compress PDF", href: "/compress-pdf", desc: "Reduce file size without quality loss" },
     { name: "Rotate PDF", href: "/rotate-pdf", desc: "Rotate pages 90, 180, or 270 degrees" },

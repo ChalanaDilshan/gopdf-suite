@@ -7,7 +7,8 @@ import {
   Minimize2, 
   RotateCw, 
   Trash2, 
-  ArrowUpDown 
+  ArrowUpDown,
+  Type 
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +29,14 @@ const TOOLS: ToolItem[] = [
     href: "/merge-pdf",
     icon: FileStack,
     active: true,
+  },
+  {
+    id: "edit",
+    name: "Edit PDF",
+    desc: "Click, type & replace text",
+    href: "/edit-pdf",
+    icon: Type,
+    active: false,
   },
   {
     id: "split",

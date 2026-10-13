@@ -14,7 +14,8 @@ import {
   ArrowRight, 
   X, 
   Layers,
-  Zap
+  Zap,
+  Type
 } from "lucide-react";
 import { setTransferredFiles } from "@/lib/fileTransfer";
 import { formatBytes, truncateFileName, cn } from "@/lib/utils";
@@ -192,8 +193,32 @@ export function SmartDropzone() {
           </div>
 
           {/* Action Selector Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
-            {/* Action 1: Compress PDF */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+            {/* Action 1: Edit PDF Text */}
+            <button
+              type="button"
+              disabled={isNavigating}
+              onClick={() => handleAction("/edit-pdf")}
+              className="group relative flex flex-col justify-between rounded-2xl border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-4 text-left hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+            >
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+                  <Type className="h-5 w-5" />
+                </div>
+                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  Edit PDF Text
+                </h5>
+                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Click, type, and delete existing text in-browser.
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-blue-400">
+                <span>Edit Text Now</span>
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+
+            {/* Action 2: Compress PDF */}
             <button
               type="button"
               disabled={isNavigating}
