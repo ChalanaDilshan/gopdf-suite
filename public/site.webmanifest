@@ -1,0 +1,21 @@
+{
+  "name": "GoPDF",
+  "short_name": "GoPDF",
+  "description": "Lightning-fast, private client-side PDF utilities. Merge, split, compress, and edit PDF documents directly in your browser without uploading files to remote servers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

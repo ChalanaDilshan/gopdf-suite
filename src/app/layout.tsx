@@ -41,10 +41,17 @@ export const metadata: Metadata = {
     canonical: "https://gopdf.tech/",
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -79,10 +86,39 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://gopdf.tech/#website",
+        name: "GoPDF",
+        alternateName: ["GoPDF Tech", "gopdf.tech"],
+        url: "https://gopdf.tech/",
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://gopdf.tech/#organization",
+        name: "GoPDF",
+        url: "https://gopdf.tech/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://gopdf.tech/icon-512.png",
+          width: 512,
+          height: 512,
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <WebApplicationJsonLd />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
