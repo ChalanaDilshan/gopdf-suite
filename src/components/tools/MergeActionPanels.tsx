@@ -11,6 +11,7 @@ import {
   Loader2 
 } from "lucide-react";
 import { formatBytes } from "@/lib/utils";
+import { CompletionNextActions } from "./CompletionNextActions";
 
 export interface MergeActionPanelsProps {
   fileCount: number;
@@ -207,6 +208,13 @@ export function MergeActionPanels({
             <RotateCcw className="h-3.5 w-3.5" />
             <span>Merge Another Document</span>
           </button>
+
+          {/* Quick Chained Actions */}
+          <CompletionNextActions
+            downloadUrl={downloadUrl}
+            fileName={resultStats?.name || "Merged_Document.pdf"}
+            currentTool="merge-pdf"
+          />
         </div>
       )}
     </div>

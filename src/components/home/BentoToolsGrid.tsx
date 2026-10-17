@@ -15,7 +15,8 @@ import {
   Lock,
   Layers,
   Cpu,
-  Type
+  Type,
+  Image as ImageIcon
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -352,6 +353,95 @@ export function BentoToolsGrid() {
 
           <div className="flex items-center gap-1 text-xs font-bold text-sky-600 dark:text-sky-400 group-hover:translate-x-1 transition-transform">
             <span>Rearrange Order</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </div>
+        </Link>
+
+        {/* Bento 7: JPG to PDF (6 Columns on LG) */}
+        <Link
+          href="/jpg-to-pdf"
+          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-blue-100 dark:border-blue-950/80 bg-gradient-to-br from-white via-blue-50/20 to-blue-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-800 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-md shadow-blue-600/30">
+                <ImageIcon className="h-5 w-5" />
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2.5 py-0.5 text-xs font-bold border border-blue-200 dark:border-blue-800">
+                New
+              </span>
+            </div>
+
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              JPG / PNG to PDF
+            </h3>
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Convert and compile multiple images into a unified PDF document with custom margins and orientations.
+            </p>
+          </div>
+
+          <div className="my-4 py-2 flex items-center justify-center gap-2">
+            <div className="w-12 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[10px] font-bold text-blue-600">
+              IMG 1
+            </div>
+            <span className="text-blue-600 font-bold text-xs">+</span>
+            <div className="w-12 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[10px] font-bold text-blue-600">
+              IMG 2
+            </div>
+            <span className="text-blue-600 font-bold text-xs">➔</span>
+            <div className="w-10 h-14 rounded-lg bg-blue-600 text-white p-1 flex items-center justify-center text-[10px] font-bold shadow-xs">
+              PDF ✓
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+            <span>Convert Images to PDF</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </div>
+        </Link>
+
+        {/* Bento 8: PDF to JPG / PNG (6 Columns on LG) */}
+        <Link
+          href="/pdf-to-jpg"
+          className="group lg:col-span-6 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-violet-100 dark:border-violet-950/80 bg-gradient-to-br from-white via-violet-50/20 to-violet-100/30 dark:from-slate-900 dark:via-slate-900 dark:to-violet-950/40 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:border-violet-300 dark:hover:border-violet-800 transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform" />
+
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md shadow-violet-600/30">
+                <FileStack className="h-5 w-5" />
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 px-2.5 py-0.5 text-xs font-bold border border-violet-200 dark:border-violet-800">
+                ZIP Export
+              </span>
+            </div>
+
+            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
+              PDF to JPG / PNG
+            </h3>
+            <p className="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Extract PDF pages as crystal-clear, high-resolution JPG or PNG pictures and download individually or in a ZIP.
+            </p>
+          </div>
+
+          <div className="my-4 py-2 flex items-center justify-center gap-2">
+            <div className="w-10 h-14 rounded-lg bg-violet-600 text-white p-1 flex items-center justify-center text-[10px] font-bold shadow-xs">
+              PDF
+            </div>
+            <span className="text-violet-600 font-bold text-xs">➔</span>
+            <div className="w-12 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[10px] font-bold text-violet-600">
+              Page 1
+            </div>
+            <div className="w-12 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 flex items-center justify-center text-[10px] font-bold text-violet-600">
+              Page 2
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 text-xs font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-1 transition-transform">
+            <span>Extract PDF Pages to Images</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </div>
         </Link>

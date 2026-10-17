@@ -23,6 +23,7 @@ import { usePdfCompressor, CompressionLevel } from "@/hooks/usePdfCompressor";
 import { formatBytes, truncateFileName } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
 import { COMPRESS_TOOL_GUIDE } from "@/lib/toolGuides";
+import { CompletionNextActions } from "@/components/tools/CompletionNextActions";
 
 const HOW_TO_STEPS: HowToStep[] = [
   {
@@ -288,6 +289,13 @@ export default function CompressPdfPage() {
                     Compress Another PDF
                   </Button>
                 </div>
+
+                {/* Quick Next Actions Chaining */}
+                <CompletionNextActions
+                  downloadUrl={downloadUrl}
+                  fileName={outputFileName || "compressed.pdf"}
+                  currentTool="compress-pdf"
+                />
               </div>
             )}
           </div>

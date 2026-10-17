@@ -22,6 +22,7 @@ import { OrganizeToolbar } from "@/components/tools/OrganizeToolbar";
 import { usePdfOrganizer } from "@/hooks/usePdfOrganizer";
 import { formatBytes, truncateFileName } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
+import { CompletionNextActions } from "./CompletionNextActions";
 
 const OrganizeGrid = dynamic(
   () => import("@/components/tools/OrganizeGrid").then((mod) => mod.OrganizeGrid),
@@ -308,6 +309,13 @@ export function OrganizeWorkspace({
                     Process Another PDF
                   </Button>
                 </div>
+
+                {/* Quick Next Actions Chaining */}
+                <CompletionNextActions
+                  downloadUrl={downloadUrl}
+                  fileName={outputFileName || "organized.pdf"}
+                  currentTool={toolSlug || "rotate-pdf"}
+                />
               </div>
             )}
           </div>

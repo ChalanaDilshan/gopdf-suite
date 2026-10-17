@@ -69,6 +69,26 @@ export function Footer() {
                   Reorder PDF Pages
                 </Link>
               </li>
+              <li>
+                <Link href="/jpg-to-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  JPG to PDF
+                </Link>
+              </li>
+              <li>
+                <Link href="/png-to-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  PNG to PDF
+                </Link>
+              </li>
+              <li>
+                <Link href="/pdf-to-jpg" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  PDF to JPG
+                </Link>
+              </li>
+              <li>
+                <Link href="/pdf-to-png" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  PDF to PNG
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -558,3 +558,273 @@ export const EDIT_TOOL_GUIDE: ToolContentGuideProps = {
     },
   ],
 };
+
+export const JPG_TO_PDF_GUIDE: ToolContentGuideProps = {
+  toolName: "JPG to PDF Studio",
+  primaryKeyword: "Convert JPG to PDF Online",
+  howToTitle: "How to Convert JPG Images to PDF Online Without Server Uploads",
+  howToSteps: [
+    {
+      title: "Upload JPG files",
+      description: "Drag & drop JPG or JPEG images into the dropzone or choose them from your device. You can add dozens of photos at once.",
+    },
+    {
+      title: "Adjust layout and sequence",
+      description: "Reorder images, rotate orientation, choose page margin (none, small, or large), and select standard A4 or fit-to-image formats.",
+    },
+    {
+      title: "Convert and save",
+      description: "Click 'Convert to PDF'. Your browser embeds photos directly into a pristine PDF document in local memory.",
+    },
+  ],
+  tips: {
+    fileSizeTip:
+      "GoPDF preserves original image clarity while compiling pages directly in RAM. If your photos are huge 48MP mobile shots, use our client-side compressor afterwards to shrink the final file size for email.",
+    pageOrderTip:
+      "Arrange receipts, documents, or slides in chronological order before hitting convert. Use the arrow buttons on each card to shift pages left or right.",
+    commonProblems: [
+      {
+        problem: "Can I combine both JPG and PNG pictures into the same PDF?",
+        solution:
+          "Yes! GoPDF accepts JPG, PNG, and WebP images simultaneously, blending them into a single unified multi-page document.",
+      },
+      {
+        problem: "Will converting images to PDF reduce their sharpness or readability?",
+        solution:
+          "No. Images are embedded at their full native resolution with zero lossy downsampling unless you choose to compress afterwards.",
+      },
+      {
+        problem: "Are my photos uploaded to any external server?",
+        solution:
+          "Never. All conversion operations happen strictly in your device memory sandbox using client-side JavaScript and pdf-lib.",
+      },
+    ],
+  },
+  comparison: {
+    heading: "Client-Side Image Conversion vs Cloud Converters",
+    summary:
+      "Traditional converters require uploading high-resolution photos across the web to cloud servers. GoPDF creates documents locally inside your browser with zero latency, zero tracking, and absolute confidentiality for sensitive IDs, passports, and receipts.",
+    advantages: [
+      "100% Confidential: Perfect for sensitive photo IDs, driver's licenses, and legal contracts.",
+      "Instant Processing: Skip upload queues and download immediately.",
+      "Custom Margins & Sizing: Choose borderless full-bleed or clean A4 margins.",
+      "No File Quotas: Convert as many pictures as your computer RAM can handle.",
+    ],
+    honestTradeoffs: [
+      "Device Memory Bound: Loading hundreds of raw 20MB photos requires adequate device RAM.",
+      "Local Browser Sandbox: Refreshing the tab clears unsaved in-memory state.",
+      "Native EXIF Orientation: We automatically normalize rotation, but double-check preview cards.",
+    ],
+  },
+  relatedTools: [
+    {
+      title: "Compress PDF Online",
+      href: "/compress-pdf",
+      anchorText: "Compress new PDF",
+      description: "Reduce file size for smooth email attachments.",
+    },
+    {
+      title: "Merge PDF Online",
+      href: "/merge-pdf",
+      anchorText: "Merge with other documents",
+      description: "Combine your new image PDF with text documents.",
+    },
+    {
+      title: "Edit PDF Text",
+      href: "/edit-pdf",
+      anchorText: "Edit PDF text",
+      description: "Add annotations or type on your document.",
+    },
+  ],
+};
+
+export const PNG_TO_PDF_GUIDE: ToolContentGuideProps = {
+  toolName: "PNG to PDF Studio",
+  primaryKeyword: "Convert PNG to PDF Online",
+  howToTitle: "How to Convert PNG Graphics and Screenshots to PDF",
+  howToSteps: [
+    {
+      title: "Upload PNG images",
+      description: "Drop your PNG files or screenshots into the workspace. Transparency and crisp pixel edges are fully preserved.",
+    },
+    {
+      title: "Configure page dimensions",
+      description: "Choose A4, Letter, or Fit to Image. Set margins to full bleed (none) or clean presentation padding.",
+    },
+    {
+      title: "Export unified PDF",
+      description: "Click 'Convert to PDF' to compile your images into an instant, high-quality document.",
+    },
+  ],
+  tips: {
+    fileSizeTip:
+      "PNG screenshots are lossless and crisp. Compiling multiple high-resolution graphics creates a sharp, professional presentation ready for client delivery.",
+    pageOrderTip:
+      "Use orientation controls to ensure wide screenshots display in landscape mode while mobile screenshots display in portrait.",
+    commonProblems: [
+      {
+        problem: "Does transparent background in PNG turn black?",
+        solution:
+          "No. GoPDF composites transparent PNG alpha channels onto a crisp clean white background canvas, ensuring beautiful readable pages.",
+      },
+      {
+        problem: "Can I reorder the sequence of my PNG files?",
+        solution:
+          "Yes. Use the left and right arrow controls on each thumbnail card to reposition screenshots in exact sequential order.",
+      },
+    ],
+  },
+  comparison: {
+    heading: "Lossless In-Browser PNG Assembly",
+    summary:
+      "Assemble design mockups, app screenshots, and receipts without uploading proprietary IP to third-party cloud servers.",
+    advantages: [
+      "Lossless Quality: Preserves pin-sharp UI typography and design mockups.",
+      "100% Client-Side: Zero server uploads, zero privacy risk.",
+      "No Watermarks: Clean, watermark-free output files every time.",
+    ],
+    honestTradeoffs: [
+      "Large Raw Sizes: PNGs have larger byte sizes than JPGs; use our PDF compressor if file size is critical.",
+    ],
+  },
+  relatedTools: [
+    {
+      title: "Compress PDF",
+      href: "/compress-pdf",
+      anchorText: "Compress output PDF",
+      description: "Shrink image-heavy documents down to email size.",
+    },
+    {
+      title: "Delete PDF Pages",
+      href: "/delete-pdf-pages",
+      anchorText: "Delete unwanted sheets",
+      description: "Remove duplicate screenshots before sharing.",
+    },
+  ],
+};
+
+export const PDF_TO_JPG_GUIDE: ToolContentGuideProps = {
+  toolName: "PDF to JPG Extractor",
+  primaryKeyword: "Convert PDF to JPG Online",
+  howToTitle: "How to Convert PDF Pages to JPG Images Online",
+  howToSteps: [
+    {
+      title: "Select your PDF",
+      description: "Drop your document into the dropzone. Page previews load immediately inside browser memory.",
+    },
+    {
+      title: "Select pages and quality",
+      description: "Choose all pages or select specific sheets. Set output DPI to Standard (108 DPI) or HD (144 DPI).",
+    },
+    {
+      title: "Download images or ZIP",
+      description: "Click 'Convert to JPG'. Download individual page pictures or save all images as a unified .ZIP archive.",
+    },
+  ],
+  tips: {
+    fileSizeTip:
+      "For quick social sharing or web publishing, Standard 1.5x scale delivers compact JPG files. For archival or printing, choose 2.0x HD.",
+    pageOrderTip:
+      "If you only need a single diagram or table, toggle selection to just that page to save time and storage.",
+    commonProblems: [
+      {
+        problem: "Can I download all extracted pages in one file?",
+        solution:
+          "Yes! GoPDF provides an instant 'Download All as ZIP' button that packages all page images into a single .zip download.",
+      },
+      {
+        problem: "Is text rendered clearly in the output JPG?",
+        solution:
+          "Yes. GoPDF uses High Definition canvas rendering at 2.0x scale (144 DPI) to ensure fine typography and vector diagrams remain sharp.",
+      },
+    ],
+  },
+  comparison: {
+    heading: "Client-Side PDF Rendering vs Remote Conversion",
+    summary:
+      "Most PDF to JPG converters upload your sensitive contracts to remote servers and email you links. GoPDF renders every pixel locally via HTML5 Canvas and pdfjs-dist.",
+    advantages: [
+      "Zero Cloud Transmission: Safe for financial statements and medical records.",
+      "Instant ZIP Archive: Download all extracted pages in 1 click.",
+      "High DPI Fidelity: Crisp vector-to-raster rendering with antialiasing.",
+    ],
+    honestTradeoffs: [
+      "Browser Processing: Extracting 100+ pages takes a few seconds of local CPU time.",
+    ],
+  },
+  relatedTools: [
+    {
+      title: "Split PDF",
+      href: "/split-pdf",
+      anchorText: "Extract PDF pages directly",
+      description: "Extract pages into a new PDF instead of images.",
+    },
+    {
+      title: "Merge PDF",
+      href: "/merge-pdf",
+      anchorText: "Merge PDFs",
+      description: "Combine multiple documents into one.",
+    },
+  ],
+};
+
+export const PDF_TO_PNG_GUIDE: ToolContentGuideProps = {
+  toolName: "PDF to PNG Studio",
+  primaryKeyword: "Convert PDF to PNG Online",
+  howToTitle: "How to Convert PDF to Lossless PNG Images Online",
+  howToSteps: [
+    {
+      title: "Upload PDF document",
+      description: "Select any PDF from your device. No size limits, zero server uploads.",
+    },
+    {
+      title: "Choose resolution and pages",
+      description: "Select PNG output with HD or Ultra 2.5x sharpness for maximum graphic fidelity.",
+    },
+    {
+      title: "Save lossless images",
+      description: "Download crystal-clear PNG files individually or as a complete .zip package.",
+    },
+  ],
+  tips: {
+    fileSizeTip:
+      "PNG is lossless, which is ideal for diagrams, technical schematics, and vector art where JPG compression artifacts must be avoided.",
+    pageOrderTip:
+      "Check page previews to ensure you only convert the exact pages you need.",
+    commonProblems: [
+      {
+        problem: "Why use PNG instead of JPG for PDF conversion?",
+        solution:
+          "PNG provides lossless clarity with zero compression artifacts around text, barcodes, and line drawings, making it ideal for presentation slides.",
+      },
+    ],
+  },
+  comparison: {
+    heading: "Lossless Local Extraction",
+    summary:
+      "Convert PDF pages to lossless PNG format in your browser RAM without compromising confidential data.",
+    advantages: [
+      "Lossless Compression: 100% pixel-perfect graphic fidelity.",
+      "Zero Cloud Uploads: Protected by client-side browser isolation.",
+      "ZIP Packaging: Fast bulk download.",
+    ],
+    honestTradeoffs: [
+      "File Size: PNG files are naturally larger than JPG files.",
+    ],
+  },
+  relatedTools: [
+    {
+      title: "Compress PDF",
+      href: "/compress-pdf",
+      anchorText: "Compress PDF",
+      description: "Shrink bloated documents before converting.",
+    },
+    {
+      title: "Edit PDF Text",
+      href: "/edit-pdf",
+      anchorText: "Edit PDF text",
+      description: "Modify text before exporting images.",
+    },
+  ],
+};
+

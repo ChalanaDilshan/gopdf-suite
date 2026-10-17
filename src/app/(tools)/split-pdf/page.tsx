@@ -29,6 +29,7 @@ import { usePdfSplitter } from "@/hooks/usePdfSplitter";
 import { formatBytes, truncateFileName } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
 import { SPLIT_TOOL_GUIDE } from "@/lib/toolGuides";
+import { CompletionNextActions } from "@/components/tools/CompletionNextActions";
 
 const HOW_TO_STEPS: HowToStep[] = [
   {
@@ -288,6 +289,13 @@ export default function SplitPdfPage() {
                     Split Another PDF
                   </Button>
                 </div>
+
+                {/* Quick Next Actions Chaining */}
+                <CompletionNextActions
+                  downloadUrl={downloadUrl}
+                  fileName={outputFileName || "extracted-pages.pdf"}
+                  currentTool="split-pdf"
+                />
               </div>
             )}
 

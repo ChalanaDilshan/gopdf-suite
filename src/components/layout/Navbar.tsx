@@ -18,14 +18,21 @@ export function Navbar() {
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
   const { resolvedTheme, toggleTheme } = useTheme();
 
-  const tools = [
+  const organizeTools = [
     { name: "Merge PDF", href: "/merge-pdf", desc: "Combine multiple PDFs in order" },
     { name: "Edit PDF", href: "/edit-pdf", desc: "Click, type & replace PDF text" },
     { name: "Split PDF", href: "/split-pdf", desc: "Extract or separate PDF pages" },
-    { name: "Compress PDF", href: "/compress-pdf", desc: "Reduce file size without quality loss" },
-    { name: "Rotate PDF", href: "/rotate-pdf", desc: "Rotate pages 90, 180, or 270 degrees" },
-    { name: "Delete Pages", href: "/delete-pdf-pages", desc: "Remove unwanted pages from documents" },
-    { name: "Reorder Pages", href: "/reorder-pdf-pages", desc: "Drag and drop to arrange pages" },
+    { name: "Compress PDF", href: "/compress-pdf", desc: "Reduce file size up to 70%" },
+    { name: "Rotate PDF", href: "/rotate-pdf", desc: "Rotate pages 90°, 180°, or 270°" },
+    { name: "Delete Pages", href: "/delete-pdf-pages", desc: "Remove unwanted pages" },
+    { name: "Reorder Pages", href: "/reorder-pdf-pages", desc: "Drag & drop page sequence" },
+  ];
+
+  const convertTools = [
+    { name: "JPG to PDF", href: "/jpg-to-pdf", desc: "Convert photos into clean PDF" },
+    { name: "PNG to PDF", href: "/png-to-pdf", desc: "Convert PNG screenshots to PDF" },
+    { name: "PDF to JPG", href: "/pdf-to-jpg", desc: "Extract pages as high-res JPGs" },
+    { name: "PDF to PNG", href: "/pdf-to-png", desc: "Lossless pixel-perfect extraction" },
   ];
 
   return (
@@ -63,22 +70,51 @@ export function Navbar() {
               </button>
 
               {toolsDropdownOpen && (
-                <div className="absolute top-full left-0 w-64 pt-1 animate-fadeIn z-50">
-                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-xl shadow-slate-950/10">
-                    {tools.map((t) => (
-                      <Link
-                        key={t.name}
-                        href={t.href}
-                        className="block rounded-xl p-2.5 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                      >
-                        <div className="text-sm font-semibold text-slate-900 dark:text-white">
-                          {t.name}
-                        </div>
-                        <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                          {t.desc}
-                        </div>
-                      </Link>
-                    ))}
+                <div className="absolute top-full left-0 w-[500px] pt-1 animate-fadeIn z-50">
+                  <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 shadow-xl shadow-slate-950/10 grid grid-cols-2 gap-3">
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2.5 py-1">
+                        Organize &amp; Edit
+                      </div>
+                      <div className="space-y-0.5">
+                        {organizeTools.map((t) => (
+                          <Link
+                            key={t.name}
+                            href={t.href}
+                            className="block rounded-xl px-2.5 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                          >
+                            <div className="text-xs font-bold text-slate-900 dark:text-white">
+                              {t.name}
+                            </div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                              {t.desc}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2.5 py-1">
+                        Convert
+                      </div>
+                      <div className="space-y-0.5">
+                        {convertTools.map((t) => (
+                          <Link
+                            key={t.name}
+                            href={t.href}
+                            className="block rounded-xl px-2.5 py-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                          >
+                            <div className="text-xs font-bold text-slate-900 dark:text-white">
+                              {t.name}
+                            </div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                              {t.desc}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -172,14 +208,27 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-1 animate-fadeIn max-h-[80vh] overflow-y-auto">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 py-2">
-            PDF Tools
+            Organize &amp; Edit
           </div>
-          {tools.map((t) => (
+          {organizeTools.map((t) => (
             <Link
               key={t.name}
               href={t.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center rounded-xl px-3 py-3 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[48px]"
+              className="flex items-center rounded-xl px-3 py-2.5 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px]"
+            >
+              {t.name}
+            </Link>
+          ))}
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 pt-3 pb-1">
+            Convert
+          </div>
+          {convertTools.map((t) => (
+            <Link
+              key={t.name}
+              href={t.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center rounded-xl px-3 py-2.5 text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 min-h-[44px]"
             >
               {t.name}
             </Link>
