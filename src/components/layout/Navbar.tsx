@@ -9,9 +9,11 @@ import {
   Moon, 
   Menu, 
   X, 
-  ChevronDown 
+  ChevronDown,
+  ShieldCheck 
 } from "lucide-react";
 import { useTheme } from "@/components/theme/ThemeProvider";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -44,14 +46,9 @@ export function Navbar() {
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs group-hover:bg-blue-700 transition-colors">
               <FileText className="h-5 w-5" />
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none">
-                Go<span className="text-blue-600 dark:text-blue-400">PDF</span>
-              </span>
-              <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-[11px] font-semibold text-blue-600 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/60">
-                v1.0
-              </span>
-            </div>
+            <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">
+              Go<span className="text-blue-600">PDF</span>
+            </span>
           </Link>
 
           {/* Center Navigation Links */}
@@ -138,7 +135,7 @@ export function Navbar() {
               href="/privacy"
               className="px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
 
             <a
@@ -153,16 +150,9 @@ export function Navbar() {
         {/* Right Actions */}
         <div className="flex items-center gap-3">
           {/* 100% Private Badge */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200/80 dark:border-emerald-900/60 text-xs">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
-            <div className="flex flex-col text-left leading-tight">
-              <span className="font-semibold text-emerald-900 dark:text-emerald-300 text-[11px]">
-                100% Private
-              </span>
-              <span className="text-[10px] text-emerald-700 dark:text-emerald-400">
-                No server uploads
-              </span>
-            </div>
+          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50/80 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-xs font-semibold text-emerald-700 dark:text-emerald-300 shadow-2xs">
+            <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span>100% Private - Files stay on your device</span>
           </div>
 
           {/* GitHub Icon Link */}
@@ -176,21 +166,27 @@ export function Navbar() {
             <Github className="h-4 w-4" />
           </a>
 
-          {/* Interactive Theme Toggle Button */}
-          <button
-            id="theme-toggle-btn"
-            type="button"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
-            title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-2xs cursor-pointer"
-          >
-            {resolvedTheme === "dark" ? (
-              <Sun className="h-4 w-4 text-amber-400" />
-            ) : (
-              <Moon className="h-4 w-4 text-slate-600" />
-            )}
-          </button>
+          {/* Clean Pill Theme Switch Toggle with Sun Icon */}
+          <div className="flex items-center gap-1.5">
+            <Sun className="h-4 w-4 text-slate-400 dark:text-slate-500" />
+            <button
+              id="theme-toggle-btn"
+              type="button"
+              role="switch"
+              aria-checked={resolvedTheme === "dark"}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
+              title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
+              className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-slate-200 dark:border-slate-700 bg-slate-200 dark:bg-blue-600 transition-colors cursor-pointer"
+            >
+              <span
+                className={cn(
+                  "inline-block h-4 w-4 transform rounded-full bg-white shadow-xs transition-transform",
+                  resolvedTheme === "dark" ? "translate-x-6" : "translate-x-1"
+                )}
+              />
+            </button>
+          </div>
 
           {/* Mobile Menu Trigger */}
           <button

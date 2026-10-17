@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { WebApplicationJsonLd, FaqJsonLd, HowToJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SmartDropzone } from "@/components/home/SmartDropzone";
-import { BentoToolsGrid } from "@/components/home/BentoToolsGrid";
+import { ToolsSection } from "@/components/home/ToolsSection";
 import { PrivacyComparison } from "@/components/home/PrivacyComparison";
 import { Accordion } from "@/components/ui/Accordion";
 import { ShieldCheck, HelpCircle, Sparkles, FileText, Lock, Zap } from "lucide-react";
@@ -94,40 +94,33 @@ export default function HomePage() {
 
       <main className="flex-1 pb-24">
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-10 sm:pt-16 pb-12 sm:pb-20">
-          {/* Ambient Background Glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-blue-500/15 via-sky-500/10 to-transparent blur-[120px] pointer-events-none rounded-full" />
-
+        <section className="relative overflow-hidden pt-8 sm:pt-14 pb-6 sm:pb-10">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-            {/* Top Security & Privacy Pill */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 px-4 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300 shadow-xs mb-6">
-              <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span>100% Client-Side • Zero Cloud Uploads • Free &amp; Private</span>
+            {/* Top Simple. Fast. Private. Tag */}
+            <div className="text-xs font-bold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-3">
+              SIMPLE. FAST. PRIVATE.
             </div>
 
-            {/* Main Title */}
+            {/* Main Title matching mockup */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-              Free, Private &amp; Lightning-Fast{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-                PDF Tools
-              </span>
+              PDF tools, <span className="text-blue-600 dark:text-blue-500">made simple.</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Merge multiple files, extract pages, rotate orientations, and remove unwanted sheets directly inside your browser memory.
+            <p className="mt-3 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Everything you need to manage PDFs — right in your browser.
             </p>
 
             {/* Universal Smart Dropzone Hero Slot */}
-            <div className="mt-10 max-w-4xl mx-auto">
+            <div className="mt-8 max-w-4xl mx-auto">
               <SmartDropzone />
             </div>
           </div>
         </section>
 
-        {/* Bento Grid Tools Section */}
+        {/* 4-Column Tools Section with Live Search & Category Filter Pills */}
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <BentoToolsGrid />
+          <ToolsSection />
         </div>
 
         {/* Privacy & Performance Comparison Section */}
