@@ -233,11 +233,11 @@ export function SmartDropzone() {
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white truncate">
+                    <p className="text-base font-bold text-slate-900 dark:text-white truncate">
                       {selectedFiles.length === 1
                         ? truncateFileName(selectedFiles[0].name, 35)
                         : `${selectedFiles.length} PDF Documents Ready`}
-                    </h3>
+                    </p>
                     <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 shrink-0">
                       <CheckCircle2 className="h-3 w-3" />
                       Loaded
@@ -279,9 +279,9 @@ export function SmartDropzone() {
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
                 Step 2: Choose Transformation
               </span>
-              <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-0.5">
+              <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-0.5">
                 What would you like to do with this document?
-              </h4>
+              </p>
             </div>
 
             {/* Action Selector Grid - All using consistent clean blue/slate palette */}
@@ -297,9 +297,9 @@ export function SmartDropzone() {
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
                     <Type className="h-4 w-4" />
                   </div>
-                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">
                     Edit PDF Text
-                  </h5>
+                  </p>
                   <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                     Click, type, and replace existing text directly in-browser.
                   </p>
@@ -321,9 +321,9 @@ export function SmartDropzone() {
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
                     <Zap className="h-4 w-4" />
                   </div>
-                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">
                     Compress PDF
-                  </h5>
+                  </p>
                   <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                     Reduce file size up to 70% with client-side downscaling.
                   </p>
@@ -345,9 +345,9 @@ export function SmartDropzone() {
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
                     <FileStack className="h-4 w-4" />
                   </div>
-                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">
                     Merge With Others
-                  </h5>
+                  </p>
                   <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                     Combine this document with additional files in any order.
                   </p>
@@ -369,9 +369,9 @@ export function SmartDropzone() {
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
                     <RotateCw className="h-4 w-4" />
                   </div>
-                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">
                     Rotate &amp; Organize
-                  </h5>
+                  </p>
                   <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                     Rotate 90°, delete unwanted pages, or change sequence.
                   </p>
@@ -406,9 +406,9 @@ export function SmartDropzone() {
             </div>
 
             {/* Headline */}
-            <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
+            <p className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
               Drag &amp; drop your PDF documents here
-            </h3>
+            </p>
 
             {/* Subtitle */}
             <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md leading-relaxed px-1">

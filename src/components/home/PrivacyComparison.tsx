@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { CheckCircle2, XCircle, ShieldCheck, Lock, Zap, WifiOff } from "lucide-react";
 

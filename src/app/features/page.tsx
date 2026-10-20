@@ -432,16 +432,16 @@ export default function FeaturesPage() {
 
         {/* Bottom CTA Banner */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="rounded-2xl border border-blue-600 bg-blue-600 p-8 sm:p-12 text-center text-white shadow-md">
-            <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 sm:p-12 text-center shadow-xs">
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
               Ready to process PDFs with total privacy?
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-blue-100 max-w-xl mx-auto">
+            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 font-medium max-w-xl mx-auto leading-relaxed">
               No signups, no installations, and zero cloud uploads. Open our free in-browser PDF studio now.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <Link href="/">
-                <Button size="lg" className="bg-white text-blue-700 hover:bg-slate-100 shadow-md">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs">
                   Launch GoPDF Now
                 </Button>
               </Link>

@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { WebApplicationJsonLd, FaqJsonLd, HowToJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import dynamic from "next/dynamic";
+import { FaqJsonLd, HowToJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SmartDropzone } from "@/components/home/SmartDropzone";
-import { ToolsSection } from "@/components/home/ToolsSection";
 import { PrivacyComparison } from "@/components/home/PrivacyComparison";
-import { Accordion } from "@/components/ui/Accordion";
+
+const ToolsSection = dynamic(
+  () => import("@/components/home/ToolsSection").then((mod) => mod.ToolsSection),
+  { ssr: true }
+);
+
+const Accordion = dynamic(
+  () => import("@/components/ui/Accordion").then((mod) => mod.Accordion),
+  { ssr: true }
+);
 import { 
   ShieldCheck, 
   HelpCircle, 
@@ -118,7 +127,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
       {/* Schema.org Structured Data */}
-      <WebApplicationJsonLd />
       <BreadcrumbJsonLd items={[{ name: "Home", item: "https://gopdf.tech/" }]} />
       <FaqJsonLd faqs={HOME_FAQS} />
       <HowToJsonLd
@@ -189,6 +197,7 @@ export default function HomePage() {
 
         {/* Architectural Superpowers Bento Section */}
         <section className="py-8 sm:py-12 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="sr-only">Core Architecture Pillars</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {ARCHITECTURE_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
@@ -255,31 +264,31 @@ export default function HomePage() {
           />
         </section>
 
-        {/* Bottom CTA Callout Card - Solid Clean Color, 0 Gradients */}
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24">
-          <div className="rounded-2xl border border-blue-600 bg-blue-600 p-8 sm:p-12 text-white text-center shadow-md">
-            <div className="max-w-2xl mx-auto space-y-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                <Sparkles className="h-3.5 w-3.5" />
+        {/* Bottom CTA Callout Card - Solid Clean 1-3 Colors, WCAG AAA Contrast */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-14 sm:mt-20">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7 sm:p-12 text-center shadow-xs">
+            <div className="max-w-2xl mx-auto space-y-3.5">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-900 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
+                <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                 Zero Setup · Instant Access
               </span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 Experience Private PDF Processing Today
               </h2>
-              <p className="text-sm sm:text-base text-blue-100 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                 No signups, no credit cards, no tracking cookies. Choose any tool and begin working in seconds.
               </p>
               <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/merge-pdf"
-                  className="rounded-xl bg-white hover:bg-slate-100 text-blue-600 font-bold px-6 py-3 text-sm shadow-xs transition-colors inline-flex items-center gap-2"
+                  className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 text-sm shadow-xs transition-colors inline-flex items-center gap-2"
                 >
                   <span>Launch Merge Studio</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/edit-pdf"
-                  className="rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-3 text-sm transition-colors"
+                  className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-200 font-bold px-6 py-3 text-sm transition-colors"
                 >
                   Edit PDF Text
                 </Link>

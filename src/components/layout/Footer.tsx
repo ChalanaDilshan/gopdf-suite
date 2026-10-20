@@ -48,9 +48,9 @@ export function Footer() {
 
           {/* Tools */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
               PDF Tools
-            </h4>
+            </p>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
                 <Link href="/merge-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -112,9 +112,9 @@ export function Footer() {
 
           {/* Privacy & Trust */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
               Security & Trust
-            </h4>
+            </p>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
                 <Link href="/features" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -161,9 +161,9 @@ export function Footer() {
 
           {/* Tech Spec */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
               Architecture
-            </h4>
+            </p>
             <p className="mt-4 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
               Built on Next.js 14 App Router, WebAssembly, and Web Worker threads. Zero tracking cookies, zero remote file transmission.
             </p>
