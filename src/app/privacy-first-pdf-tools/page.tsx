@@ -84,7 +84,7 @@ export default function PrivacyFirstPage() {
       <FaqJsonLd faqs={SECURITY_FAQS} />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-white via-slate-50/50 to-transparent dark:from-[#0d1322] dark:via-[#0b0f19] dark:to-transparent">
+      <section className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-900/60 text-xs font-bold text-emerald-700 dark:text-emerald-400 mb-6">
             <ShieldCheck className="h-4 w-4" />

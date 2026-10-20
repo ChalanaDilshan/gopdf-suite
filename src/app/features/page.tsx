@@ -182,10 +182,7 @@ export default function FeaturesPage() {
     <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
       <main className="flex-1 pb-24">
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-white via-slate-50/40 to-transparent dark:from-slate-900/60 dark:via-slate-950 dark:to-transparent">
-          {/* Ambient Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[750px] h-[350px] bg-blue-500/15 dark:bg-blue-500/20 blur-[130px] pointer-events-none rounded-full" />
-
+        <section className="relative overflow-hidden pt-12 sm:pt-20 pb-16 sm:pb-24 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-950/70 border border-blue-200/80 dark:border-blue-800/80 px-4 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 shadow-xs mb-6">
@@ -196,7 +193,7 @@ export default function FeaturesPage() {
             {/* Headline */}
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.12]">
               Engineered for Speed, Precision &amp;{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="text-blue-600 dark:text-blue-500">
                 Total Privacy
               </span>
             </h1>
@@ -305,9 +302,8 @@ export default function FeaturesPage() {
                     </div>
 
                     <div className="lg:col-span-5 flex items-center justify-center">
-                      <div className="w-full aspect-[4/3] rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-transparent dark:from-blue-500/10 pointer-events-none" />
-                        <Icon className="h-16 w-16 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-110 transition-transform duration-300" />
+                      <div className="w-full aspect-[4/3] rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+                        <Icon className="h-16 w-16 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform duration-200" />
                         <span className="font-bold text-sm text-slate-900 dark:text-white">
                           100% In-Browser Execution
                         </span>
@@ -436,7 +432,7 @@ export default function FeaturesPage() {
 
         {/* Bottom CTA Banner */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="rounded-3xl border border-blue-200 dark:border-blue-900/60 bg-gradient-to-r from-blue-600 to-cyan-600 p-8 sm:p-12 text-center text-white shadow-xl shadow-blue-600/20">
+          <div className="rounded-2xl border border-blue-600 bg-blue-600 p-8 sm:p-12 text-center text-white shadow-md">
             <h2 className="text-2xl sm:text-4xl font-black tracking-tight">
               Ready to process PDFs with total privacy?
             </h2>

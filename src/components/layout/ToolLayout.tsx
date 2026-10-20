@@ -80,10 +80,7 @@ export function ToolLayout({
 
       <main className="flex-1 pb-20">
         {/* Tool Header & Hero */}
-        <section className="relative overflow-hidden pt-8 pb-10 border-b border-slate-200/60 dark:border-slate-800/60 bg-gradient-to-b from-white via-slate-50/30 to-transparent dark:from-slate-900/40 dark:via-slate-950 dark:to-transparent">
-          {/* Subtle Ambient Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/15 blur-[100px] pointer-events-none rounded-full" />
-
+        <section className="relative overflow-hidden pt-8 pb-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-6">
@@ -117,14 +114,14 @@ export function ToolLayout({
 
         {/* Interactive Tool Workspace Slot */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 -mt-4">
-          <div className="relative rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-glass dark:shadow-glass-dark">
+          <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 md:p-10 shadow-sm">
             {children}
           </div>
         </section>
 
         {/* Why Client-Side Guarantee Banner */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
-          <div className="rounded-2xl border border-blue-100 dark:border-blue-950/80 bg-gradient-to-r from-blue-50/70 via-slate-50 to-cyan-50/70 dark:from-blue-950/20 dark:via-slate-900/40 dark:to-cyan-950/20 p-6 md:p-8">
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start gap-3.5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">

@@ -161,7 +161,7 @@ export function ToolContentGuide({
       </div>
 
       {/* 3. Honest "How Is This Different" Comparison */}
-      <div className="max-w-4xl mx-auto rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 dark:from-[#131b2e] dark:via-[#0f172a] dark:to-blue-950/20 p-6 sm:p-10 shadow-xs space-y-6">
+      <div className="max-w-4xl mx-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs space-y-6">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
             Zero-Cloud Architecture

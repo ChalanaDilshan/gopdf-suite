@@ -105,10 +105,10 @@ export function ProgressBar({
           className={cn(
             "h-full rounded-full transition-all duration-300 ease-out",
             isComplete
-              ? "bg-emerald-500"
+              ? "bg-emerald-600"
               : isFailed
-              ? "bg-red-500"
-              : barColor || "bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500"
+              ? "bg-red-600"
+              : barColor || "bg-blue-600"
           )}
           style={{ width: `${clampedProgress}%` }}
         />
