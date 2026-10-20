@@ -129,17 +129,17 @@ export default function HomePage() {
 
       <main className="flex-1 pb-24 relative">
         {/* Hero Section */}
-        <section className="relative pt-10 sm:pt-16 pb-8 sm:pb-12">
+        <section className="relative pt-6 sm:pt-14 pb-6 sm:pb-12">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             
             {/* Top Category Badge Pill */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1 text-[11px] font-bold text-blue-700 dark:text-blue-300 mb-5">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-              <span>100% In-Browser Engine · Zero Cloud Uploads</span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-[10px] sm:text-[11px] font-bold text-blue-700 dark:text-blue-300 mb-4 sm:mb-5 max-w-full">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
+              <span className="truncate">100% In-Browser Engine · Zero Cloud Uploads</span>
             </div>
 
             {/* Main Title - Solid Crisp Colors, 0 Gradients */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1] max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight sm:leading-[1.1] max-w-4xl mx-auto">
               The Private PDF Studio{" "}
               <span className="text-blue-600 dark:text-blue-500">
                 Inside Your Browser.
@@ -147,24 +147,24 @@ export default function HomePage() {
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-1">
               Merge, edit, compress, and convert confidential documents locally in your device memory. Lightning fast, zero server uploads, and completely free.
             </p>
 
             {/* Universal Smart Dropzone Hero Slot */}
-            <div className="mt-8 sm:mt-10 max-w-4xl mx-auto">
+            <div className="mt-6 sm:mt-10 max-w-4xl mx-auto">
               <SmartDropzone />
             </div>
 
             {/* Trust & Verification Badges Strip */}
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-xs text-slate-600 dark:text-slate-400">
+            <div className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-3.5 sm:gap-7 text-xs text-slate-600 dark:text-slate-400">
               <div className="inline-flex items-center gap-1.5 font-semibold">
-                <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>100% Client-Side Privacy</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="inline-flex items-center gap-1.5 font-semibold">
-                <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
                 <span>Zero Cloud Latency</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
@@ -176,10 +176,11 @@ export default function HomePage() {
                 title="GoPDF approved on SaaSHub"
               >
                 <img
-                  src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                  src="/badges/approved-color.webp"
                   alt="GoPDF.tech badge"
-                  style={{ maxWidth: "135px" }}
-                  className="h-[30px] w-auto rounded shadow-2xs"
+                  width={130}
+                  height={43}
+                  className="h-[28px] sm:h-[30px] w-auto rounded shadow-2xs"
                 />
               </a>
             </div>

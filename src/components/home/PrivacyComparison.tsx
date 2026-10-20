@@ -53,8 +53,8 @@ export function PrivacyComparison() {
           </p>
         </div>
 
-        {/* Comparison Table */}
-        <div className="overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] shadow-sm">
+        {/* Desktop Comparison Table */}
+        <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
@@ -96,6 +96,30 @@ export function PrivacyComparison() {
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* Mobile Comparison Cards (No horizontal scrolling needed) */}
+        <div className="md:hidden space-y-3">
+          {COMPARISON_ROWS.map((row, i) => (
+            <div
+              key={i}
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-2xs"
+            >
+              <div className="text-xs font-bold text-slate-900 dark:text-white mb-2.5">
+                {row.feature}
+              </div>
+              <div className="space-y-2 text-xs">
+                <div className="flex items-start gap-2 text-emerald-700 dark:text-emerald-400 font-semibold bg-emerald-50/60 dark:bg-emerald-950/30 p-2 rounded-lg border border-emerald-100 dark:border-emerald-900/40">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong className="text-emerald-800 dark:text-emerald-300">GoPDF:</strong> {row.gopdf}</span>
+                </div>
+                <div className="flex items-start gap-2 text-slate-600 dark:text-slate-400 p-2 rounded-lg bg-slate-50 dark:bg-slate-850 border border-slate-100 dark:border-slate-800">
+                  <XCircle className="h-4 w-4 text-rose-500 shrink-0 mt-0.5" />
+                  <span><strong className="text-slate-700 dark:text-slate-300">Cloud:</strong> {row.cloud}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

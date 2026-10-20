@@ -125,9 +125,11 @@ export default function PrivacyFirstPage() {
                 title="GoPDF approved on SaaSHub"
               >
                 <img
-                  src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                  src="/badges/approved-color.webp"
                   alt="GoPDF.tech badge"
-                  style={{ maxWidth: "140px" }}
+                  width={130}
+                  height={43}
+                  loading="lazy"
                   className="h-8 w-auto rounded shadow-2xs"
                 />
               </a>

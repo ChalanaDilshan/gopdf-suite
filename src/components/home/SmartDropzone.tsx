@@ -155,12 +155,12 @@ export function SmartDropzone() {
       />
 
       {/* Clean Solid Studio Workstation Container */}
-      <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-3 transition-colors">
+      <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-2 sm:p-3 transition-colors">
         
         {/* Studio Window Header Bar */}
-        <div className="flex items-center justify-between px-3 py-2 mb-2 border-b border-slate-100 dark:border-slate-800 text-xs">
+        <div className="flex items-center justify-between px-2.5 sm:px-3 py-2 mb-2 border-b border-slate-100 dark:border-slate-800 text-xs">
           {/* Left: Window Controls + Title */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-1.5" aria-hidden="true">
               <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700" />
               <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700" />
@@ -178,9 +178,9 @@ export function SmartDropzone() {
 
           {/* Right: RAM Sandbox Status + Sample Button */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="inline-flex items-center gap-1.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-900/60 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
+            <div className="inline-flex items-center gap-1.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-900/60 px-2 sm:px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
-              <span>RAM Sandbox Active</span>
+              <span><span className="hidden sm:inline">RAM </span>Sandbox Active</span>
             </div>
 
             {selectedFiles.length === 0 && (
@@ -392,34 +392,34 @@ export function SmartDropzone() {
             onDrop={handleDrop}
             onClick={() => fileInputRef.current?.click()}
             className={cn(
-              "relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 sm:p-12 text-center transition-colors cursor-pointer select-none group",
+              "relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-5 sm:p-12 text-center transition-colors cursor-pointer select-none group",
               isDragOver
                 ? "border-blue-600 bg-blue-50/50 dark:bg-blue-950/30"
                 : "border-slate-300 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-500 bg-slate-50/60 dark:bg-slate-850 hover:bg-white dark:hover:bg-slate-800"
             )}
           >
             {/* Solid Document Icon */}
-            <div className="mb-4 flex items-center justify-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs group-hover:bg-blue-700 transition-colors">
-                <FileText className="h-7 w-7" />
+            <div className="mb-3 sm:mb-4 flex items-center justify-center">
+              <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs group-hover:bg-blue-700 transition-colors">
+                <FileText className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
             </div>
 
             {/* Headline */}
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
               Drag &amp; drop your PDF documents here
             </h3>
 
             {/* Subtitle */}
-            <p className="mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
+            <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md leading-relaxed px-1">
               Every operation executes strictly inside your local browser memory sandbox. Zero server uploads, zero wait time.
             </p>
 
             {/* Action Buttons Row */}
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 shadow-xs transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 min-h-[44px] shadow-xs transition-colors cursor-pointer"
               >
                 <FolderOpen className="h-4 w-4" />
                 <span>Browse Files</span>
@@ -429,7 +429,7 @@ export function SmartDropzone() {
                 type="button"
                 onClick={handleLoadSample}
                 disabled={isGeneratingSample}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium px-4 py-2.5 transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium px-4 py-2.5 min-h-[44px] transition-colors cursor-pointer"
               >
                 <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                 <span>{isGeneratingSample ? "Building Demo..." : "Try Demo File"}</span>
@@ -437,24 +437,24 @@ export function SmartDropzone() {
             </div>
 
             {/* Bottom Architecture Capabilities Strip */}
-            <div className="mt-7 pt-4 border-t border-slate-200 dark:border-slate-700 w-full flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-slate-600 dark:text-slate-400">
+            <div className="mt-5 sm:mt-7 pt-3.5 sm:pt-4 border-t border-slate-200 dark:border-slate-700 w-full flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">
               <div className="flex items-center gap-1.5 font-medium">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>Zero Cloud Uploads</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="flex items-center gap-1.5 font-medium">
-                <Zap className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <Zap className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                 <span>Instant CPU Execution</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="flex items-center gap-1.5 font-medium">
-                <FileText className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <FileText className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                 <span>Up to 100MB / File</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>100% Free &amp; Private</span>
               </div>
             </div>
