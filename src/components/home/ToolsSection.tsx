@@ -9,12 +9,13 @@ import {
   Trash2, 
   RotateCw, 
   ArrowUpDown, 
-  RefreshCw, 
   Copy, 
   ArrowDownToLine, 
   Columns,
   Image as ImageIcon,
-  FileStack
+  FileStack,
+  Sparkles,
+  SlidersHorizontal
 } from "lucide-react";
 
 export type ToolCategory = "all" | "organize" | "edit" | "optimize" | "convert";
@@ -28,6 +29,7 @@ export interface ToolItem {
   category: "organize" | "edit" | "optimize" | "convert";
   badge?: string;
   icon: React.ReactNode;
+  iconBg: string;
   keywords: string[];
 }
 
@@ -35,123 +37,125 @@ export const TOOLS_DATA: ToolItem[] = [
   {
     id: "merge-pdf",
     title: "Merge PDF",
-    description: "Combine multiple PDF documents into a single file with ease.",
+    description: "Combine multiple PDF documents into a single file with visual drag-and-drop reordering.",
     actionText: "Merge Files",
     href: "/merge-pdf",
     category: "organize",
     badge: "Popular",
-    icon: <Copy className="h-5 w-5" />,
+    icon: <Copy className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    iconBg: "bg-blue-50 dark:bg-blue-950/70 border-blue-200/80 dark:border-blue-900/60",
     keywords: ["merge", "combine", "join", "unite", "append", "concat"],
   },
   {
     id: "edit-pdf",
     title: "Edit PDF Text",
-    description: "Click, type, and replace existing text with matching fonts, sizes and colors.",
-    actionText: "Edit PDF",
+    description: "Click, type, and replace existing text with matching fonts, sizes, and colors in-place.",
+    actionText: "Edit PDF Text",
     href: "/edit-pdf",
     category: "edit",
-    icon: <Type className="h-5 w-5" />,
+    badge: "New",
+    icon: <Type className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />,
+    iconBg: "bg-indigo-50 dark:bg-indigo-950/70 border-indigo-200/80 dark:border-indigo-900/60",
     keywords: ["edit", "text", "type", "font", "write", "replace", "modify"],
   },
   {
     id: "compress-pdf",
     title: "Compress PDF",
-    description: "Reduce file size with smart compression while maintaining quality.",
-    actionText: "Compress PDF",
+    description: "Reduce file size up to 70% with smart downscaling while preserving visual crispness.",
+    actionText: "Compress Size",
     href: "/compress-pdf",
     category: "optimize",
     badge: "Fast",
-    icon: <ArrowDownToLine className="h-5 w-5" />,
+    icon: <ArrowDownToLine className="h-5 w-5 text-cyan-600 dark:text-cyan-400" />,
+    iconBg: "bg-cyan-50 dark:bg-cyan-950/70 border-cyan-200/80 dark:border-cyan-900/60",
     keywords: ["compress", "shrink", "reduce", "size", "smaller", "email", "mb"],
   },
   {
     id: "split-pdf",
-    title: "Split PDF",
-    description: "Extract specific pages, split into multiple files, or create custom page ranges.",
-    actionText: "Split PDF",
+    title: "Split & Extract",
+    description: "Extract specific page ranges, extract single pages, or separate documents cleanly.",
+    actionText: "Split Pages",
     href: "/split-pdf",
     category: "organize",
-    icon: <Columns className="h-5 w-5" />,
+    icon: <Columns className="h-5 w-5 text-sky-600 dark:text-sky-400" />,
+    iconBg: "bg-sky-50 dark:bg-sky-950/70 border-sky-200/80 dark:border-sky-900/60",
     keywords: ["split", "extract", "separate", "pages", "range"],
   },
   {
     id: "rotate-pdf",
     title: "Rotate PDF",
-    description: "Rotate pages or the entire document 90°, 180° or 270° instantly.",
-    actionText: "Rotate PDF",
+    description: "Permanently rotate individual pages or entire documents 90°, 180°, or 270° clockwise.",
+    actionText: "Rotate Pages",
     href: "/rotate-pdf",
     category: "organize",
-    icon: <RotateCw className="h-5 w-5" />,
+    icon: <RotateCw className="h-5 w-5 text-amber-600 dark:text-amber-400" />,
+    iconBg: "bg-amber-50 dark:bg-amber-950/70 border-amber-200/80 dark:border-amber-900/60",
     keywords: ["rotate", "turn", "orientation", "landscape", "portrait", "flip"],
   },
   {
     id: "delete-pdf-pages",
     title: "Delete Pages",
-    description: "Remove unwanted pages or blank pages with a single click.",
+    description: "Remove blank, sensitive, or redundant pages with visual thumbnail previews.",
     actionText: "Delete Pages",
     href: "/delete-pdf-pages",
     category: "organize",
-    icon: <Trash2 className="h-5 w-5" />,
+    icon: <Trash2 className="h-5 w-5 text-rose-600 dark:text-rose-400" />,
+    iconBg: "bg-rose-50 dark:bg-rose-950/70 border-rose-200/80 dark:border-rose-900/60",
     keywords: ["delete", "remove", "blank", "unwanted", "cut", "exclude"],
   },
   {
     id: "reorder-pdf-pages",
     title: "Reorder Pages",
-    description: "Drag and drop to rearrange your PDF pages in any order.",
+    description: "Drag and drop thumbnails to rearrange your document into the exact page sequence.",
     actionText: "Reorder Pages",
     href: "/reorder-pdf-pages",
     category: "organize",
-    icon: <ArrowUpDown className="h-5 w-5" />,
+    icon: <ArrowUpDown className="h-5 w-5 text-purple-600 dark:text-purple-400" />,
+    iconBg: "bg-purple-50 dark:bg-purple-950/70 border-purple-200/80 dark:border-purple-900/60",
     keywords: ["reorder", "rearrange", "drag", "drop", "sort", "sequence", "order"],
-  },
-  {
-    id: "convert-pdf",
-    title: "Convert PDF",
-    description: "Convert PDFs to and from different formats (e.g. Word, Images) directly in your browser.",
-    actionText: "Convert PDF",
-    href: "/jpg-to-pdf",
-    category: "convert",
-    icon: <RefreshCw className="h-5 w-5" />,
-    keywords: ["convert", "images", "jpg", "png", "word", "format"],
   },
   {
     id: "jpg-to-pdf",
     title: "JPG to PDF",
-    description: "Convert JPG and JPEG images to clean PDF documents in seconds.",
+    description: "Convert digital photographs and JPEG images into clean, standardized PDF files.",
     actionText: "Convert JPG",
     href: "/jpg-to-pdf",
     category: "convert",
-    icon: <ImageIcon className="h-5 w-5" />,
+    icon: <ImageIcon className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />,
+    iconBg: "bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200/80 dark:border-emerald-900/60",
     keywords: ["jpg", "jpeg", "image", "photo", "pictures", "convert"],
   },
   {
     id: "png-to-pdf",
     title: "PNG to PDF",
-    description: "Convert PNG screenshots and graphics into PDF with crisp transparency.",
+    description: "Convert PNG screenshots and graphics into high-resolution PDFs with lossless clarity.",
     actionText: "Convert PNG",
     href: "/png-to-pdf",
     category: "convert",
-    icon: <ImageIcon className="h-5 w-5" />,
+    icon: <ImageIcon className="h-5 w-5 text-teal-600 dark:text-teal-400" />,
+    iconBg: "bg-teal-50 dark:bg-teal-950/70 border-teal-200/80 dark:border-teal-900/60",
     keywords: ["png", "screenshot", "graphic", "image", "convert"],
   },
   {
     id: "pdf-to-jpg",
     title: "PDF to JPG",
-    description: "Extract PDF pages as high-resolution JPG images individually or as a ZIP.",
+    description: "Extract PDF pages into high-definition JPG images individually or as a packed ZIP.",
     actionText: "Extract JPG",
     href: "/pdf-to-jpg",
     category: "convert",
-    icon: <FileStack className="h-5 w-5" />,
+    icon: <FileStack className="h-5 w-5 text-orange-600 dark:text-orange-400" />,
+    iconBg: "bg-orange-50 dark:bg-orange-950/70 border-orange-200/80 dark:border-orange-900/60",
     keywords: ["pdf to jpg", "extract", "images", "photo", "zip"],
   },
   {
     id: "pdf-to-png",
     title: "PDF to PNG",
-    description: "Extract pages into lossless, pixel-perfect PNG images.",
+    description: "Render pages into pixel-perfect PNG images with pristine sharpness.",
     actionText: "Extract PNG",
     href: "/pdf-to-png",
     category: "convert",
-    icon: <FileStack className="h-5 w-5" />,
+    icon: <FileStack className="h-5 w-5 text-violet-600 dark:text-violet-400" />,
+    iconBg: "bg-violet-50 dark:bg-violet-950/70 border-violet-200/80 dark:border-violet-900/60",
     keywords: ["pdf to png", "lossless", "high res", "extract", "transparent"],
   },
 ];
@@ -161,29 +165,15 @@ export function ToolsSection() {
   const [selectedCategory, setSelectedCategory] = useState<ToolCategory>("all");
 
   const categories: Array<{ id: ToolCategory; label: string }> = [
-    { id: "all", label: "All tools" },
+    { id: "all", label: "All Tools (11)" },
     { id: "organize", label: "Organize" },
-    { id: "edit", label: "Edit" },
+    { id: "edit", label: "Edit Text" },
     { id: "optimize", label: "Optimize" },
-    { id: "convert", label: "Convert" },
+    { id: "convert", label: "Convert & Extract" },
   ];
 
   const filteredTools = useMemo(() => {
     return TOOLS_DATA.filter((tool) => {
-      // If we are on "all" and not searching, show the 8 core tools from the mockup
-      if (!searchQuery && selectedCategory === "all") {
-        return [
-          "merge-pdf",
-          "edit-pdf",
-          "compress-pdf",
-          "split-pdf",
-          "rotate-pdf",
-          "delete-pdf-pages",
-          "reorder-pdf-pages",
-          "convert-pdf",
-        ].includes(tool.id);
-      }
-
       // Filter by category
       if (selectedCategory !== "all" && tool.category !== selectedCategory) {
         return false;
@@ -203,62 +193,84 @@ export function ToolsSection() {
   }, [searchQuery, selectedCategory]);
 
   return (
-    <section className="py-6 sm:py-10" id="tools">
-      {/* Search and Category Filter Bar */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+    <section className="py-8 sm:py-14" id="tools">
+      {/* Header with Title and Search/Category Toolbar */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1.5">
+            <Sparkles className="h-3.5 w-3.5" />
+            <span>Complete Toolkit</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+            Specialized PDF Utilities
+          </h2>
+          <p className="mt-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-xl">
+            Single-purpose micro-tools running directly on your CPU. Choose a capability below or drop a file anywhere.
+          </p>
+        </div>
+
         {/* Search Input */}
-        <div className="relative w-full sm:w-72">
+        <div className="relative w-full md:w-80 shrink-0">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search tools..."
-            className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 py-2.5 pl-10 pr-4 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 shadow-2xs transition-colors"
+            placeholder="Search tools (e.g. merge, compress, edit)..."
+            className="w-full rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900/90 py-2.5 pl-10 pr-4 text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 shadow-2xs transition-colors"
           />
-        </div>
-
-        {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
-          {categories.map((cat) => {
-            const isActive = selectedCategory === cat.id;
-
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-blue-600 text-white shadow-xs"
-                    : "border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs"
-                }`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+            >
+              Clear
+            </button>
+          )}
         </div>
       </div>
 
-      {/* 4-Column Tools Grid matching the design */}
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap items-center gap-2 mb-8 pb-1">
+        {categories.map((cat) => {
+          const isActive = selectedCategory === cat.id;
+
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                isActive
+                  ? "bg-blue-600 text-white shadow-sm shadow-blue-600/25 scale-[1.02]"
+                  : "border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs"
+              }`}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Tools Grid */}
       {filteredTools.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {filteredTools.map((tool) => (
             <Link
               key={tool.id}
               href={tool.href}
-              className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900/90 p-5 sm:p-6 shadow-2xs hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700/80 transition-all duration-200 hover:-translate-y-0.5"
+              className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900/80 p-5 sm:p-6 shadow-2xs hover:shadow-xl hover:border-blue-400/80 dark:hover:border-blue-600/80 transition-all duration-300 hover:-translate-y-1"
             >
               <div>
                 {/* Top: Icon + Optional Badge */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100/70 dark:border-blue-900/40 group-hover:scale-105 transition-transform">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-2xl border shadow-2xs group-hover:scale-105 transition-transform ${tool.iconBg}`}>
                     {tool.icon}
                   </div>
 
                   {tool.badge && (
-                    <span className="rounded-full bg-blue-100/80 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-[10px] font-bold px-2.5 py-0.5 border border-blue-200/60 dark:border-blue-800/60">
+                    <span className="rounded-full bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 text-[10px] font-bold px-2.5 py-0.5 border border-blue-200/80 dark:border-blue-800">
                       {tool.badge}
                     </span>
                   )}
@@ -276,20 +288,20 @@ export function ToolsSection() {
               </div>
 
               {/* Action Link at Bottom */}
-              <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
-                <span>{tool.actionText}</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-bold text-blue-600 dark:text-blue-400">
+                <span className="group-hover:underline underline-offset-2">{tool.actionText}</span>
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform" />
               </div>
             </Link>
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50">
-          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+        <div className="text-center py-16 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 p-8">
+          <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
             No tools found matching &quot;{searchQuery}&quot;
           </p>
           <p className="text-xs text-slate-400 mt-1">
-            Try searching for merge, compress, edit, rotate, or convert.
+            Try searching for merge, compress, edit, rotate, split, or convert.
           </p>
           <button
             type="button"
@@ -297,7 +309,7 @@ export function ToolsSection() {
               setSearchQuery("");
               setSelectedCategory("all");
             }}
-            className="mt-4 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
           >
             Reset Filters
           </button>

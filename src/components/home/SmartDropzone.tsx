@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { 
-  UploadCloud, 
   FileText, 
   RotateCw, 
   Trash2, 
@@ -13,20 +13,35 @@ import {
   ShieldCheck, 
   ArrowRight, 
   X, 
+  Zap, 
+  Type, 
+  ArrowUp, 
+  Lock,
   Layers,
-  Zap,
-  Type,
-  ArrowUp,
-  Lock
+  CheckCircle2,
+  Cpu,
+  ArrowUpDown,
+  Image as ImageIcon,
+  FolderOpen
 } from "lucide-react";
 import { setTransferredFiles } from "@/lib/fileTransfer";
 import { formatBytes, truncateFileName, cn } from "@/lib/utils";
+
+const QUICK_PILLS = [
+  { label: "Merge PDFs", href: "/merge-pdf", icon: FileStack },
+  { label: "Edit Text", href: "/edit-pdf", icon: Type },
+  { label: "Compress", href: "/compress-pdf", icon: Zap },
+  { label: "Rotate & Delete", href: "/rotate-pdf", icon: RotateCw },
+  { label: "Split Pages", href: "/split-pdf", icon: Scissors },
+  { label: "Images to PDF", href: "/jpg-to-pdf", icon: ImageIcon },
+];
 
 export function SmartDropzone() {
   const router = useRouter();
   const [isDragOver, setIsDragOver] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isGeneratingSample, setIsGeneratingSample] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragCounter = useRef(0);
 
@@ -50,32 +65,41 @@ export function SmartDropzone() {
     setSelectedFiles([]);
   };
 
-  const handleLoadSample = async () => {
+  const handleLoadSample = async (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setIsGeneratingSample(true);
     try {
       const { PDFDocument } = await import("pdf-lib");
       const doc = await PDFDocument.create();
       
       // Page 1
       const p1 = doc.addPage([595, 842]);
-      p1.drawText("GoPDF Sample Document - Page 1", { x: 50, y: 780, size: 22 });
-      p1.drawText("Explore rotating, extracting, or deleting pages client-side.", { x: 50, y: 730, size: 14 });
+      p1.drawText("GoPDF Client-Side Sandbox Demo", { x: 50, y: 780, size: 22 });
+      p1.drawText("Zero cloud uploads. Total privacy guaranteed.", { x: 50, y: 740, size: 14 });
+      p1.drawText("Test merging, rotating, splitting, or compressing this file.", { x: 50, y: 710, size: 12 });
 
       // Page 2
       const p2 = doc.addPage([595, 842]);
-      p2.drawText("Sample Document - Page 2 (Landscape orientation test)", { x: 50, y: 780, size: 20 });
+      p2.drawText("Page 2 - In-Memory PDF Manipulation", { x: 50, y: 780, size: 20 });
+      p2.drawText("Notice how fast operations complete without remote servers.", { x: 50, y: 740, size: 12 });
 
       // Page 3
       const p3 = doc.addPage([595, 842]);
-      p3.drawText("Sample Document - Page 3 (Appendix)", { x: 50, y: 780, size: 20 });
+      p3.drawText("Page 3 - End-to-End Local Execution", { x: 50, y: 780, size: 20 });
+      p3.drawText("Ready for instant browser-based processing.", { x: 50, y: 740, size: 12 });
 
       const bytes = await doc.save();
-      const sampleFile = new File([bytes as unknown as BlobPart], "GoPDF_Sample_Document.pdf", {
+      const sampleFile = new File([bytes as unknown as BlobPart], "GoPDF_Demo_Document.pdf", {
         type: "application/pdf",
       });
 
       setSelectedFiles([sampleFile]);
     } catch (err) {
       console.error("Failed to generate sample PDF", err);
+    } finally {
+      setIsGeneratingSample(false);
     }
   };
 
@@ -133,278 +157,337 @@ export function SmartDropzone() {
         aria-label="Upload PDF files"
       />
 
-      {/* State A: File(s) Selected -> Dynamic Smart Action Selector */}
-      {selectedFiles.length > 0 ? (
-        <div className="rounded-3xl border border-blue-200 dark:border-blue-900/70 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-6 sm:p-8 shadow-glass dark:shadow-glass-dark animate-fadeIn">
-          {/* Header with Selected Document Badge & Reset */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-200/80 dark:border-slate-800">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-100 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 shadow-sm">
-                <FileText className="h-6 w-6" />
-              </div>
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white truncate">
+      {/* Modern Studio Workstation Card Wrapper */}
+      <div className="relative rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-[#111726]/85 backdrop-blur-xl shadow-2xl shadow-blue-500/5 ring-1 ring-slate-950/5 p-2 sm:p-3 transition-all duration-300">
+        
+        {/* Studio Window Header Bar */}
+        <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 mb-2 border-b border-slate-100 dark:border-slate-800/80 text-xs">
+          {/* Left: Window Controls + Title */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5" aria-hidden="true">
+              <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80 dark:bg-rose-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80 dark:bg-amber-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80 dark:bg-emerald-500/80" />
+            </div>
+            <div className="h-3 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
+            <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 font-medium">
+              <Cpu className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="hidden sm:inline font-semibold">GoPDF In-Memory Engine</span>
+              <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-mono font-bold">
+                v2.4
+              </span>
+            </div>
+          </div>
+
+          {/* Right: RAM Sandbox Live Status + Sample Button */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/60 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>RAM Sandbox Active</span>
+            </div>
+
+            {selectedFiles.length === 0 && (
+              <button
+                type="button"
+                onClick={handleLoadSample}
+                disabled={isGeneratingSample}
+                className="hidden md:inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-200 transition-colors shadow-2xs cursor-pointer"
+                title="Generate an instant sample document to test the tools"
+              >
+                <Sparkles className="h-3 w-3 text-amber-500" />
+                <span>{isGeneratingSample ? "Generating..." : "Try Sample PDF"}</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Quick-Preset Tool Jump Bar */}
+        {selectedFiles.length === 0 && (
+          <div className="px-2 pb-2.5 pt-0.5">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-[11px]">
+              <span className="text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider text-[10px] shrink-0 pl-1 pr-1 hidden sm:inline">
+                Quick Jump:
+              </span>
+              {QUICK_PILLS.map((pill) => {
+                const Icon = pill.icon;
+                return (
+                  <Link
+                    key={pill.label}
+                    href={pill.href}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200/70 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 hover:bg-blue-50 dark:hover:bg-blue-950/50 hover:border-blue-200 dark:hover:border-blue-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-2.5 py-1 font-medium transition-all shrink-0"
+                  >
+                    <Icon className="h-3 w-3 text-blue-500 shrink-0" />
+                    <span>{pill.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* State A: File(s) Selected -> Dynamic Smart Action Selector */}
+        {selectedFiles.length > 0 ? (
+          <div className="rounded-2xl border border-blue-200/90 dark:border-blue-900/70 bg-white dark:bg-slate-900/95 p-5 sm:p-7 shadow-xs animate-fadeIn">
+            {/* Header with Selected Document Badge & Reset */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-200/80 dark:border-slate-800">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-md shadow-blue-500/20">
+                  <FileText className="h-6 w-6" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white truncate">
+                      {selectedFiles.length === 1
+                        ? truncateFileName(selectedFiles[0].name, 35)
+                        : `${selectedFiles.length} PDF Documents Ready`}
+                    </h3>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shrink-0">
+                      <CheckCircle2 className="h-3 w-3" />
+                      Loaded
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     {selectedFiles.length === 1
-                      ? truncateFileName(selectedFiles[0].name, 35)
-                      : `${selectedFiles.length} PDF Documents Selected`}
-                  </h3>
-                  <span className="inline-flex items-center rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                    Ready
-                  </span>
+                      ? formatBytes(selectedFiles[0].size)
+                      : `${formatBytes(
+                          selectedFiles.reduce((acc, f) => acc + f.size, 0)
+                        )} total`}
+                    {" • 100% In-Memory RAM • 0 Bytes Sent"}
+                  </p>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  {selectedFiles.length === 1
-                    ? formatBytes(selectedFiles[0].size)
-                    : `${formatBytes(
-                        selectedFiles.reduce((acc, f) => acc + f.size, 0)
-                      )} total`}
-                  {" • 100% processed in memory"}
-                </p>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                >
+                  Change File
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/50 transition-colors cursor-pointer"
+                  title="Remove selection"
+                  aria-label="Remove selection"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            {/* Action Prompt */}
+            <div className="mt-6 mb-4 text-left">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                Step 2: Choose Transformation
+              </span>
+              <h4 className="text-lg font-bold text-slate-900 dark:text-white mt-0.5">
+                What would you like to do with this document?
+              </h4>
+            </div>
+
+            {/* Action Selector Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {/* Action 1: Edit PDF Text */}
               <button
                 type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                disabled={isNavigating}
+                onClick={() => handleAction("/edit-pdf")}
+                className="group relative flex flex-col justify-between rounded-2xl border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-4 text-left hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
               >
-                Change File
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
+                    <Type className="h-5 w-5" />
+                  </div>
+                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                    Edit PDF Text
+                  </h5>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Click, type, and replace existing text directly in-browser.
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-blue-400">
+                  <span>Edit Text</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </button>
+
+              {/* Action 2: Compress PDF */}
               <button
                 type="button"
-                onClick={handleClear}
-                className="flex h-8 w-8 items-center justify-center rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/50 transition-colors cursor-pointer"
-                title="Remove selection"
-                aria-label="Remove selection"
+                disabled={isNavigating}
+                onClick={() => handleAction("/compress-pdf")}
+                className="group relative flex flex-col justify-between rounded-2xl border border-cyan-200/90 dark:border-cyan-900/60 bg-cyan-50/40 dark:bg-cyan-950/20 p-4 text-left hover:border-cyan-400 dark:hover:border-cyan-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
               >
-                <X className="h-4 w-4" />
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-100 dark:bg-cyan-900/60 text-cyan-600 dark:text-cyan-400 mb-3 group-hover:scale-105 transition-transform">
+                    <Zap className="h-5 w-5" />
+                  </div>
+                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                    Compress PDF
+                  </h5>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Reduce file size up to 70% with client-side downscaling.
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-cyan-700 dark:text-cyan-400">
+                  <span>Compress Now</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
+
+              {/* Action 3: Merge PDF */}
+              <button
+                type="button"
+                disabled={isNavigating}
+                onClick={() => handleAction("/merge-pdf")}
+                className="group relative flex flex-col justify-between rounded-2xl border border-indigo-200/90 dark:border-indigo-900/60 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 text-left hover:border-indigo-400 dark:hover:border-indigo-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+              >
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-400 mb-3 group-hover:scale-105 transition-transform">
+                    <FileStack className="h-5 w-5" />
+                  </div>
+                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                    Merge With Others
+                  </h5>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Combine this document with additional files in any order.
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-indigo-700 dark:text-indigo-400">
+                  <span>Merge PDFs</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
+
+              {/* Action 4: Rotate & Organize */}
+              <button
+                type="button"
+                disabled={isNavigating}
+                onClick={() => handleAction("/rotate-pdf")}
+                className="group relative flex flex-col justify-between rounded-2xl border border-amber-200/90 dark:border-amber-900/60 bg-amber-50/40 dark:bg-amber-950/20 p-4 text-left hover:border-amber-400 dark:hover:border-amber-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+              >
+                <div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 mb-3 group-hover:scale-105 transition-transform">
+                    <RotateCw className="h-5 w-5" />
+                  </div>
+                  <h5 className="font-bold text-sm text-slate-900 dark:text-white">
+                    Rotate &amp; Organize
+                  </h5>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Rotate 90°, delete unwanted pages, or change sequence.
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400">
+                  <span>Rotate Pages</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </button>
             </div>
           </div>
+        ) : (
+          /* State B: Empty Dropzone -> High-Tech Interactive Studio Surface */
+          <div
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onClick={() => fileInputRef.current?.click()}
+            className={cn(
+              "relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 sm:p-12 text-center transition-all duration-200 cursor-pointer select-none group overflow-hidden",
+              isDragOver
+                ? "border-blue-500 bg-blue-500/10 dark:bg-blue-500/15 scale-[1.005] shadow-lg shadow-blue-500/10"
+                : "border-slate-300/80 hover:border-blue-500/90 bg-gradient-to-b from-slate-50/70 via-white/50 to-blue-50/30 dark:from-[#0d1322]/80 dark:via-[#111726]/60 dark:to-blue-950/20 hover:bg-blue-50/20 dark:border-slate-700/80 dark:hover:border-blue-500"
+            )}
+          >
+            {/* Ambient Background Gradient Aura */}
+            <div className="absolute inset-0 bg-radial from-blue-500/5 via-transparent to-transparent pointer-events-none group-hover:scale-110 transition-transform duration-500" />
 
-          {/* Action Prompt */}
-          <div className="mt-6 mb-4 text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              Step 2: Choose an Action
-            </span>
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white mt-0.5">
-              What would you like to do with this document?
-            </h4>
+            {/* Tactile Stacked Document Visual Illustration */}
+            <div className="relative mb-5 flex items-center justify-center">
+              {/* Back Card (Tilted) */}
+              <div className="absolute -left-6 top-1 w-14 h-18 rounded-xl bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 -rotate-12 opacity-50 shadow-xs pointer-events-none transition-transform group-hover:-rotate-16" />
+              {/* Right Card (Tilted) */}
+              <div className="absolute -right-6 top-1 w-14 h-18 rounded-xl bg-blue-100/90 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 rotate-12 opacity-60 shadow-xs pointer-events-none transition-transform group-hover:rotate-16" />
+              
+              {/* Center Main Hero Document Card */}
+              <div className="relative z-10 flex h-20 w-16 flex-col justify-between rounded-xl bg-gradient-to-b from-blue-600 to-indigo-600 p-2 text-white shadow-xl shadow-blue-600/30 group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-300">
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] font-mono font-black tracking-tighter opacity-90">PDF</span>
+                  <Lock className="h-3 w-3 text-blue-200" />
+                </div>
+                <div className="space-y-1">
+                  <div className="h-1 w-full bg-white/40 rounded-full" />
+                  <div className="h-1 w-2/3 bg-white/40 rounded-full" />
+                </div>
+                <div className="flex items-center justify-center">
+                  <div className="h-6 w-6 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-xs">
+                    <ArrowUp className="h-3.5 w-3.5 stroke-[2.5]" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Headline */}
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+              Drag &amp; drop your PDF documents here
+            </h3>
+
+            {/* Subtitle */}
+            <p className="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
+              Every operation executes strictly inside your local browser memory sandbox. Zero server uploads, zero wait time.
+            </p>
+
+            {/* Action Buttons Row */}
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-bold px-5 py-2.5 shadow-md shadow-blue-600/25 transition-all group-hover:shadow-lg group-hover:shadow-blue-600/35 cursor-pointer"
+              >
+                <FolderOpen className="h-4 w-4" />
+                <span>Browse Files</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleLoadSample}
+                disabled={isGeneratingSample}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-semibold px-4 py-2.5 transition-colors cursor-pointer shadow-2xs"
+              >
+                <Sparkles className="h-4 w-4 text-amber-500" />
+                <span>{isGeneratingSample ? "Building Demo..." : "Try Demo File"}</span>
+              </button>
+            </div>
+
+            {/* Bottom Architecture Capabilities Strip */}
+            <div className="mt-7 pt-4 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-1.5 font-medium">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span>Zero Cloud Uploads</span>
+              </div>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1.5 font-medium">
+                <Zap className="h-3.5 w-3.5 text-amber-500" />
+                <span>Instant CPU Execution</span>
+              </div>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1.5 font-medium">
+                <FileText className="h-3.5 w-3.5 text-blue-500" />
+                <span>Up to 100MB / File</span>
+              </div>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1.5 font-medium">
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+                <span>100% Free &amp; Private</span>
+              </div>
+            </div>
           </div>
-
-          {/* Action Selector Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-            {/* Action 1: Edit PDF Text */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/edit-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-4 text-left hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
-                  <Type className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Edit PDF Text
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Click, type, and delete existing text in-browser.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-blue-400">
-                <span>Edit Text Now</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 2: Compress PDF */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/compress-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-cyan-200/90 dark:border-cyan-900/60 bg-cyan-50/40 dark:bg-cyan-950/20 p-4 text-left hover:border-cyan-400 dark:hover:border-cyan-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-100 dark:bg-cyan-900/60 text-cyan-600 dark:text-cyan-400 mb-3 group-hover:scale-105 transition-transform">
-                  <Zap className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Compress PDF
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Shrink size up to 70% with client-side canvas downscaling.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-cyan-700 dark:text-cyan-400">
-                <span>Compress Now</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 2: Reorder PDF */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/reorder-pdf-pages")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-sky-200/90 dark:border-sky-900/60 bg-sky-50/40 dark:bg-sky-950/20 p-4 text-left hover:border-sky-400 dark:hover:border-sky-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-900/60 text-sky-600 dark:text-sky-400 mb-3 group-hover:scale-105 transition-transform">
-                  <ArrowRight className="h-5 w-5 rotate-90" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Reorder Pages
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Drag and drop to rearrange your page order.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-sky-700 dark:text-sky-400">
-                <span>Reorder Now</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 2: Rotate PDF */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/rotate-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-amber-200/90 dark:border-amber-900/60 bg-amber-50/40 dark:bg-amber-950/20 p-4 text-left hover:border-amber-400 dark:hover:border-amber-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 mb-3 group-hover:rotate-45 transition-transform duration-300">
-                  <RotateCw className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Rotate Pages
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Turn pages 90°, 180°, or 270° with 60fps instant previews.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-amber-700 dark:text-amber-400">
-                <span>Rotate Now</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 2: Delete PDF Pages */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/delete-pdf-pages")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-rose-200/90 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20 p-4 text-left hover:border-rose-400 dark:hover:border-rose-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 dark:bg-rose-900/60 text-rose-600 dark:text-rose-400 mb-3 group-hover:scale-105 transition-transform">
-                  <Trash2 className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Delete Pages
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Remove unwanted sheets with 1-click visual undo.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-rose-700 dark:text-rose-400">
-                <span>Delete Pages</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 3: Split PDF */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/split-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-emerald-200/90 dark:border-emerald-900/60 bg-emerald-50/40 dark:bg-emerald-950/20 p-4 text-left hover:border-emerald-400 dark:hover:border-emerald-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 mb-3 group-hover:scale-105 transition-transform">
-                  <Scissors className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Split &amp; Extract
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Select custom page ranges (e.g. 1-3, 5) into a new PDF.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                <span>Extract Pages</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            {/* Action 4: Merge PDF */}
-            <button
-              type="button"
-              disabled={isNavigating}
-              onClick={() => handleAction("/merge-pdf")}
-              className="group relative flex flex-col justify-between rounded-2xl border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/40 dark:bg-blue-950/20 p-4 text-left hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
-            >
-              <div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400 mb-3 group-hover:scale-105 transition-transform">
-                  <FileStack className="h-5 w-5" />
-                </div>
-                <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                  Merge With Other PDFs
-                </h5>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                  Combine this file with additional PDFs in any order.
-                </p>
-              </div>
-              <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-700 dark:text-blue-400">
-                <span>Merge PDFs</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-          </div>
-        </div>
-      ) : (
-        /* State B: Empty Dropzone -> Clean Sky-Blue Dashed Dropzone */
-        <div
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onClick={() => fileInputRef.current?.click()}
-          className={cn(
-            "relative flex flex-col items-center justify-center rounded-2xl sm:rounded-3xl border-2 border-dashed p-8 sm:p-12 text-center transition-all duration-200 cursor-pointer select-none group",
-            isDragOver
-              ? "border-blue-500 bg-blue-50/60 dark:bg-blue-950/50 scale-[1.01]"
-              : "border-sky-300 hover:border-blue-500 bg-sky-50/30 hover:bg-sky-50/50 dark:border-sky-900/60 dark:bg-sky-950/20 dark:hover:border-sky-700"
-          )}
-        >
-          {/* Blue Square with White Upward Arrow */}
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm mb-4 group-hover:scale-105 transition-transform">
-            <ArrowUp className="h-6 w-6 stroke-[2.5]" />
-          </div>
-
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-            Drop your PDF files here
-          </h3>
-
-          <div className="mt-3 flex items-center justify-center gap-2">
-            <span className="text-xs text-slate-400 dark:text-slate-500">or</span>
-            <button
-              type="button"
-              className="inline-flex items-center rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-semibold px-4 py-2 shadow-xs transition-colors cursor-pointer"
-            >
-              choose files
-            </button>
-          </div>
-
-          <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-            <Lock className="h-3.5 w-3.5" />
-            <span>Your files never leave your device</span>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

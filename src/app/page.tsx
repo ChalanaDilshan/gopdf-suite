@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { WebApplicationJsonLd, FaqJsonLd, HowToJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SmartDropzone } from "@/components/home/SmartDropzone";
 import { ToolsSection } from "@/components/home/ToolsSection";
 import { PrivacyComparison } from "@/components/home/PrivacyComparison";
 import { Accordion } from "@/components/ui/Accordion";
-import { ShieldCheck, HelpCircle, Sparkles, FileText, Lock, Zap } from "lucide-react";
+import { 
+  ShieldCheck, 
+  HelpCircle, 
+  Sparkles, 
+  FileText, 
+  Lock, 
+  Zap, 
+  Cpu, 
+  ArrowRight, 
+  CheckCircle2, 
+  ServerOff, 
+  Infinity as InfinityIcon,
+  Github
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: {
@@ -79,9 +93,36 @@ const HOME_STEPS = [
   },
 ];
 
+const ARCHITECTURE_PILLARS = [
+  {
+    icon: ShieldCheck,
+    title: "Total Memory Isolation",
+    badge: "100% Private",
+    badgeColor: "bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    description:
+      "Your documents are processed strictly in your local device RAM. Zero bytes are ever transmitted over the network or saved to remote databases.",
+  },
+  {
+    icon: Zap,
+    title: "Instant WebAssembly Speed",
+    badge: "0ms Network Lag",
+    badgeColor: "bg-amber-50 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    description:
+      "Bypasses the 30-60 second cloud upload queue. Manipulation begins the millisecond you choose your file, powered by multi-core CPU threads.",
+  },
+  {
+    icon: InfinityIcon,
+    title: "Unlimited Free Execution",
+    badge: "Zero Paywalls",
+    badgeColor: "bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800",
+    description:
+      "No daily caps, no 3-file restrictions, no watermarks, and no mandatory account signups. A true desktop-grade utility inside your web browser.",
+  },
+];
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
+    <div className="min-h-screen bg-slate-50/70 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
       {/* Schema.org Structured Data */}
       <WebApplicationJsonLd />
       <BreadcrumbJsonLd items={[{ name: "Home", item: "https://gopdf.tech/" }]} />
@@ -92,38 +133,49 @@ export default function HomePage() {
         steps={HOME_STEPS}
       />
 
-      <main className="flex-1 pb-24">
+      <main className="flex-1 pb-24 relative overflow-hidden">
+        {/* Subtle Ambient Background Glow */}
+        <div 
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-gradient-to-b from-blue-500/10 via-indigo-500/5 to-transparent blur-3xl pointer-events-none -z-10" 
+          aria-hidden="true" 
+        />
+
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-8 sm:pt-14 pb-6 sm:pb-10">
+        <section className="relative pt-10 sm:pt-16 pb-8 sm:pb-12">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-            {/* Top Simple. Fast. Private. Tag */}
-            <div className="text-xs font-bold tracking-[0.25em] text-blue-600 dark:text-blue-400 uppercase mb-3">
-              SIMPLE. FAST. PRIVATE.
+            
+            {/* Top Category Badge Pill */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/90 dark:border-blue-900/60 bg-blue-50/80 dark:bg-blue-950/60 px-3.5 py-1 text-[11px] font-bold text-blue-700 dark:text-blue-300 shadow-2xs mb-5 backdrop-blur-xs">
+              <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+              <span>100% In-Browser Engine · Zero Cloud Uploads</span>
             </div>
 
-            {/* Main Title matching mockup */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-              PDF tools, <span className="text-blue-600 dark:text-blue-500">made simple.</span>
+            {/* Main Title */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.08] max-w-4xl mx-auto">
+              The Private PDF Studio{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-500 bg-clip-text text-transparent dark:from-blue-400 dark:via-indigo-300 dark:to-sky-400">
+                Inside Your Browser.
+              </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-3 text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Everything you need to manage PDFs — right in your browser.
+            <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Merge, edit, compress, and convert confidential documents locally in your device memory. Lightning fast, zero server uploads, and completely free.
             </p>
 
             {/* Universal Smart Dropzone Hero Slot */}
-            <div className="mt-8 max-w-4xl mx-auto">
+            <div className="mt-8 sm:mt-10 max-w-4xl mx-auto">
               <SmartDropzone />
             </div>
 
-            {/* Trust & Verification Badges */}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-600 dark:text-slate-400">
-              <div className="inline-flex items-center gap-1.5 font-medium">
+            {/* Trust & Verification Badges Strip */}
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-xs text-slate-600 dark:text-slate-400">
+              <div className="inline-flex items-center gap-1.5 font-semibold">
                 <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 <span>100% Client-Side Privacy</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
-              <div className="inline-flex items-center gap-1.5 font-medium">
+              <div className="inline-flex items-center gap-1.5 font-semibold">
                 <Zap className="h-4 w-4 text-amber-500" />
                 <span>Zero Cloud Latency</span>
               </div>
@@ -138,11 +190,44 @@ export default function HomePage() {
                 <img
                   src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
                   alt="GoPDF.tech badge"
-                  style={{ maxWidth: "130px" }}
-                  className="h-[28px] w-auto rounded shadow-2xs"
+                  style={{ maxWidth: "135px" }}
+                  className="h-[30px] w-auto rounded shadow-2xs"
                 />
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* Architectural Superpowers Bento Section */}
+        <section className="py-8 sm:py-12 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {ARCHITECTURE_PILLARS.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={pillar.title}
+                  className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-6 sm:p-7 backdrop-blur-sm shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/60 shadow-2xs">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold border ${pillar.badgeColor}`}>
+                        {pillar.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {pillar.title}
+                    </h3>
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -179,6 +264,40 @@ export default function HomePage() {
             }))}
             defaultExpandedIds={[HOME_FAQS[0].id]}
           />
+        </section>
+
+        {/* Bottom CTA Callout Card */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24">
+          <div className="relative rounded-3xl border border-blue-200 dark:border-blue-900/80 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 p-8 sm:p-12 text-white text-center shadow-xl shadow-blue-500/10 overflow-hidden">
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 max-w-2xl mx-auto space-y-4">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-blue-100 backdrop-blur-xs">
+                <Sparkles className="h-3.5 w-3.5" />
+                Zero Setup · Instant Access
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+                Experience Private PDF Processing Today
+              </h2>
+              <p className="text-sm sm:text-base text-blue-100 leading-relaxed">
+                No signups, no credit cards, no tracking cookies. Choose any tool and begin working in seconds.
+              </p>
+              <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/merge-pdf"
+                  className="rounded-xl bg-white hover:bg-slate-100 text-blue-700 font-bold px-6 py-3 text-sm shadow-md transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Launch Merge Studio</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/edit-pdf"
+                  className="rounded-xl bg-blue-500/30 hover:bg-blue-500/40 border border-white/20 text-white font-bold px-6 py-3 text-sm backdrop-blur-xs transition-colors"
+                >
+                  Edit PDF Text
+                </Link>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
