@@ -1,29 +1,42 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { 
+  DndContext, 
+  closestCenter, 
+  KeyboardSensor, 
+  PointerSensor, 
+  useSensor, 
+  useSensors, 
+  DragEndEvent 
+} from "@dnd-kit/core";
+import { 
+  SortableContext, 
+  sortableKeyboardCoordinates, 
+  rectSortingStrategy, 
+  useSortable 
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { 
   Image as ImageIcon, 
   Download, 
   RotateCcw, 
   RotateCw, 
   Trash2, 
-  ArrowLeft, 
-  ArrowRight, 
   Plus, 
   CheckCircle2, 
   AlertCircle, 
   Settings2, 
-  FileCheck,
-  ShieldCheck,
-  Layers,
-  Sparkles
+  ShieldCheck, 
+  Sparkles,
+  GripVertical
 } from "lucide-react";
 import { ToolLayout } from "@/components/layout/ToolLayout";
 import { Dropzone } from "@/components/ui/Dropzone";
 import { Button } from "@/components/ui/Button";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { CompletionNextActions } from "@/components/tools/CompletionNextActions";
-import { formatBytes, truncateFileName } from "@/lib/utils";
+import { formatBytes, truncateFileName, cn } from "@/lib/utils";
 import { HowToStep, FaqItem } from "@/types";
 import { ToolContentGuideProps } from "@/components/seo/ToolContentGuide";
 
@@ -76,6 +89,117 @@ const MARGIN_SIZES: Record<PageMargin, number> = {
   large: 40,
 };
 
+interface SortableImageCardProps {
+  item: ImageItem;
+  index: number;
+  onRotate: (id: string) => void;
+  onRemove: (id: string) => void;
+  disabled?: boolean;
+}
+
+function SortableImageCard({
+  item,
+  index,
+  onRotate,
+  onRemove,
+  disabled = false,
+}: SortableImageCardProps) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: item.id,
+    disabled,
+  });
+
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={cn(
+        "group relative flex flex-col justify-between rounded-2xl border p-3 transition-all duration-200 select-none bg-white dark:bg-slate-900 shadow-2xs",
+        isDragging && "z-50 shadow-2xl scale-105 border-blue-500 ring-2 ring-blue-500/30 opacity-95",
+        !isDragging && "border-slate-200/90 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-700/80 hover:shadow-md",
+        disabled && "pointer-events-none opacity-50"
+      )}
+    >
+      {/* Top Header: Drag Handle, Page Badge & Delete Action */}
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            {...attributes}
+            {...listeners}
+            className="p-1 rounded-md text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-grab active:cursor-grabbing transition-colors"
+            title="Drag to reorder"
+            aria-label="Drag to reorder"
+          >
+            <GripVertical className="h-4 w-4" />
+          </button>
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-950/80 text-[10px] font-black text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-900/60">
+            {index + 1}
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => onRemove(item.id)}
+          title="Remove image"
+          className="p-1 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
+        >
+          <Trash2 className="h-3.5 w-3.5" />
+        </button>
+      </div>
+
+      {/* Image Preview Canvas */}
+      <div className="relative aspect-3/4 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-800 flex items-center justify-center p-1.5">
+        <img
+          src={item.previewUrl}
+          alt={item.file.name}
+          style={{
+            transform: `rotate(${item.rotation}deg)`,
+            transition: "transform 0.2s ease-in-out",
+          }}
+          className="max-h-full max-w-full object-contain pointer-events-none drop-shadow-xs"
+        />
+      </div>
+
+      {/* Footer: File Name & Quick Rotate Action */}
+      <div className="mt-2.5 space-y-1.5">
+        <div className="flex items-center justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+          <span className="truncate max-w-[120px]">{item.file.name}</span>
+          <span className="text-[10px] text-slate-400">{formatBytes(item.file.size)}</span>
+        </div>
+
+        <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-slate-800 text-[10px]">
+          <span className="text-slate-400 font-medium">
+            {item.width} × {item.height}px
+          </span>
+
+          <button
+            type="button"
+            onClick={() => onRotate(item.id)}
+            title="Rotate 90 degrees"
+            className="flex items-center gap-1 px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+          >
+            <RotateCw className="h-3 w-3" />
+            <span>{item.rotation}°</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ImagesToPdfWorkspace({
   toolSlug,
   title,
@@ -103,8 +227,22 @@ export function ImagesToPdfWorkspace({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Setup sensors for @dnd-kit drag-and-drop
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
   const handleFilesAdded = useCallback(async (files: File[]) => {
-    const validFiles = files.filter((f) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|avif|gif)$/i.test(f.name));
+    const validFiles = files.filter(
+      (f) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|avif|gif)$/i.test(f.name)
+    );
     if (validFiles.length === 0) return;
 
     setError(null);
@@ -134,6 +272,33 @@ export function ImagesToPdfWorkspace({
     setImages((prev) => [...prev, ...newItems]);
   }, []);
 
+  // Ingest transferred files from homepage dropzone if available
+  useEffect(() => {
+    import("@/lib/fileTransfer").then(({ getTransferredFiles }) => {
+      const transferred = getTransferredFiles();
+      if (transferred.length > 0) {
+        handleFilesAdded(transferred);
+      }
+    });
+  }, [handleFilesAdded]);
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      setImages((items) => {
+        const oldIndex = items.findIndex((i) => i.id === active.id);
+        const newIndex = items.findIndex((i) => i.id === over.id);
+        if (oldIndex !== -1 && newIndex !== -1) {
+          const next = [...items];
+          const [moved] = next.splice(oldIndex, 1);
+          next.splice(newIndex, 0, moved);
+          return next;
+        }
+        return items;
+      });
+    }
+  };
+
   const handleRotateImage = (id: string) => {
     setImages((prev) =>
       prev.map((img) =>
@@ -147,19 +312,6 @@ export function ImagesToPdfWorkspace({
       const target = prev.find((i) => i.id === id);
       if (target) URL.revokeObjectURL(target.previewUrl);
       return prev.filter((i) => i.id !== id);
-    });
-  };
-
-  const handleMoveImage = (index: number, direction: "left" | "right") => {
-    const targetIndex = direction === "left" ? index - 1 : index + 1;
-    if (targetIndex < 0 || targetIndex >= images.length) return;
-
-    setImages((prev) => {
-      const copy = [...prev];
-      const temp = copy[index];
-      copy[index] = copy[targetIndex];
-      copy[targetIndex] = temp;
-      return copy;
     });
   };
 
@@ -194,43 +346,69 @@ export function ImagesToPdfWorkspace({
         setProgress(stepProgress);
         setStatusMessage(`Processing image ${i + 1} of ${total}: ${truncateFileName(item.file.name, 25)}...`);
 
-        // Render to canvas if rotated or not direct JPG/PNG
-        const canvas = document.createElement("canvas");
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        await new Promise<void>((resolve, reject) => {
-          img.onload = () => resolve();
-          img.onerror = () => reject(new Error(`Failed to decode image ${item.file.name}`));
-          img.src = item.previewUrl;
-        });
+        // Check format and rotation
+        const isJpg = item.file.type === "image/jpeg" || /\.(jpe?g)$/i.test(item.file.name);
+        const isPng = item.file.type === "image/png" || /\.png$/i.test(item.file.name);
+        const isRotated = item.rotation !== 0;
 
-        const isRotated90or270 = item.rotation === 90 || item.rotation === 270;
-        const naturalW = img.naturalWidth || item.width;
-        const naturalH = img.naturalHeight || item.height;
+        let embeddedImage: any = null;
+        let effectiveW = item.width;
+        let effectiveH = item.height;
 
-        const effectiveW = isRotated90or270 ? naturalH : naturalW;
-        const effectiveH = isRotated90or270 ? naturalW : naturalH;
+        // Fast-path: embed direct JPG / PNG if unrotated
+        if (!isRotated && (isJpg || isPng)) {
+          try {
+            const arrayBuffer = await item.file.arrayBuffer();
+            if (isJpg) {
+              embeddedImage = await pdfDoc.embedJpg(arrayBuffer);
+            } else if (isPng) {
+              embeddedImage = await pdfDoc.embedPng(arrayBuffer);
+            }
+          } catch {
+            // Fall back to canvas normalization on error (e.g. CMYK JPEG or interlaced PNG)
+            embeddedImage = null;
+          }
+        }
 
-        canvas.width = effectiveW;
-        canvas.height = effectiveH;
-        const ctx = canvas.getContext("2d", { alpha: false });
-        if (!ctx) throw new Error("Could not initialize 2D canvas context");
+        // Normalization path: rotated image, WebP, or non-standard format
+        if (!embeddedImage) {
+          const canvas = document.createElement("canvas");
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          await new Promise<void>((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = () => reject(new Error(`Failed to decode image ${item.file.name}`));
+            img.src = item.previewUrl;
+          });
 
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, effectiveW, effectiveH);
+          const isRotated90or270 = item.rotation === 90 || item.rotation === 270;
+          const naturalW = img.naturalWidth || item.width;
+          const naturalH = img.naturalHeight || item.height;
 
-        // Apply rotation on canvas
-        ctx.save();
-        ctx.translate(effectiveW / 2, effectiveH / 2);
-        ctx.rotate((item.rotation * Math.PI) / 180);
-        ctx.drawImage(img, -naturalW / 2, -naturalH / 2);
-        ctx.restore();
+          effectiveW = isRotated90or270 ? naturalH : naturalW;
+          effectiveH = isRotated90or270 ? naturalW : naturalH;
 
-        const jpegDataUrl = canvas.toDataURL("image/jpeg", 0.92);
-        canvas.width = 0;
-        canvas.height = 0;
+          canvas.width = effectiveW;
+          canvas.height = effectiveH;
+          const ctx = canvas.getContext("2d", { alpha: false });
+          if (!ctx) throw new Error("Could not initialize 2D canvas context");
 
-        const embeddedImage = await pdfDoc.embedJpg(jpegDataUrl);
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, effectiveW, effectiveH);
+
+          // Apply rotation on canvas
+          ctx.save();
+          ctx.translate(effectiveW / 2, effectiveH / 2);
+          ctx.rotate((item.rotation * Math.PI) / 180);
+          ctx.drawImage(img, -naturalW / 2, -naturalH / 2);
+          ctx.restore();
+
+          const jpegDataUrl = canvas.toDataURL("image/jpeg", 0.92);
+          canvas.width = 0;
+          canvas.height = 0;
+
+          embeddedImage = await pdfDoc.embedJpg(jpegDataUrl);
+        }
 
         // Determine Page Size
         let pageWidth: number;
@@ -251,7 +429,7 @@ export function ImagesToPdfWorkspace({
             pageWidth = Math.max(baseW, baseH);
             pageHeight = Math.min(baseW, baseH);
           } else {
-            // auto match image orientation
+            // Auto: Match Image aspect ratio
             if (effectiveW > effectiveH) {
               pageWidth = Math.max(baseW, baseH);
               pageHeight = Math.min(baseW, baseH);
@@ -335,7 +513,7 @@ export function ImagesToPdfWorkspace({
             maxFiles={100}
             accept={acceptedTypes}
             title={`Drop your ${defaultFormatLabel} images here to convert to PDF`}
-            subtitle="Select multiple images. Arrange order, adjust margins and page orientation with instant live preview."
+            subtitle="Select multiple images. Arrange order with drag & drop, adjust margins and page orientation with instant live preview."
           />
         ) : (
           <div className="space-y-6">
@@ -350,7 +528,7 @@ export function ImagesToPdfWorkspace({
                     {images.length} {images.length === 1 ? "Image" : "Images"} Ready
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Reorder images, configure orientation and compile into a single PDF.
+                    Drag and drop cards to reorder, configure orientation, and compile into a unified PDF.
                   </p>
                 </div>
               </div>
@@ -412,7 +590,7 @@ export function ImagesToPdfWorkspace({
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {/* Orientation */}
+                  {/* Page Orientation */}
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                       Page Orientation
@@ -422,32 +600,32 @@ export function ImagesToPdfWorkspace({
                       onChange={(e) => setOrientation(e.target.value as PageOrientation)}
                       className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                     >
-                      <option value="auto">Auto (Match each image)</option>
+                      <option value="auto">Match Image (Auto)</option>
                       <option value="portrait">Portrait (Vertical)</option>
                       <option value="landscape">Landscape (Horizontal)</option>
                     </select>
                   </div>
 
-                  {/* Page Size */}
+                  {/* Page Format */}
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Page Format
+                      Page Dimensions
                     </label>
                     <select
                       value={pageSize}
                       onChange={(e) => setPageSize(e.target.value as PageSize)}
                       className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                     >
+                      <option value="fit">Fit to Image (Exact resolution)</option>
                       <option value="a4">A4 (Standard document)</option>
                       <option value="letter">US Letter</option>
-                      <option value="fit">Fit (Same as image pixels)</option>
                     </select>
                   </div>
 
-                  {/* Margin */}
+                  {/* Margin Padding */}
                   <div>
                     <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Page Margins
+                      Margin Padding
                     </label>
                     <select
                       value={margin}
@@ -455,92 +633,39 @@ export function ImagesToPdfWorkspace({
                       className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="none">No Margin (Full bleed)</option>
-                      <option value="small">Small Margin (Clean padding)</option>
-                      <option value="large">Big Margin</option>
+                      <option value="small">Small Margin (20pt padding)</option>
+                      <option value="large">Big Margin (40pt padding)</option>
                     </select>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Thumbnail Cards Grid */}
+            {/* Sortable Drag-and-Drop Thumbnail Grid */}
             {!downloadUrl && !isConverting && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-                {images.map((img, idx) => (
-                  <div
-                    key={img.id}
-                    className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-2.5 shadow-2xs hover:shadow-md hover:border-blue-400 dark:hover:border-blue-600 transition-all"
-                  >
-                    {/* Header: Page Badge & Delete Button */}
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-black text-slate-600 dark:text-slate-300">
-                        {idx + 1}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveImage(img.id)}
-                        title="Remove image"
-                        className="p-1 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-
-                    {/* Image Preview Canvas */}
-                    <div className="relative aspect-3/4 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-800 flex items-center justify-center p-1">
-                      <img
-                        src={img.previewUrl}
-                        alt={img.file.name}
-                        style={{
-                          transform: `rotate(${img.rotation}deg)`,
-                          transition: "transform 0.2s ease-in-out",
-                        }}
-                        className="max-h-full max-w-full object-contain pointer-events-none drop-shadow-xs"
+              <DndContext
+                sensors={sensors}
+                collisionDetection={closestCenter}
+                onDragEnd={handleDragEnd}
+              >
+                <SortableContext
+                  items={images.map((img) => img.id)}
+                  strategy={rectSortingStrategy}
+                >
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
+                    {images.map((img, idx) => (
+                      <SortableImageCard
+                        key={img.id}
+                        item={img}
+                        index={idx}
+                        onRotate={handleRotateImage}
+                        onRemove={handleRemoveImage}
+                        disabled={isConverting}
                       />
-                    </div>
-
-                    {/* Footer: Name & Rotation / Move Actions */}
-                    <div className="mt-2 space-y-1.5">
-                      <div className="text-[11px] font-semibold text-slate-700 dark:text-slate-300 truncate">
-                        {img.file.name}
-                      </div>
-
-                      <div className="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-slate-800 text-[10px]">
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            disabled={idx === 0}
-                            onClick={() => handleMoveImage(idx, "left")}
-                            title="Move left"
-                            className="p-1 rounded-md text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30"
-                          >
-                            <ArrowLeft className="h-3 w-3" />
-                          </button>
-                          <button
-                            type="button"
-                            disabled={idx === images.length - 1}
-                            onClick={() => handleMoveImage(idx, "right")}
-                            title="Move right"
-                            className="p-1 rounded-md text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30"
-                          >
-                            <ArrowRight className="h-3 w-3" />
-                          </button>
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => handleRotateImage(img.id)}
-                          title="Rotate 90 degrees"
-                          className="flex items-center gap-1 px-1.5 py-0.5 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold"
-                        >
-                          <RotateCw className="h-3 w-3" />
-                          <span>{img.rotation}°</span>
-                        </button>
-                      </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </SortableContext>
+              </DndContext>
             )}
 
             {/* Bottom Conversion Action Bar */}
@@ -548,7 +673,7 @@ export function ImagesToPdfWorkspace({
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 dark:border-slate-800/80">
                 <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                   <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <span>100% Client-Side • Embedded at full native resolution</span>
+                  <span>100% Client-Side • Embedded in native resolution via pdf-lib</span>
                 </div>
 
                 <Button

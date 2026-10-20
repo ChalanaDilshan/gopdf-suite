@@ -115,6 +115,34 @@ export default function HomePage() {
             <div className="mt-8 max-w-4xl mx-auto">
               <SmartDropzone />
             </div>
+
+            {/* Trust & Verification Badges */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-600 dark:text-slate-400">
+              <div className="inline-flex items-center gap-1.5 font-medium">
+                <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                <span>100% Client-Side Privacy</span>
+              </div>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+              <div className="inline-flex items-center gap-1.5 font-medium">
+                <Zap className="h-4 w-4 text-amber-500" />
+                <span>Zero Cloud Latency</span>
+              </div>
+              <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
+              <a
+                href="https://www.saashub.com/gopdf-tools?utm_source=badge&utm_campaign=badge&utm_content=gopdf-tools&badge_variant=color&badge_kind=approved"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center transition-transform hover:scale-105"
+                title="GoPDF approved on SaaSHub"
+              >
+                <img
+                  src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                  alt="GoPDF.tech badge"
+                  style={{ maxWidth: "130px" }}
+                  className="h-[28px] w-auto rounded shadow-2xs"
+                />
+              </a>
+            </div>
           </div>
         </section>
 

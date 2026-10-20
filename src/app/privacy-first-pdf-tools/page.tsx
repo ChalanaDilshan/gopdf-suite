@@ -100,20 +100,38 @@ export default function PrivacyFirstPage() {
             Every day, millions of confidential contracts, tax returns, and medical records are inadvertently exposed to remote cloud servers. Learn how GoPDF’s client-side architecture keeps your private data entirely in your local memory.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/merge-pdf"
-              className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 shadow-md transition-colors"
-            >
-              <span>Merge PDFs Privately</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/split-pdf"
-              className="inline-flex items-center gap-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-slate-800 dark:text-slate-200 font-bold px-6 py-3.5 transition-colors"
-            >
-              <span>Split PDFs Privately</span>
-            </Link>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/merge-pdf"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 shadow-md transition-colors"
+              >
+                <span>Merge PDFs Privately</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/split-pdf"
+                className="inline-flex items-center gap-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 text-slate-800 dark:text-slate-200 font-bold px-6 py-3.5 transition-colors"
+              >
+                <span>Split PDFs Privately</span>
+              </Link>
+            </div>
+            <div className="mt-2 flex items-center justify-center">
+              <a
+                href="https://www.saashub.com/gopdf-tools?utm_source=badge&utm_campaign=badge&utm_content=gopdf-tools&badge_variant=color&badge_kind=approved"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition-transform hover:scale-105"
+                title="GoPDF approved on SaaSHub"
+              >
+                <img
+                  src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                  alt="GoPDF.tech badge"
+                  style={{ maxWidth: "140px" }}
+                  className="h-8 w-auto rounded shadow-2xs"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </section>

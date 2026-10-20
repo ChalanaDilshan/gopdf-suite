@@ -26,6 +26,22 @@ export function Footer() {
               <ShieldCheck className="h-3.5 w-3.5" />
               <span>No Cloud Uploads Ever</span>
             </div>
+            <div className="pt-2">
+              <a
+                href="https://www.saashub.com/gopdf-tools?utm_source=badge&utm_campaign=badge&utm_content=gopdf-tools&badge_variant=color&badge_kind=approved"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition-transform hover:scale-105"
+                title="GoPDF approved on SaaSHub"
+              >
+                <img
+                  src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1"
+                  alt="GoPDF.tech badge"
+                  style={{ maxWidth: "140px" }}
+                  className="rounded"
+                />
+              </a>
+            </div>
           </div>
 
           {/* Tools */}
@@ -126,6 +142,16 @@ export function Footer() {
                   className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   GitHub Source <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://www.saashub.com/gopdf-tools?utm_source=badge&utm_campaign=badge&utm_content=gopdf-tools&badge_variant=color&badge_kind=approved" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  Verified on SaaSHub <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
             </ul>
