@@ -141,7 +141,7 @@ export default function CompressPdfPage() {
             {/* Header Toolbar: Active Document Info & File Actions */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -255,11 +255,11 @@ export default function CompressPdfPage() {
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-blue-200 dark:border-blue-800">
-                    <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <div className="p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-neutral-300 dark:border-neutral-700">
+                    <span className="text-[11px] font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wider">
                       Total Saved
                     </span>
-                    <p className="text-base font-black text-blue-600 dark:text-blue-400 mt-0.5">
+                    <p className="text-base font-black text-neutral-900 dark:text-white mt-0.5">
                       -{stats.savedPercentage}% ({formatBytes(stats.savedBytes)})
                     </p>
                   </div>

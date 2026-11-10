@@ -74,7 +74,7 @@ const SECURITY_FAQS = [
 
 export default function PrivacyFirstPage() {
   return (
-    <div className="bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 min-h-screen">
+    <div className="bg-[#fafafa] dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen">
       <BreadcrumbJsonLd
         items={[
           { name: "Home", item: "https://gopdf.tech/" },
@@ -84,16 +84,16 @@ export default function PrivacyFirstPage() {
       <FaqJsonLd faqs={SECURITY_FAQS} />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 sm:py-24 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+      <section className="relative overflow-hidden py-16 sm:py-24 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-900/60 text-xs font-bold text-emerald-700 dark:text-emerald-400 mb-6">
             <ShieldCheck className="h-4 w-4" />
             <span>Zero-Cloud Architecture · 100% In-Browser Execution</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.15]">
             Why Client-Side PDF Processing is the{" "}
-            <span className="text-blue-600 dark:text-blue-400">Safest Choice</span> for Sensitive Documents
+            <span className="text-neutral-600 dark:text-neutral-400">Safest Choice</span> for Sensitive Documents
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -104,7 +104,7 @@ export default function PrivacyFirstPage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/merge-pdf"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 shadow-md transition-colors"
+                className="inline-flex items-center gap-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-white font-bold px-6 py-3.5 shadow-xs transition-colors"
               >
                 <span>Merge PDFs Privately</span>
                 <ArrowRight className="h-4 w-4" />
@@ -170,8 +170,8 @@ export default function PrivacyFirstPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-blue-200/80 dark:border-blue-950/60 bg-blue-50/30 dark:bg-blue-950/20 p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+          <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <Cpu className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">The GoPDF Zero-Cloud Solution</h3>
@@ -183,7 +183,7 @@ export default function PrivacyFirstPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 border-y border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#0d1322]">
+      <section className="py-16 border-y border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -194,27 +194,27 @@ export default function PrivacyFirstPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="overflow-x-auto rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xs">
             <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+              <thead className="bg-neutral-50 dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
                 <tr>
-                  <th className="py-4 px-4 sm:px-6 font-bold text-slate-700 dark:text-slate-300">Feature</th>
+                  <th className="py-4 px-4 sm:px-6 font-bold text-neutral-700 dark:text-neutral-300">Feature</th>
                   <th className="py-4 px-4 sm:px-6 font-bold text-red-600 dark:text-red-400">Cloud PDF Tools (iLovePDF, Smallpdf)</th>
-                  <th className="py-4 px-4 sm:px-6 font-bold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/40">GoPDF (Client-Side)</th>
+                  <th className="py-4 px-4 sm:px-6 font-bold text-neutral-900 dark:text-white bg-neutral-100 dark:bg-neutral-800">GoPDF (Client-Side)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
                 <tr>
                   <td className="py-4 px-4 sm:px-6 font-semibold">Where documents are processed</td>
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400">Remote Cloud Server</td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">Your Local Device (Browser)</td>
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">Your Local Device (Browser)</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 sm:px-6 font-semibold">Network transmission</td>
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400 flex items-center gap-1.5 text-red-600 dark:text-red-400">
                     <XCircle className="h-4 w-4 shrink-0" /> Full file uploaded over internet
                   </td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle className="h-4 w-4 shrink-0" /> 0 bytes transmitted
                     </span>
@@ -223,7 +223,7 @@ export default function PrivacyFirstPage() {
                 <tr>
                   <td className="py-4 px-4 sm:px-6 font-semibold">Server-side retention time</td>
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400">Stored on disk for 1–2 hours</td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle className="h-4 w-4 shrink-0" /> 0 seconds (never stored)
                     </span>
@@ -234,7 +234,7 @@ export default function PrivacyFirstPage() {
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400 flex items-center gap-1.5 text-red-600 dark:text-red-400">
                     <XCircle className="h-4 w-4 shrink-0" /> No (requires active internet)
                   </td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle className="h-4 w-4 shrink-0" /> Works completely offline
                     </span>
@@ -243,7 +243,7 @@ export default function PrivacyFirstPage() {
                 <tr>
                   <td className="py-4 px-4 sm:px-6 font-semibold">HIPAA / NDA Compliance</td>
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400">Requires signed BAA agreement</td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle className="h-4 w-4 shrink-0" /> Fully Compliant by design
                     </span>
@@ -252,7 +252,7 @@ export default function PrivacyFirstPage() {
                 <tr>
                   <td className="py-4 px-4 sm:px-6 font-semibold">Processing Speed</td>
                   <td className="py-4 px-4 sm:px-6 text-slate-600 dark:text-slate-400">Slowed by upload and download queues</td>
-                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-blue-50/30 dark:bg-blue-950/20">
+                  <td className="py-4 px-4 sm:px-6 font-bold text-emerald-600 dark:text-emerald-400 bg-neutral-100/50 dark:bg-neutral-800/40">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle className="h-4 w-4 shrink-0" /> Instant local CPU execution
                     </span>
@@ -276,8 +276,8 @@ export default function PrivacyFirstPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+          <div className="rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <Scale className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Legal Practitioners & Law Firms</h3>
@@ -286,7 +286,7 @@ export default function PrivacyFirstPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
+          <div className="rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
               <Stethoscope className="h-5 w-5" />
             </div>
@@ -296,8 +296,8 @@ export default function PrivacyFirstPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+          <div className="rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <Building2 className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Accountants & Financial Advisors</h3>
@@ -306,8 +306,8 @@ export default function PrivacyFirstPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400">
+          <div className="rounded-2xl border border-neutral-200/90 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <Briefcase className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Corporate Enterprise & IP R&D</h3>
@@ -319,7 +319,7 @@ export default function PrivacyFirstPage() {
       </section>
 
       {/* Security FAQ Section */}
-      <section className="py-16 border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#0d1322]">
+      <section className="py-16 border-t border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a]">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -357,13 +357,13 @@ export default function PrivacyFirstPage() {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               href="/merge-pdf"
-              className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 text-sm shadow-md transition-colors"
+              className="rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-white font-bold px-6 py-3 text-sm shadow-xs transition-colors"
             >
               Launch Merge PDF
             </Link>
             <Link
               href="/split-pdf"
-              className="rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold px-6 py-3 text-sm transition-colors"
+              className="rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-bold px-6 py-3 text-sm transition-colors"
             >
               Launch Split PDF
             </Link>

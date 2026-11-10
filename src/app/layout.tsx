@@ -17,8 +17,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f7fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f19" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
 };
 
@@ -134,7 +134,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-[#f4f7fb] text-slate-900 dark:bg-[#0b0f19] dark:text-slate-100 flex flex-col min-h-screen transition-colors duration-150">
+      <body className="font-sans antialiased bg-[#fafafa] text-neutral-900 dark:bg-[#0a0a0a] dark:text-neutral-100 flex flex-col min-h-screen transition-colors duration-150">
         <ThemeProvider>
           <Navbar />
           <div className="flex-1">{children}</div>

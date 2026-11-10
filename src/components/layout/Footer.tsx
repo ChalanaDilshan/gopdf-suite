@@ -6,17 +6,17 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-[#0b0f19]/90 backdrop-blur-sm transition-colors mt-auto">
+    <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-[#0a0a0a]/90 backdrop-blur-sm transition-colors mt-auto">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-12">
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-xs">
                 <FileText className="h-4 w-4" />
               </div>
               <span className="text-base font-bold text-slate-900 dark:text-white">
-                Go<span className="text-blue-600 dark:text-blue-400">PDF</span>
+                Go<span className="text-neutral-500 dark:text-neutral-400">PDF</span>
               </span>
             </Link>
             <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
@@ -53,57 +53,57 @@ export function Footer() {
             </p>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
-                <Link href="/merge-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/merge-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Merge PDF
                 </Link>
               </li>
               <li>
-                <Link href="/edit-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/edit-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Edit PDF Text
                 </Link>
               </li>
               <li>
-                <Link href="/split-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/split-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Split PDF
                 </Link>
               </li>
               <li>
-                <Link href="/compress-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/compress-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Compress PDF
                 </Link>
               </li>
               <li>
-                <Link href="/rotate-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/rotate-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Rotate PDF
                 </Link>
               </li>
               <li>
-                <Link href="/delete-pdf-pages" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/delete-pdf-pages" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Delete PDF Pages
                 </Link>
               </li>
               <li>
-                <Link href="/reorder-pdf-pages" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/reorder-pdf-pages" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Reorder PDF Pages
                 </Link>
               </li>
               <li>
-                <Link href="/jpg-to-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/jpg-to-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   JPG to PDF
                 </Link>
               </li>
               <li>
-                <Link href="/png-to-pdf" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/png-to-pdf" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   PNG to PDF
                 </Link>
               </li>
               <li>
-                <Link href="/pdf-to-jpg" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/pdf-to-jpg" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   PDF to JPG
                 </Link>
               </li>
               <li>
-                <Link href="/pdf-to-png" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/pdf-to-png" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   PDF to PNG
                 </Link>
               </li>
@@ -117,22 +117,22 @@ export function Footer() {
             </p>
             <ul className="mt-4 space-y-2.5 text-xs text-slate-600 dark:text-slate-400">
               <li>
-                <Link href="/features" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/features" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Features &amp; Capabilities
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-first-pdf-tools" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/privacy-first-pdf-tools" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Client-Side Architecture
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/privacy" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Link href="/terms" className="hover:text-neutral-900 dark:hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -141,7 +141,7 @@ export function Footer() {
                   href="https://github.com/ChalanaDilshan/gopdf-suite" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="inline-flex items-center gap-1 hover:text-neutral-900 dark:hover:text-white transition-colors"
                 >
                   GitHub Source <ExternalLink className="h-3 w-3" />
                 </a>
@@ -151,7 +151,7 @@ export function Footer() {
                   href="https://www.saashub.com/gopdf-tools?utm_source=badge&utm_campaign=badge&utm_content=gopdf-tools&badge_variant=color&badge_kind=approved" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="inline-flex items-center gap-1 hover:text-neutral-900 dark:hover:text-white transition-colors"
                 >
                   Verified on SaaSHub <ExternalLink className="h-3 w-3" />
                 </a>

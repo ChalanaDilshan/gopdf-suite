@@ -24,10 +24,10 @@ export default function PrivacyPolicyPage() {
   const lastUpdated = "October 13, 2026";
 
   return (
-    <div className="bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 min-h-screen py-12 sm:py-16">
+    <div className="bg-[#fafafa] dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
-        <div className="border-b border-slate-200 dark:border-slate-800 pb-8 text-center sm:text-left">
+        <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8 text-center sm:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-900/60 text-xs font-bold text-emerald-700 dark:text-emerald-400 mb-4">
             <ShieldCheck className="h-4 w-4" />
             <span>Zero-Transmission Privacy Policy</span>
@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-8 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <ServerOff className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <ServerOff className="h-5 w-5 text-neutral-700 dark:text-neutral-300" />
               <span>1. Information We Do NOT Collect</span>
             </h2>
             <p>
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
 
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Lock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <Lock className="h-5 w-5 text-neutral-700 dark:text-neutral-300" />
               <span>2. How Document Processing Works (Technical Sandbox)</span>
             </h2>
             <p>
@@ -86,7 +86,7 @@ export default function PrivacyPolicyPage() {
 
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <EyeOff className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+              <EyeOff className="h-5 w-5 text-neutral-700 dark:text-neutral-300" />
               <span>3. Cookies and Local Storage</span>
             </h2>
             <p>
@@ -135,13 +135,13 @@ export default function PrivacyPolicyPage() {
             <p>
               If you have any questions or feedback regarding this Privacy Policy, feel free to reach out via our GitHub repository or contact:
             </p>
-            <p className="font-semibold text-blue-600 dark:text-blue-400">
+            <p className="font-semibold text-neutral-900 dark:text-white font-mono">
               privacy@gopdf.tech
             </p>
             <div className="pt-2">
               <Link
                 href="/privacy-first-pdf-tools"
-                className="text-xs text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+                className="text-xs text-neutral-900 dark:text-white underline hover:text-neutral-600 dark:hover:text-neutral-300 inline-flex items-center gap-1"
               >
                 Learn more about our Client-Side Security Architecture →
               </Link>

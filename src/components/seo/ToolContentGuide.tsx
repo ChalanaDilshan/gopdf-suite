@@ -60,7 +60,7 @@ export function ToolContentGuide({
       {/* 1. Step-by-Step How-To Guide */}
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="text-center sm:text-left">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
             Step-by-Step Walkthrough
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
@@ -75,14 +75,14 @@ export function ToolContentGuide({
           {howToSteps.map((step, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 shadow-xs flex flex-col justify-between"
+              className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-6 shadow-xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-xs shadow-xs">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-bold text-xs shadow-xs">
                     {idx + 1}
                   </span>
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
+                  <span className="text-xs font-bold text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">
                     Step {idx + 1}
                   </span>
                 </div>
@@ -112,8 +112,8 @@ export function ToolContentGuide({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* File Size & Memory Tip */}
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <HardDrive className="h-5 w-5" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -125,7 +125,7 @@ export function ToolContentGuide({
           </div>
 
           {/* Page Order & Preparation Tip */}
-          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 space-y-3">
+          <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-6 space-y-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
               <Layers className="h-5 w-5" />
             </div>
@@ -139,7 +139,7 @@ export function ToolContentGuide({
         </div>
 
         {/* Common Problems / Solutions */}
-        <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-6 sm:p-8 space-y-4">
+        <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-6 sm:p-8 space-y-4">
           <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-amber-500 shrink-0" />
             <span>Common Problems &amp; How to Solve Them</span>
@@ -210,7 +210,7 @@ export function ToolContentGuide({
       {/* 4. Related Tools Internal Linking Mesh with Descriptive Anchors */}
       <div className="max-w-4xl mx-auto space-y-6">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
             Complementary Workflows
           </span>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-1">
@@ -225,7 +225,7 @@ export function ToolContentGuide({
           {relatedTools.map((rel, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-5 shadow-xs hover:border-blue-300 dark:hover:border-blue-700/60 transition-all flex flex-col justify-between group"
+              className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-5 shadow-xs hover:border-neutral-400 dark:hover:border-neutral-600 transition-all flex flex-col justify-between group"
             >
               <div>
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -239,7 +239,7 @@ export function ToolContentGuide({
               <div className="pt-4">
                 <Link
                   href={rel.href}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 dark:text-white hover:underline transition-colors"
                 >
                   <span>{rel.anchorText}</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />

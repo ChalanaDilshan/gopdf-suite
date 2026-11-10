@@ -40,7 +40,7 @@ export const TOOLS_DATA: ToolItem[] = [
     href: "/merge-pdf",
     category: "organize",
     badge: "Popular",
-    icon: <Copy className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <Copy className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["merge", "combine", "join", "unite", "append", "concat"],
   },
   {
@@ -51,7 +51,7 @@ export const TOOLS_DATA: ToolItem[] = [
     href: "/edit-pdf",
     category: "edit",
     badge: "New",
-    icon: <Type className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <Type className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["edit", "text", "type", "font", "write", "replace", "modify"],
   },
   {
@@ -62,7 +62,7 @@ export const TOOLS_DATA: ToolItem[] = [
     href: "/compress-pdf",
     category: "optimize",
     badge: "Fast",
-    icon: <ArrowDownToLine className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <ArrowDownToLine className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["compress", "shrink", "reduce", "size", "smaller", "email", "mb"],
   },
   {
@@ -72,7 +72,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Split Pages",
     href: "/split-pdf",
     category: "organize",
-    icon: <Columns className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <Columns className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["split", "extract", "separate", "pages", "range"],
   },
   {
@@ -82,7 +82,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Rotate Pages",
     href: "/rotate-pdf",
     category: "organize",
-    icon: <RotateCw className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <RotateCw className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["rotate", "turn", "orientation", "landscape", "portrait", "flip"],
   },
   {
@@ -92,7 +92,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Delete Pages",
     href: "/delete-pdf-pages",
     category: "organize",
-    icon: <Trash2 className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <Trash2 className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["delete", "remove", "blank", "unwanted", "cut", "exclude"],
   },
   {
@@ -102,7 +102,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Reorder Pages",
     href: "/reorder-pdf-pages",
     category: "organize",
-    icon: <ArrowUpDown className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <ArrowUpDown className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["reorder", "rearrange", "drag", "drop", "sort", "sequence", "order"],
   },
   {
@@ -112,7 +112,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Convert JPG",
     href: "/jpg-to-pdf",
     category: "convert",
-    icon: <ImageIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <ImageIcon className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["jpg", "jpeg", "image", "photo", "pictures", "convert"],
   },
   {
@@ -122,7 +122,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Convert PNG",
     href: "/png-to-pdf",
     category: "convert",
-    icon: <ImageIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <ImageIcon className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["png", "screenshot", "graphic", "image", "convert"],
   },
   {
@@ -132,7 +132,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Extract JPG",
     href: "/pdf-to-jpg",
     category: "convert",
-    icon: <FileStack className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <FileStack className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["pdf to jpg", "extract", "images", "photo", "zip"],
   },
   {
@@ -142,7 +142,7 @@ export const TOOLS_DATA: ToolItem[] = [
     actionText: "Extract PNG",
     href: "/pdf-to-png",
     category: "convert",
-    icon: <FileStack className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
+    icon: <FileStack className="h-5 w-5 text-neutral-800 dark:text-neutral-200" />,
     keywords: ["pdf to png", "lossless", "high res", "extract", "transparent"],
   },
 ];
@@ -184,7 +184,7 @@ export function ToolsSection() {
       {/* Header with Title and Search Toolbar */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1.5">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
             <Sparkles className="h-3.5 w-3.5" />
             <span>Complete Toolkit</span>
           </div>
@@ -204,7 +204,7 @@ export function ToolsSection() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search tools (e.g. merge, compress, edit)..."
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-2.5 pl-10 pr-10 text-base sm:text-sm min-h-[44px] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-600 transition-colors"
+            className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-2.5 pl-10 pr-10 text-base sm:text-sm min-h-[44px] text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white transition-colors"
           />
           {searchQuery && (
             <button
@@ -230,7 +230,7 @@ export function ToolsSection() {
               onClick={() => setSelectedCategory(cat.id)}
               className={`rounded-lg px-3.5 sm:px-4 py-1.5 text-xs font-semibold transition-colors cursor-pointer shrink-0 min-h-[36px] sm:min-h-0 ${
                 isActive
-                  ? "bg-blue-600 text-white shadow-xs"
+                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs"
                   : "border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-700"
               }`}
             >
@@ -247,24 +247,24 @@ export function ToolsSection() {
             <Link
               key={tool.id}
               href={tool.href}
-              className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 hover:border-blue-600 dark:hover:border-blue-500 transition-colors"
+              className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
             >
               <div>
                 {/* Top: Icon + Optional Badge */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 text-blue-600 dark:text-blue-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200">
                     {tool.icon}
                   </div>
 
                   {tool.badge && (
-                    <span className="rounded-md bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 text-[10px] font-bold px-2 py-0.5 border border-blue-200 dark:border-blue-800">
+                    <span className="rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-[10px] font-bold px-2 py-0.5 border border-neutral-200 dark:border-neutral-700">
                       {tool.badge}
                     </span>
                   )}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                   {tool.title}
                 </h3>
 
@@ -275,7 +275,7 @@ export function ToolsSection() {
               </div>
 
               {/* Action Link at Bottom */}
-              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-blue-600 dark:text-blue-400">
+              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-neutral-900 dark:text-white">
                 <span className="group-hover:underline">{tool.actionText}</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -296,7 +296,7 @@ export function ToolsSection() {
               setSearchQuery("");
               setSelectedCategory("all");
             }}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-neutral-800 dark:text-neutral-200 hover:underline cursor-pointer"
           >
             Reset Filters
           </button>

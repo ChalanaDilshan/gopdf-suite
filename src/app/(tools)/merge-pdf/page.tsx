@@ -207,7 +207,7 @@ export default function MergePdfPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-blue-500 selection:text-white transition-colors duration-150">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-950 transition-colors duration-150">
       <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 pb-24 lg:pb-12 space-y-6">
         {/* Hero Section */}
         <HeroBanner />
@@ -239,10 +239,10 @@ export default function MergePdfPage() {
               onDragLeave={handleDragLeave}
               onDragOver={handleDragOver}
               onDrop={handleDrop}
-              className={`rounded-2xl border-2 border-dashed bg-white dark:bg-[#131b2e] p-6 sm:p-9 text-center transition-all duration-200 ${
+              className={`rounded-2xl border-2 border-dashed bg-white dark:bg-neutral-900 p-6 sm:p-9 text-center transition-all duration-200 ${
                 isDragOver
-                  ? "border-blue-500 bg-blue-50/40 dark:bg-blue-950/40 scale-[1.01]"
-                  : "border-blue-200/90 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500"
+                  ? "border-neutral-900 bg-neutral-100 dark:border-white dark:bg-neutral-800 scale-[1.01]"
+                  : "border-neutral-300 dark:border-neutral-700 hover:border-neutral-500 dark:hover:border-neutral-400"
               }`}
             >
               <input
@@ -262,7 +262,7 @@ export default function MergePdfPage() {
               />
 
               <div className="flex flex-col items-center justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 mb-3">
                   <UploadCloud className="h-6 w-6" />
                 </div>
 
@@ -275,7 +275,7 @@ export default function MergePdfPage() {
                   type="button"
                   disabled={isProcessing}
                   onClick={() => fileInputRef.current?.click()}
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-5 py-2.5 shadow-xs transition-colors cursor-pointer min-h-[44px]"
+                  className="inline-flex items-center gap-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-white text-sm font-semibold px-5 py-2.5 shadow-xs transition-colors cursor-pointer min-h-[44px]"
                 >
                   <FolderPlus className="h-4 w-4" />
                   <span>Choose Files</span>
@@ -289,7 +289,7 @@ export default function MergePdfPage() {
 
             {/* Uploaded File List */}
             {files.length > 0 ? (
-              <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-4 sm:p-5 shadow-xs space-y-3 transition-colors">
+              <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-4 sm:p-5 shadow-xs space-y-3 transition-colors">
                 {/* Header bar */}
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                   <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
@@ -321,7 +321,7 @@ export default function MergePdfPage() {
                   type="button"
                   disabled={isProcessing}
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50/20 dark:hover:bg-blue-950/20 py-3 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer min-h-[44px]"
+                  className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-dashed border-neutral-300 dark:border-neutral-700 hover:border-neutral-500 dark:hover:border-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 py-3 text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer min-h-[44px]"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Add more files</span>
@@ -333,7 +333,7 @@ export default function MergePdfPage() {
                   id="sample-files-btn"
                   type="button"
                   onClick={handleLoadSampleFiles}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline cursor-pointer min-h-[44px]"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:underline cursor-pointer min-h-[44px]"
                 >
                   <Sparkles className="h-3.5 w-3.5" />
                   <span>Try with 3 sample reference PDF files</span>
@@ -390,7 +390,7 @@ export default function MergePdfPage() {
           <button
             type="button"
             onClick={handleMergeAction}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-bold py-3.5 px-4 shadow-lg transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-white text-sm font-bold py-3.5 px-4 shadow-lg transition-colors cursor-pointer"
           >
             <span>Merge {files.length} PDFs →</span>
           </button>

@@ -153,10 +153,10 @@ export function Dropzone({
         aria-disabled={disabled}
         className={cn(
           "relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-8 md:p-12 text-center transition-all duration-200 cursor-pointer select-none outline-none group",
-          "focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900",
+          "focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100 dark:focus-visible:ring-offset-neutral-950",
           isDragOver
-            ? "border-blue-500 bg-blue-500/10 scale-[1.01] shadow-glow"
-            : "border-slate-300 hover:border-blue-400 bg-white/70 hover:bg-blue-50/30 dark:border-slate-700 dark:bg-slate-900/60 dark:hover:border-blue-500/80 dark:hover:bg-slate-800/40",
+            ? "border-neutral-900 bg-neutral-900/5 scale-[1.01] shadow-xs dark:border-white dark:bg-white/5"
+            : "border-neutral-300 hover:border-neutral-600 bg-white/70 hover:bg-neutral-50/50 dark:border-neutral-700 dark:bg-neutral-900/60 dark:hover:border-neutral-400 dark:hover:bg-neutral-800/40",
           disabled && "opacity-50 pointer-events-none cursor-not-allowed",
           className
         )}
@@ -176,10 +176,10 @@ export function Dropzone({
         <div className="relative mb-4">
           <div
             className={cn(
-              "flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-sm",
+              "flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-xs",
               isDragOver
-                ? "bg-blue-600 text-white scale-110 shadow-blue-500/30"
-                : "bg-blue-100 text-blue-600 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white dark:bg-blue-950/80 dark:text-blue-400 dark:group-hover:bg-blue-600 dark:group-hover:text-white"
+                ? "bg-neutral-900 text-white scale-110 dark:bg-white dark:text-neutral-950"
+                : "bg-neutral-100 text-neutral-800 group-hover:scale-105 group-hover:bg-neutral-900 group-hover:text-white dark:bg-neutral-800 dark:text-neutral-200 dark:group-hover:bg-white dark:group-hover:text-neutral-900"
             )}
           >
             {isDragOver ? (

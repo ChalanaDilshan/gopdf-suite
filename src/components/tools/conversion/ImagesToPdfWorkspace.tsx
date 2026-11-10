@@ -127,8 +127,8 @@ function SortableImageCard({
       style={style}
       className={cn(
         "group relative flex flex-col justify-between rounded-2xl border p-3 transition-all duration-200 select-none bg-white dark:bg-slate-900 shadow-2xs",
-        isDragging && "z-50 shadow-2xl scale-105 border-blue-500 ring-2 ring-blue-500/30 opacity-95",
-        !isDragging && "border-slate-200/90 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-700/80 hover:shadow-md",
+        isDragging && "z-50 shadow-2xl scale-105 border-neutral-900 ring-2 ring-neutral-900/20 dark:border-white dark:ring-white/20 opacity-95",
+        !isDragging && "border-slate-200/90 dark:border-slate-800 hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md",
         disabled && "pointer-events-none opacity-50"
       )}
     >
@@ -145,7 +145,7 @@ function SortableImageCard({
           >
             <GripVertical className="h-4 w-4" />
           </button>
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-950/80 text-[10px] font-black text-blue-600 dark:text-blue-400 border border-blue-200/60 dark:border-blue-900/60">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-800 text-[10px] font-black text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700">
             {index + 1}
           </span>
         </div>
@@ -189,7 +189,7 @@ function SortableImageCard({
             type="button"
             onClick={() => onRotate(item.id)}
             title="Rotate 90 degrees"
-            className="flex items-center gap-1 px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+            className="flex items-center gap-1 px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
           >
             <RotateCw className="h-3 w-3" />
             <span>{item.rotation}°</span>
@@ -520,7 +520,7 @@ export function ImagesToPdfWorkspace({
             {/* Header Toolbar: Images Count & Add More */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
                   <ImageIcon className="h-5 w-5" />
                 </div>
                 <div>
@@ -585,7 +585,7 @@ export function ImagesToPdfWorkspace({
             {!downloadUrl && !isConverting && (
               <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-4 sm:p-5 shadow-2xs">
                 <div className="flex items-center gap-2 pb-3 mb-4 border-b border-slate-100 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                  <Settings2 className="h-4 w-4 text-blue-600" />
+                  <Settings2 className="h-4 w-4 text-neutral-800 dark:text-neutral-200" />
                   <span>PDF Document Options</span>
                 </div>
 
@@ -598,7 +598,7 @@ export function ImagesToPdfWorkspace({
                     <select
                       value={orientation}
                       onChange={(e) => setOrientation(e.target.value as PageOrientation)}
-                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                     >
                       <option value="auto">Match Image (Auto)</option>
                       <option value="portrait">Portrait (Vertical)</option>
@@ -614,7 +614,7 @@ export function ImagesToPdfWorkspace({
                     <select
                       value={pageSize}
                       onChange={(e) => setPageSize(e.target.value as PageSize)}
-                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                     >
                       <option value="fit">Fit to Image (Exact resolution)</option>
                       <option value="a4">A4 (Standard document)</option>
@@ -630,7 +630,7 @@ export function ImagesToPdfWorkspace({
                     <select
                       value={margin}
                       onChange={(e) => setMargin(e.target.value as PageMargin)}
-                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-3 py-2 text-xs font-medium text-slate-800 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                     >
                       <option value="none">No Margin (Full bleed)</option>
                       <option value="small">Small Margin (20pt padding)</option>
@@ -680,7 +680,7 @@ export function ImagesToPdfWorkspace({
                   size="lg"
                   onClick={handleConvertToPdf}
                   leftIcon={<Sparkles className="h-4 w-4" />}
-                  className="w-full sm:w-auto shadow-md shadow-blue-600/20"
+                  className="w-full sm:w-auto shadow-xs"
                 >
                   Convert {images.length} {images.length === 1 ? "Image" : "Images"} to PDF →
                 </Button>

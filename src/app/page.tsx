@@ -109,7 +109,7 @@ const ARCHITECTURE_PILLARS = [
     icon: Zap,
     title: "Instant WebAssembly Speed",
     badge: "0ms Network Lag",
-    badgeColor: "bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800",
+    badgeColor: "bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700",
     description:
       "Bypasses the 30-60 second cloud upload queue. Manipulation begins the millisecond you choose your file, powered by multi-core CPU threads.",
   },
@@ -117,7 +117,7 @@ const ARCHITECTURE_PILLARS = [
     icon: InfinityIcon,
     title: "Unlimited Free Execution",
     badge: "Zero Paywalls",
-    badgeColor: "bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800",
+    badgeColor: "bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border-neutral-200 dark:border-neutral-700",
     description:
       "No daily caps, no 3-file restrictions, no watermarks, and no mandatory account signups. A true desktop-grade utility inside your web browser.",
   },
@@ -125,7 +125,7 @@ const ARCHITECTURE_PILLARS = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-150">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 flex flex-col selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-950 transition-colors duration-150">
       {/* Schema.org Structured Data */}
       <BreadcrumbJsonLd items={[{ name: "Home", item: "https://gopdf.tech/" }]} />
       <FaqJsonLd faqs={HOME_FAQS} />
@@ -141,15 +141,15 @@ export default function HomePage() {
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             
             {/* Top Category Badge Pill */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-[10px] sm:text-[11px] font-bold text-blue-700 dark:text-blue-300 mb-4 sm:mb-5 max-w-full">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-3 py-1 text-[10px] sm:text-[11px] font-bold text-neutral-800 dark:text-neutral-200 mb-4 sm:mb-5 max-w-full shadow-2xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-neutral-900 dark:bg-white shrink-0" />
               <span className="truncate">100% In-Browser Engine · Zero Cloud Uploads</span>
             </div>
 
             {/* Main Title - Solid Crisp Colors, 0 Gradients */}
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight sm:leading-[1.1] max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight text-neutral-900 dark:text-white leading-tight sm:leading-[1.1] max-w-4xl mx-auto">
               The Private PDF Studio{" "}
-              <span className="text-blue-600 dark:text-blue-500">
+              <span className="text-neutral-600 dark:text-neutral-400">
                 Inside Your Browser.
               </span>
             </h1>
@@ -172,7 +172,7 @@ export default function HomePage() {
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="inline-flex items-center gap-1.5 font-semibold">
-                <Zap className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                <Zap className="h-4 w-4 text-neutral-700 dark:text-neutral-300 shrink-0" />
                 <span>Zero Cloud Latency</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
@@ -204,11 +204,11 @@ export default function HomePage() {
               return (
                 <div
                   key={pillar.title}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 shadow-xs hover:border-blue-600 dark:hover:border-blue-500 transition-colors flex flex-col justify-between"
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-7 shadow-xs hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/60 shadow-2xs">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 shadow-2xs">
                         <Icon className="h-5 w-5" />
                       </div>
                       <span className={`inline-flex items-center rounded-md px-2.5 py-0.5 text-[10px] font-bold border ${pillar.badgeColor}`}>
@@ -242,7 +242,7 @@ export default function HomePage() {
         {/* Structured FAQ Section */}
         <section className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16" id="faq">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
               <HelpCircle className="h-4 w-4" />
               <span>Got Questions?</span>
             </div>
@@ -268,8 +268,8 @@ export default function HomePage() {
         <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-14 sm:mt-20">
           <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7 sm:p-12 text-center shadow-xs">
             <div className="max-w-2xl mx-auto space-y-3.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-900 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-                <Sparkles className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-neutral-800 dark:text-neutral-200">
+                <Sparkles className="h-3.5 w-3.5 text-neutral-700 dark:text-neutral-300" />
                 Zero Setup · Instant Access
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
@@ -281,7 +281,7 @@ export default function HomePage() {
               <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="/merge-pdf"
-                  className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 text-sm shadow-xs transition-colors inline-flex items-center gap-2"
+                  className="rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-white font-bold px-6 py-3 text-sm shadow-xs transition-colors inline-flex items-center gap-2"
                 >
                   <span>Launch Merge Studio</span>
                   <ArrowRight className="h-4 w-4" />

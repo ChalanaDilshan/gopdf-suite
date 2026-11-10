@@ -90,7 +90,7 @@ export function PdfToolsSidebar({
   return (
     <aside
       className={cn(
-        "rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-3.5 shadow-xs flex flex-col transition-colors",
+        "rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-3.5 shadow-xs flex flex-col transition-colors",
         className
       )}
     >
@@ -111,7 +111,7 @@ export function PdfToolsSidebar({
               className={cn(
                 "group flex items-start gap-3 rounded-xl px-3 py-2.5 transition-all text-left",
                 isActive
-                  ? "bg-blue-50/90 dark:bg-blue-950/60 border-l-[3.5px] border-blue-600 dark:border-blue-500 text-blue-950 dark:text-blue-300 font-semibold"
+                  ? "bg-neutral-100 dark:bg-neutral-800 border-l-[3.5px] border-neutral-900 dark:border-white text-neutral-950 dark:text-white font-semibold"
                   : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60 border-l-[3.5px] border-transparent"
               )}
             >
@@ -119,7 +119,7 @@ export function PdfToolsSidebar({
                 className={cn(
                   "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors mt-0.5",
                   isActive
-                    ? "bg-blue-100/80 dark:bg-blue-900/60 text-blue-600 dark:text-blue-400"
+                    ? "bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white"
                     : "text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 group-hover:bg-slate-100 dark:group-hover:bg-slate-800"
                 )}
               >
@@ -131,7 +131,7 @@ export function PdfToolsSidebar({
                   className={cn(
                     "text-xs font-semibold leading-tight",
                     isActive
-                      ? "text-blue-950 dark:text-blue-200"
+                      ? "text-neutral-950 dark:text-white"
                       : "text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white"
                   )}
                 >

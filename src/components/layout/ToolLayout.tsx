@@ -69,7 +69,7 @@ export function ToolLayout({
   const currentUrl = typeof window !== "undefined" ? window.location.href : `https://gopdf.tech/${toolSlug}`;
 
   return (
-    <div className="min-h-screen bg-slate-50/60 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 flex flex-col selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-950">
       {/* Schema.org JSON-LD structured data */}
       <SoftwareApplicationJsonLd
         name={title}
@@ -80,18 +80,18 @@ export function ToolLayout({
 
       <main className="flex-1 pb-20">
         {/* Tool Header & Hero */}
-        <section className="relative overflow-hidden pt-8 pb-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <section className="relative overflow-hidden pt-8 pb-10 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0a0a0a]">
           <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-6">
-              <Link href="/" className="hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 transition-colors">
+              <Link href="/" className="hover:text-neutral-900 dark:hover:text-white flex items-center gap-1 transition-colors">
                 <Home className="h-3.5 w-3.5" />
                 <span>Home</span>
               </Link>
               <ChevronRight className="h-3.5 w-3.5 opacity-50" />
               <span className="text-slate-600 dark:text-slate-300 font-medium">{category}</span>
               <ChevronRight className="h-3.5 w-3.5 opacity-50" />
-              <span className="text-blue-600 dark:text-blue-400 font-semibold">{title}</span>
+              <span className="text-neutral-900 dark:text-white font-semibold">{title}</span>
             </nav>
 
             {/* Security Badge */}
@@ -124,7 +124,7 @@ export function ToolLayout({
           <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs">
                   <Lock className="h-5 w-5" />
                 </div>
                 <div>
@@ -136,7 +136,7 @@ export function ToolLayout({
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs">
                   <Zap className="h-5 w-5" />
                 </div>
                 <div>
@@ -148,7 +148,7 @@ export function ToolLayout({
               </div>
 
               <div className="flex items-start gap-3.5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs">
                   <WifiOff className="h-5 w-5" />
                 </div>
                 <div>
@@ -170,7 +170,7 @@ export function ToolLayout({
         ) : (
           <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-16">
             <div className="text-center mb-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
                 Simple Workflow
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
@@ -185,13 +185,13 @@ export function ToolLayout({
                 {steps.map((step) => (
                   <div
                     key={step.stepNumber}
-                    className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-blue-300 dark:hover:border-blue-700/60 transition-all group"
+                    className="relative rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all group"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-bold text-sm shadow-xs group-hover:scale-105 transition-transform">
                         {step.stepNumber}
                       </span>
-                      <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                         Step {step.stepNumber}
                       </span>
                     </div>
@@ -211,7 +211,7 @@ export function ToolLayout({
         {/* FAQ Section Slot */}
         <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-20">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400 mb-1">
               <HelpCircle className="h-4 w-4" />
               <span>Questions & Answers</span>
             </div>

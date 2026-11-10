@@ -46,10 +46,10 @@ export function MergeActionPanels({
   return (
     <div className="flex flex-col gap-4">
       {/* 1. Main Action Panel (When idle or ready) */}
-      <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-5 shadow-xs transition-colors">
+      <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-5 shadow-xs transition-colors">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
               <FileText className="h-4 w-4" />
             </div>
             <h3 className="font-bold text-slate-900 dark:text-white text-sm">
@@ -57,7 +57,7 @@ export function MergeActionPanels({
             </h3>
           </div>
 
-          <span className="px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-300 font-semibold text-[11px] border border-blue-100 dark:border-blue-900/60">
+          <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-semibold text-[11px] border border-neutral-200 dark:border-neutral-700">
             {fileCount} {fileCount === 1 ? "file" : "files"} ready
           </span>
         </div>
@@ -70,7 +70,7 @@ export function MergeActionPanels({
           type="button"
           disabled={disabled || fileCount < 2 || isProcessing}
           onClick={onStartMerge}
-          className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-[#131b2e] dark:bg-blue-600 hover:bg-[#1e293b] dark:hover:bg-blue-500 active:bg-[#0b101c] text-white text-xs sm:text-sm font-semibold py-3 px-4 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed shadow-2xs cursor-pointer"
+          className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-100 active:bg-black dark:active:bg-neutral-200 text-white dark:text-neutral-950 text-xs sm:text-sm font-semibold py-3 px-4 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed shadow-2xs cursor-pointer"
         >
           <GitMerge className="h-4 w-4" />
           <span>Merge PDFs ({fileCount} {fileCount === 1 ? "file" : "files"}) →</span>
@@ -79,13 +79,13 @@ export function MergeActionPanels({
 
       {/* 2. Processing State Panel (Visible during merge) */}
       {isProcessing && (
-        <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] p-5 shadow-xs animate-fadeIn transition-colors">
+        <div className="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 p-5 shadow-xs animate-fadeIn transition-colors">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <Loader2 className="h-4 w-4 animate-spin text-blue-600 dark:text-blue-400" />
+              <Loader2 className="h-4 w-4 animate-spin text-neutral-800 dark:text-neutral-200" />
               <span className="font-bold text-slate-900 dark:text-white text-sm">Processing...</span>
             </div>
-            <span className="font-bold text-blue-600 dark:text-blue-400 text-sm tabular-nums">
+            <span className="font-bold text-neutral-900 dark:text-white text-sm tabular-nums">
               {progress}%
             </span>
           </div>
@@ -93,7 +93,7 @@ export function MergeActionPanels({
           {/* Progress bar track */}
           <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden mb-4">
             <div
-              className="h-full rounded-full bg-blue-600 dark:bg-blue-500 transition-all duration-300 ease-out"
+              className="h-full rounded-full bg-neutral-900 dark:bg-white transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -104,7 +104,7 @@ export function MergeActionPanels({
               <span
                 className={`flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
                   step1Done
-                    ? "bg-blue-600 dark:bg-blue-500 text-white"
+                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-950"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-400"
                 }`}
               >
@@ -117,7 +117,7 @@ export function MergeActionPanels({
               <span
                 className={`flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
                   step2Done
-                    ? "bg-blue-600 dark:bg-blue-500 text-white"
+                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-950"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-400"
                 }`}
               >
@@ -130,7 +130,7 @@ export function MergeActionPanels({
               <span
                 className={`flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
                   step3Done
-                    ? "bg-blue-600 dark:bg-blue-500 text-white"
+                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-950"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-400"
                 }`}
               >
@@ -143,7 +143,7 @@ export function MergeActionPanels({
               <span
                 className={`flex h-4 w-4 items-center justify-center rounded-full text-[10px] ${
                   step4Done
-                    ? "bg-blue-600 dark:bg-blue-500 text-white"
+                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-950"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-400"
                 }`}
               >
@@ -157,7 +157,7 @@ export function MergeActionPanels({
 
       {/* 3. Success State Panel (Visible when merged) */}
       {downloadUrl && !isProcessing && (
-        <div className="rounded-2xl border border-emerald-200/90 dark:border-emerald-900/60 bg-white dark:bg-[#131b2e] p-5 shadow-xs animate-fadeIn text-left transition-colors">
+        <div className="rounded-2xl border border-emerald-200/90 dark:border-emerald-900/60 bg-white dark:bg-neutral-900 p-5 shadow-xs animate-fadeIn text-left transition-colors">
           <div className="flex items-start gap-3 mb-4">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white shadow-sm">
               <CheckCircle2 className="h-6 w-6" />

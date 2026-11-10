@@ -23,11 +23,11 @@ export default function TermsOfServicePage() {
   const lastUpdated = "October 13, 2026";
 
   return (
-    <div className="bg-[#f4f7fb] dark:bg-[#0b0f19] text-slate-900 dark:text-slate-100 min-h-screen py-12 sm:py-16">
+    <div className="bg-[#fafafa] dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen py-12 sm:py-16">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
-        <div className="border-b border-slate-200 dark:border-slate-800 pb-8 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900/60 text-xs font-bold text-blue-700 dark:text-blue-300 mb-4">
+        <div className="border-b border-neutral-200 dark:border-neutral-800 pb-8 text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-800 dark:text-neutral-200 mb-4">
             <FileText className="h-4 w-4" />
             <span>Usage Guidelines & Disclaimers</span>
           </div>
@@ -113,7 +113,7 @@ export default function TermsOfServicePage() {
             </p>
             <p className="mt-2 text-slate-500 dark:text-slate-400">
               For any questions regarding these terms, visit our{" "}
-              <Link href="/privacy" className="text-blue-600 dark:text-blue-400 hover:underline">
+              <Link href="/privacy" className="text-neutral-900 dark:text-white underline hover:text-neutral-600 dark:hover:text-neutral-300">
                 Privacy Policy
               </Link>{" "}
               or contact us via our official repository.

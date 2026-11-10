@@ -308,7 +308,7 @@ export default function EditPdfPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden bg-slate-100 dark:bg-[#0b0f19]">
+    <div className="flex flex-col h-screen w-full overflow-hidden bg-neutral-100 dark:bg-[#0a0a0a]">
       {/* State A: File Dropzone (No File Loaded Yet) */}
       {!selectedFile ? (
         <div className="flex-1 overflow-y-auto p-4 sm:p-8 flex flex-col items-center">

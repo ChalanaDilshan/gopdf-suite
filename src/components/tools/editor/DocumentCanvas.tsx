@@ -78,10 +78,10 @@ export function DocumentCanvas({
   return (
     <div
       className={cn(
-        "relative flex-1 h-full overflow-auto p-6 sm:p-10 flex justify-center items-start bg-slate-100 dark:bg-[#0b0f19] select-none scrollbar-thin transition-colors",
+        "relative flex-1 h-full overflow-auto p-6 sm:p-10 flex justify-center items-start bg-neutral-100 dark:bg-[#0a0a0a] select-none scrollbar-thin transition-colors",
         interactionTool === "hand" ? "cursor-grab active:cursor-grabbing" : isAddTextMode && "cursor-crosshair"
       )}
-    >
+      >
       <div
         ref={containerRef}
         onClick={handleContainerClick}
@@ -90,7 +90,7 @@ export function DocumentCanvas({
           height: viewportDimensions ? `${viewportDimensions.height}px` : "auto",
         }}
         className={cn(
-          "relative rounded-sm bg-white shadow-xl border border-slate-300/80 dark:border-slate-800 transition-all duration-150 overflow-hidden",
+          "relative rounded-sm bg-white shadow-xl border border-neutral-300/80 dark:border-neutral-800 transition-all duration-150 overflow-hidden",
           isAddTextMode && "ring-2 ring-red-500/50"
         )}
       >

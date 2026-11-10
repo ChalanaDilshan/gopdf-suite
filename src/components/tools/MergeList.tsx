@@ -58,8 +58,8 @@ function SortableFileCard({
       className={cn(
         "group relative flex items-center justify-between rounded-xl border p-2.5 sm:p-3 transition-all gap-3 select-none",
         isDragging
-          ? "z-30 border-blue-500 bg-blue-50/80 dark:bg-blue-950/80 shadow-md ring-2 ring-blue-500/20"
-          : "border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#182239] hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs"
+          ? "z-30 border-neutral-900 bg-neutral-100 dark:border-white dark:bg-neutral-800 shadow-md ring-2 ring-neutral-900/10 dark:ring-white/10"
+          : "border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs"
       )}
     >
       {/* Drag Grip Handle + Red PDF Badge + File Details */}

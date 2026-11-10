@@ -43,7 +43,7 @@ const ALL_ACTIONS: QuickAction[] = [
     href: "/edit-pdf",
     icon: <Type className="h-4 w-4" />,
     badge: "Popular",
-    color: "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "compress-pdf",
@@ -52,7 +52,7 @@ const ALL_ACTIONS: QuickAction[] = [
     href: "/compress-pdf",
     icon: <Zap className="h-4 w-4" />,
     badge: "Save 70%",
-    color: "text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/60 border-cyan-200 dark:border-cyan-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "delete-pdf-pages",
@@ -60,7 +60,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Remove blank or unwanted pages",
     href: "/delete-pdf-pages",
     icon: <Trash2 className="h-4 w-4" />,
-    color: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "rotate-pdf",
@@ -68,7 +68,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Turn pages 90° or 180° permanently",
     href: "/rotate-pdf",
     icon: <RotateCw className="h-4 w-4" />,
-    color: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 border-amber-200 dark:border-amber-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "split-pdf",
@@ -76,7 +76,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Extract selected pages into a new file",
     href: "/split-pdf",
     icon: <Scissors className="h-4 w-4" />,
-    color: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200 dark:border-emerald-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "reorder-pdf-pages",
@@ -84,7 +84,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Drag & drop page sequence",
     href: "/reorder-pdf-pages",
     icon: <FileSpreadsheet className="h-4 w-4" />,
-    color: "text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/60 border-sky-200 dark:border-sky-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "merge-pdf",
@@ -92,7 +92,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Combine this document with other files",
     href: "/merge-pdf",
     icon: <GitMerge className="h-4 w-4" />,
-    color: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200 dark:border-indigo-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
   {
     id: "pdf-to-jpg",
@@ -100,7 +100,7 @@ const ALL_ACTIONS: QuickAction[] = [
     subtitle: "Export pages as high-resolution images",
     href: "/pdf-to-jpg",
     icon: <ImageIcon className="h-4 w-4" />,
-    color: "text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/60 border-violet-200 dark:border-violet-900/60",
+    color: "text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
   },
 ];
 
@@ -159,7 +159,7 @@ export function CompletionNextActions({
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
             <Sparkles className="h-3.5 w-3.5" />
             <span>Chained Workflow</span>
           </div>
@@ -182,7 +182,7 @@ export function CompletionNextActions({
               type="button"
               disabled={!!transferringId}
               onClick={() => handleActionClick(action)}
-              className="group relative flex flex-col justify-between p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800/80 hover:border-blue-300 dark:hover:border-blue-700/80 transition-all duration-200 shadow-2xs hover:shadow-md hover:-translate-y-0.5 text-left cursor-pointer disabled:opacity-60"
+              className="group relative flex flex-col justify-between p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800/80 hover:border-neutral-900 dark:hover:border-neutral-100 transition-all duration-200 shadow-2xs hover:shadow-xs hover:-translate-y-0.5 text-left cursor-pointer disabled:opacity-60"
             >
               <div>
                 <div className="flex items-center justify-between mb-2.5">
@@ -190,19 +190,19 @@ export function CompletionNextActions({
                     className={`flex h-8 w-8 items-center justify-center rounded-xl border ${action.color}`}
                   >
                     {isLoading ? (
-                      <Loader2 className="h-4 w-4 animate-spin text-blue-600 dark:text-blue-400" />
+                      <Loader2 className="h-4 w-4 animate-spin text-neutral-900 dark:text-white" />
                     ) : (
                       action.icon
                     )}
                   </div>
                   {action.badge && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200/70 dark:border-blue-800/70">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700">
                       {action.badge}
                     </span>
                   )}
                 </div>
 
-                <div className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <div className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                   {action.title}
                 </div>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug line-clamp-2">
@@ -210,7 +210,7 @@ export function CompletionNextActions({
                 </p>
               </div>
 
-              <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-bold text-blue-600 dark:text-blue-400">
+              <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-bold text-neutral-900 dark:text-white">
                 <span>{isLoading ? "Loading..." : "Open tool"}</span>
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </div>

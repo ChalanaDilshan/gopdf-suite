@@ -52,7 +52,7 @@ export function PrivacyComparison() {
         </div>
 
         {/* Desktop Comparison Table */}
-        <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#131b2e] shadow-sm">
+        <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-neutral-900 shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
@@ -60,7 +60,7 @@ export function PrivacyComparison() {
                   <th className="py-4 px-5 sm:px-6 font-bold text-slate-700 dark:text-slate-300">
                     Feature
                   </th>
-                  <th className="py-4 px-5 sm:px-6 font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/40">
+                  <th className="py-4 px-5 sm:px-6 font-extrabold text-neutral-900 dark:text-white bg-neutral-100 dark:bg-neutral-800">
                     GoPDF (Client-Side)
                   </th>
                   <th className="py-4 px-5 sm:px-6 font-semibold text-slate-500 dark:text-slate-400">
@@ -77,7 +77,7 @@ export function PrivacyComparison() {
                     <td className="py-3.5 px-5 sm:px-6 font-semibold text-slate-900 dark:text-slate-200">
                       {row.feature}
                     </td>
-                    <td className="py-3.5 px-5 sm:px-6 font-bold text-emerald-700 dark:text-emerald-300 bg-blue-50/20 dark:bg-blue-950/20">
+                    <td className="py-3.5 px-5 sm:px-6 font-bold text-emerald-700 dark:text-emerald-300 bg-neutral-50/40 dark:bg-neutral-800/20">
                       <div className="flex items-start gap-2">
                         <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{row.gopdf}</span>

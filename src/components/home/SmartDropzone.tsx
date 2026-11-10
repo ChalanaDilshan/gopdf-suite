@@ -168,9 +168,9 @@ export function SmartDropzone() {
             </div>
             <div className="h-3 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
             <div className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium">
-              <Cpu className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+              <Cpu className="h-3.5 w-3.5 text-neutral-800 dark:text-neutral-200" />
               <span className="hidden sm:inline font-semibold">GoPDF In-Memory Engine</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-mono font-bold">
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 font-mono font-bold">
                 v2.4
               </span>
             </div>
@@ -191,7 +191,7 @@ export function SmartDropzone() {
                 className="hidden md:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-750 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
                 title="Generate a sample document to test the tools"
               >
-                <Sparkles className="h-3 w-3 text-blue-600 dark:text-blue-400" />
+                <Sparkles className="h-3 w-3 text-neutral-700 dark:text-neutral-300" />
                 <span>{isGeneratingSample ? "Generating..." : "Try Sample PDF"}</span>
               </button>
             )}
@@ -211,9 +211,9 @@ export function SmartDropzone() {
                   <Link
                     key={pill.label}
                     href={pill.href}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:border-blue-300 dark:hover:border-blue-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 px-2.5 py-1 font-medium transition-colors shrink-0"
+                    className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 text-slate-700 dark:text-slate-300 hover:text-neutral-900 dark:hover:text-white px-2.5 py-1 font-medium transition-colors shrink-0"
                   >
-                    <Icon className="h-3 w-3 text-blue-600 dark:text-blue-400 shrink-0" />
+                    <Icon className="h-3 w-3 text-neutral-600 dark:text-neutral-400 shrink-0" />
                     <span>{pill.label}</span>
                   </Link>
                 );
@@ -224,11 +224,11 @@ export function SmartDropzone() {
 
         {/* State A: File(s) Selected -> Dynamic Smart Action Selector */}
         {selectedFiles.length > 0 ? (
-          <div className="rounded-xl border border-blue-200 dark:border-blue-900 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-xs animate-fadeIn">
+          <div className="rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-xs animate-fadeIn">
             {/* Header with Selected Document Badge & Reset */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-3.5 min-w-0">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -276,7 +276,7 @@ export function SmartDropzone() {
 
             {/* Action Prompt */}
             <div className="mt-5 mb-4 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
                 Step 2: Choose Transformation
               </span>
               <p className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-0.5">
@@ -284,17 +284,17 @@ export function SmartDropzone() {
               </p>
             </div>
 
-            {/* Action Selector Grid - All using consistent clean blue/slate palette */}
+            {/* Action Selector Grid - Professional monochrome & gray palette */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {/* Action 1: Edit PDF Text */}
               <button
                 type="button"
                 disabled={isNavigating}
                 onClick={() => handleAction("/edit-pdf")}
-                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-blue-600 dark:hover:border-blue-500 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-neutral-900 dark:hover:border-neutral-100 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 mb-3">
                     <Type className="h-4 w-4" />
                   </div>
                   <p className="font-bold text-sm text-slate-900 dark:text-white">
@@ -304,7 +304,7 @@ export function SmartDropzone() {
                     Click, type, and replace existing text directly in-browser.
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400">
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-neutral-900 dark:text-white">
                   <span>Edit Text</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -315,10 +315,10 @@ export function SmartDropzone() {
                 type="button"
                 disabled={isNavigating}
                 onClick={() => handleAction("/compress-pdf")}
-                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-blue-600 dark:hover:border-blue-500 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-neutral-900 dark:hover:border-neutral-100 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 mb-3">
                     <Zap className="h-4 w-4" />
                   </div>
                   <p className="font-bold text-sm text-slate-900 dark:text-white">
@@ -328,7 +328,7 @@ export function SmartDropzone() {
                     Reduce file size up to 70% with client-side downscaling.
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400">
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-neutral-900 dark:text-white">
                   <span>Compress Now</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -339,10 +339,10 @@ export function SmartDropzone() {
                 type="button"
                 disabled={isNavigating}
                 onClick={() => handleAction("/merge-pdf")}
-                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-blue-600 dark:hover:border-blue-500 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-neutral-900 dark:hover:border-neutral-100 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 mb-3">
                     <FileStack className="h-4 w-4" />
                   </div>
                   <p className="font-bold text-sm text-slate-900 dark:text-white">
@@ -352,7 +352,7 @@ export function SmartDropzone() {
                     Combine this document with additional files in any order.
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400">
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-neutral-900 dark:text-white">
                   <span>Merge PDFs</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -363,10 +363,10 @@ export function SmartDropzone() {
                 type="button"
                 disabled={isNavigating}
                 onClick={() => handleAction("/rotate-pdf")}
-                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-blue-600 dark:hover:border-blue-500 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850 p-4 text-left hover:border-neutral-900 dark:hover:border-neutral-100 hover:bg-white dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40 mb-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700 mb-3">
                     <RotateCw className="h-4 w-4" />
                   </div>
                   <p className="font-bold text-sm text-slate-900 dark:text-white">
@@ -376,7 +376,7 @@ export function SmartDropzone() {
                     Rotate 90°, delete unwanted pages, or change sequence.
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400">
+                <div className="mt-4 flex items-center gap-1 text-xs font-bold text-neutral-900 dark:text-white">
                   <span>Rotate Pages</span>
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -394,13 +394,13 @@ export function SmartDropzone() {
             className={cn(
               "relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-5 sm:p-12 text-center transition-colors cursor-pointer select-none group",
               isDragOver
-                ? "border-blue-600 bg-blue-50/50 dark:bg-blue-950/30"
-                : "border-slate-300 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-500 bg-slate-50/60 dark:bg-slate-850 hover:bg-white dark:hover:bg-slate-800"
+                ? "border-neutral-900 bg-neutral-900/5 dark:border-white dark:bg-white/5"
+                : "border-slate-300 dark:border-slate-700 hover:border-neutral-900 dark:hover:border-neutral-100 bg-slate-50/60 dark:bg-slate-850 hover:bg-white dark:hover:bg-slate-800"
             )}
           >
             {/* Solid Document Icon */}
             <div className="mb-3 sm:mb-4 flex items-center justify-center">
-              <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs group-hover:bg-blue-700 transition-colors">
+              <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 shadow-xs group-hover:bg-black dark:group-hover:bg-neutral-200 transition-colors">
                 <FileText className="h-6 w-6 sm:h-7 sm:w-7" />
               </div>
             </div>
@@ -419,7 +419,7 @@ export function SmartDropzone() {
             <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <button
                 type="button"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-xs sm:text-sm font-semibold px-5 py-2.5 min-h-[44px] shadow-xs transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 active:bg-black text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 text-xs sm:text-sm font-semibold px-5 py-2.5 min-h-[44px] shadow-xs transition-colors cursor-pointer"
               >
                 <FolderOpen className="h-4 w-4" />
                 <span>Browse Files</span>
@@ -431,7 +431,7 @@ export function SmartDropzone() {
                 disabled={isGeneratingSample}
                 className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-medium px-4 py-2.5 min-h-[44px] transition-colors cursor-pointer"
               >
-                <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                <Sparkles className="h-4 w-4 text-neutral-700 dark:text-neutral-300" />
                 <span>{isGeneratingSample ? "Building Demo..." : "Try Demo File"}</span>
               </button>
             </div>
@@ -444,12 +444,12 @@ export function SmartDropzone() {
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="flex items-center gap-1.5 font-medium">
-                <Zap className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                <Zap className="h-3.5 w-3.5 text-neutral-700 dark:text-neutral-300 shrink-0" />
                 <span>Instant CPU Execution</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>
               <div className="flex items-center gap-1.5 font-medium">
-                <FileText className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                <FileText className="h-3.5 w-3.5 text-neutral-700 dark:text-neutral-300 shrink-0" />
                 <span>Up to 100MB / File</span>
               </div>
               <span className="text-slate-300 dark:text-slate-700 hidden sm:inline">•</span>

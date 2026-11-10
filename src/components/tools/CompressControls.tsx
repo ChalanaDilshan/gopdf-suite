@@ -49,11 +49,11 @@ const LEVELS: LevelOption[] = [
     id: "recommended",
     name: "Recommended Compression",
     badge: "Recommended",
-    badgeColor: "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/60 dark:text-blue-300 dark:border-blue-800",
+    badgeColor: "bg-neutral-100 text-neutral-800 border-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-700",
     estimatedReduction: "~40% – 50% reduction",
     factor: 0.55,
     description: "Preserves 100% crisp vector letters. High-fidelity image optimization for sharp photos and strong byte savings.",
-    icon: <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Sparkles className="h-4 w-4 text-neutral-800 dark:text-neutral-200" />,
   },
   {
     id: "basic",
@@ -100,7 +100,7 @@ export function CompressControls({
         </div>
 
         {/* Live Savings Estimate Pill */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/80 text-xs font-bold text-blue-700 dark:text-blue-300 self-start sm:self-auto">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold text-neutral-900 dark:text-neutral-100 self-start sm:self-auto">
           <ArrowDownRight className="h-4 w-4 shrink-0" />
           <span>
             Est. Size: ~{formatBytes(estimatedNewBytes)} (-{estimatedPercent}%)
@@ -129,7 +129,7 @@ export function CompressControls({
               className={cn(
                 "group relative flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all duration-200 cursor-pointer select-none",
                 isSelected
-                  ? "border-blue-600 dark:border-blue-500 bg-blue-50/30 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-md scale-[1.01]"
+                  ? "border-neutral-900 dark:border-white bg-neutral-100/40 dark:bg-neutral-800/40 ring-2 ring-neutral-900/10 dark:ring-white/10 shadow-sm scale-[1.01]"
                   : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs",
                 disabled && "opacity-50 pointer-events-none cursor-not-allowed"
               )}
@@ -144,7 +144,7 @@ export function CompressControls({
                   className={cn(
                     "flex h-5 w-5 items-center justify-center rounded-full border transition-all",
                     isSelected
-                      ? "border-blue-600 bg-blue-600 text-white dark:border-blue-500 dark:bg-blue-500"
+                      ? "border-neutral-900 bg-neutral-900 text-white dark:border-white dark:bg-white dark:text-neutral-950"
                       : "border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-transparent"
                   )}
                 >
@@ -168,7 +168,7 @@ export function CompressControls({
               {/* Estimated Reduction Tag */}
               <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-semibold text-slate-500 dark:text-slate-400">
                 <span>Estimated:</span>
-                <span className="font-bold text-blue-600 dark:text-blue-400">
+                <span className="font-bold text-neutral-900 dark:text-white">
                   {level.estimatedReduction}
                 </span>
               </div>
@@ -190,7 +190,7 @@ export function CompressControls({
           disabled={disabled || isCompressing}
           onClick={onCompress}
           leftIcon={<Zap className="h-4 w-4" />}
-          className="w-full sm:w-auto shadow-md shadow-blue-600/20"
+          className="w-full sm:w-auto shadow-xs"
         >
           Compress PDF Now
         </Button>

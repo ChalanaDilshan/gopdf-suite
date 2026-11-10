@@ -38,16 +38,16 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur-md transition-colors duration-150">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-md transition-colors duration-150">
       <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand / Logo */}
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-xs group-hover:bg-blue-700 transition-colors">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 shadow-xs group-hover:bg-neutral-800 dark:group-hover:bg-neutral-100 transition-colors">
               <FileText className="h-5 w-5" />
             </div>
             <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white leading-none">
-              Go<span className="text-blue-600">PDF</span>
+              Go<span className="text-neutral-500 dark:text-neutral-400">PDF</span>
             </span>
           </Link>
 
@@ -177,7 +177,7 @@ export function Navbar() {
               onClick={toggleTheme}
               aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
               title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
-              className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-slate-200 dark:border-slate-700 bg-slate-200 dark:bg-blue-600 transition-colors cursor-pointer"
+              className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-slate-200 dark:border-slate-700 bg-slate-200 dark:bg-neutral-700 transition-colors cursor-pointer"
             >
               <span
                 className={cn(
